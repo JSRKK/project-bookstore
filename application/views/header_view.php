@@ -117,7 +117,6 @@
                 </ul>
               </li>
               <li><a href="#">Promotion</a></li>
-              <li><a href="<?php echo base_url('index.php/LibaryController')?>">My Library</a></li>
               <li class="dropdown dropdown-mm">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reader<b class="caret"></b></a>
                 <!-- Dropdown Menu -->
@@ -126,9 +125,11 @@
                     <ul class="col-md-6">
                       <li class="dropdown-header">Websites and Apps</li>
                       <li><a href="#">Profile</a></li>
-                      <li><a href="#">History</a></li>
+                      <li><a href="<?php echo base_url('index.php/LibaryController')?>">My Library</a></li>
+                      <li><a href="#">History purchase</a></li>
+                      <li><a href="#">History top-up</a></li>
                       <li><a href="#">Favorite</a></li>
-                      <li><a href="#">TopUp</a></li>
+                      <li><a href="#">Top-up</a></li>
                     </ul>
                     <ul class="col-md-6">
                       <li class="dropdown-header">Enterprise solutions</li>
@@ -147,9 +148,10 @@
                     <ul class="col-md-6">
                       <li class="dropdown-header">Websites and Apps</li>
                       <li><a href="#">Profile</a></li>
-                      <li><a href="#">History</a></li>
-                      <li><a href="#">Favorite</a></li>
-                      <li><a href="#">TopUp</a></li>
+                      <li><a href="<?php echo base_url('index.php/LibaryController')?>">My Library</a></li>                      
+                      <li><a href="#">Upload book</a></li>
+                      <li><a href="#">Add promotion</a></li>
+                      <li><a href="#">Total sale</a></li>
                     </ul>
                     <ul class="col-md-6">
                       <li class="dropdown-header">Enterprise solutions</li>
