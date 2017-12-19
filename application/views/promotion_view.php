@@ -70,9 +70,9 @@
       </div>
     </div>
    
-     <!-- ******************เขียน****************** code -->
+    <!-- ******************เขียน code******************  -->
 
-     <!-- ******************เขียน****************** code -->
+     <!-- ******************เขียน code******************  -->
 
   <!-- ======== @Region: #footer ======== -->
   <footer id="footer" class="block block-bg-grey-dark" data-block-bg-img="img/bg_footer-map.png" data-stellar-background-ratio="0.4">
