@@ -129,7 +129,7 @@
                       <li><a href="#">History purchase</a></li>
                       <li><a href="#">History top-up</a></li>
                       <li><a href="#">Favorite</a></li>
-                      <li><a href="#">Top-up</a></li>
+                      <li><a href="<?php echo base_url('index.php/TopUpController')?>">Top-up</a></li>
                     </ul>
                     <ul class="col-md-6">
                       <li class="dropdown-header">Enterprise solutions</li>
