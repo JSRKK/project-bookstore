@@ -5,6 +5,19 @@ class HomeController extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('home_view');
+		$this->load->model('HomeModel');	
+		$datas = $this->HomeModel->get();	
+		foreach ($datas as $row){
+			$data[] = array(
+			'book_id' => $row['book_ID'],
+			'book_name' => $row['bookName'],					
+			'book_price' => sprintf('%0.2f',$row['bookPrice'])		//กำหนดทศนิยม 2 ตำแหน่ง		
+		 	);	
+		}
+
+		$dataShow['data'] = $data;
+		$this->load->view('home_view', $dataShow);
 	}
+
+
 }

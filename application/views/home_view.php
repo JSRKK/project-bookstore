@@ -59,173 +59,40 @@
   <?php include('header_view.php') ?>  
 
   <!-- ======== @Region: #content ======== -->
-  <div id="content">
-    <!-- Mission Statement -->
-    <div class="mission text-center block block-pd-sm block-bg-noise">
-      <div class="container">
-        <h2 class="text-shadow-white">
-            We are a full digital agency based in London. We are experienced professionals in building websites, applications, mobile solutions.
-            <a href="about.html" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
-          </h2>
-      </div>
-    </div>
+  <div id="content">   
     <!--Showcase-->
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
         <h2 class="block-title">
             Recommended
           </h2>
-        <div class="item-carousel row" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":4, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="<?php echo base_url('book-img/001.jpg')?>" alt="Project 1 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">View</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h5 class="item-title">
-                  <a href="#">ROKZ VOL.71</a>
-                </h5>
-                <p class= "text-center">99.00</p>
-              <a href="#" class="btn btn-more"><i class="fa fa-cart-plus"></i>Buy</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="<?php echo base_url('book-img/002.jpg')?>" alt="Project 2 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">View</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h5 class="item-title">
-                  <a href="#">SNAP MBOOK</a>
-                </h5>
-                <p class= "text-center">199.00</p>
-                <a href="#" class="btn btn-more"><i class="fa fa-cart-plus"></i>Buy</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="<?php echo base_url('book-img/003.jpg')?>" alt="Project 3 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">View</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h5 class="item-title">
-                  <a href="#">Campus Star</a>
-                </h5>
-                <p class= "text-center">159.00</p>
-                <a href="#" class="btn btn-more"><i class="fa fa-cart-plus"></i>Buy</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="<?php echo base_url('book-img/004.jpg')?>" alt="Project 4 image" class="img-responsive underlay">
-                <span class="overlay">
-                    <span class="overlay-content"> <span class="h4">View</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h5 class="item-title">
-                  <a href="#">Campus Star</a>
-                </h5>
-                <p class= "text-center">159.00</p>
-                <a href="#" class="btn btn-more"><i class="fa fa-cart-plus"></i>Buy</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="<?php echo base_url('book-img/005.jpg')?>" alt="Project 5 image" class="img-responsive underlay">
-                <span class="overlay">
-                    <span class="overlay-content"> <span class="h4">View</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h5 class="item-title">
-                  <a href="#">The Bakery</a>
-                </h5>
-                <p class= "text-center">159.00</p>
-                <a href="#" class="btn btn-more"><i class="fa fa-cart-plus"></i>Buy</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="<?php echo base_url('book-img/006.jpg')?>" alt="Project 6 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">View</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h5 class="item-title">
-                  <a href="#">TRIS Academy Club</a>
-                </h5>
-                <p class= "text-center">159.00</p>
-                <a href="#" class="btn btn-more"><i class="fa fa-cart-plus"></i>Buy</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="<?php echo base_url('book-img/007.jpg')?>" alt="Project 7 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">View</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h5 class="item-title">
-                  <a href="#">RUSH เล่มพิเศษ</a>
-                </h5>
-                <p class= "text-center">159.00</p>
-                <a href="#" class="btn btn-more"><i class="fa fa-cart-plus"></i>Buy</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="<?php echo base_url('book-img/008.jpg')?>" alt="Project 8 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">View</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h5 class="item-title">
-                  <a href="#">A DAY Bulletin</a>
-                </h5>
-                <p class= "text-center">159.00</p>
-                <a href="#" class="btn btn-more"><i class="fa fa-cart-plus"></i>Buy</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="<?php echo base_url('book-img/009.jpg')?>" alt="Project 9 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">View</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h5 class="item-title">
-                  <a href="#">"ทำดีเพื่อพ่อ"</a>
-                </h5>
-                <p class= "text-center">159.00</p>
-                <a href="#" class="btn btn-more"><i class="fa fa-cart-plus"></i>Buy</a>
-            </div>
-          </div>
-          <div class="item">
-            <a href="#" class="overlay-wrapper">
-                <img src="<?php echo base_url('book-img/010.jpg')?>" alt="Project 10 image" class="img-responsive underlay">
-                <span class="overlay">
-                  <span class="overlay-content"> <span class="h4">View</span> </span>
-                </span>
-              </a>
-            <div class="item-details bg-noise">
-              <h5 class="item-title">
-                  <a href="#">The Bakery 2</a>
-                </h5>
-                <p class= "text-center">159.00</p>
-                <a href="#" class="btn btn-more"><i class="fa fa-cart-plus"></i>Buy</a>
-            </div>
-          </div>
+          <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":5, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
+          
+          <?php if($data != null)
+              foreach($data as $key => $row):?>              
+                <div class="item">                 
+                  <a href="#" class="overlay-wrapper">   
+                      <img src="<?php echo base_url('book-img/00'.$row['book_id'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay">
+                      <span class="overlay">                    
+                        <span class="overlay-content"> <span class="h4">View</span> </span>
+                      </span>
+                    </a>                                      
+                  <div class="item-details bg-noise text-center">
+                    <h5 class="item-title">
+                       <?php echo '<a href="#">'.$row['book_name'].' </a>' ?>
+                      </h5>
+                      <?php echo '<p href="#">'.$row['book_price'].' </p>' ?>
+                    <a href="#" class="btn btn-more"><i class="fa fa-cart-plus"></i>Buy</a><br><br>
+                    <span style="color:#FE980F">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </span>
+                  </div>
+              </div>                                         
+            <?php endforeach ?> 
         </div>
       </div>
     </div>

@@ -87,6 +87,16 @@
         </div>
       </div>
       <div class="container">
+        <div class="row">
+          <div class="col-md-2 col-md-offset-8" style="margin-left:77%">
+            <div class="form-group ">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Search" />
+            </div>
+          </div>
+          <div class="col-md-1" style="margin-left:-2%">
+          <button type="button" class="btn btn-info"><i class="fa fa-fw fa-search"></i></button>
+          </div>
+        </div>
         <div class="navbar navbar-default">
           <!--mobile collapse menu button-->
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
@@ -109,7 +119,7 @@
                 <!-- Dropdown Menu -->
                 <ul class="dropdown-menu">
                   <li class="dropdown-header">Flexor Version Pages</li>
-                  <li><a href="elements.html" tabindex="-1" class="menu-item">Elements</a></li>
+                  <li><a href="<?php echo base_url('index.php/LibraryController')?>" tabindex="-1" class="menu-item">Elements</a></li>
                   <li><a href="about.html" tabindex="-1" class="menu-item">About / Inner Page</a></li>
                   <li><a href="login.html" tabindex="-1" class="menu-item">Login</a></li>
                   <li><a href="register.html" tabindex="-1" class="menu-item">Sign-Up</a></li>
@@ -125,7 +135,7 @@
                     <ul class="col-md-6">
                       <li class="dropdown-header">Websites and Apps</li>
                       <li><a href="#">Profile</a></li>
-                      <li><a href="<?php echo base_url('index.php/LibaryController')?>">My Library</a></li>
+                      <li><a href="<?php echo base_url('index.php/LibraryController')?>">My Library</a></li>
                       <li><a href="#">History purchase</a></li>
                       <li><a href="#">History top-up</a></li>
                       <li><a href="#">Favorite</a></li>
@@ -148,7 +158,7 @@
                     <ul class="col-md-6">
                       <li class="dropdown-header">Websites and Apps</li>
                       <li><a href="#">Profile</a></li>
-                      <li><a href="<?php echo base_url('index.php/LibaryController')?>">My Library</a></li>                      
+                      <li><a href="<?php echo base_url('index.php/LibraryController')?>">My Library</a></li>                      
                       <li><a href="#">Upload book</a></li>
                       <li><a href="#">Add promotion</a></li>
                       <li><a href="#">Total sale</a></li>
@@ -183,7 +193,7 @@
                   <h2 class="h1 text-weight-light">
                       Welcome to <span class="text-primary">Flexor</span>
                     </h2>
-                  <h4>
+                    <h4>
                       Super flexible responsive theme with a modest design touch.
                     </h4>
                   <p>Perfect for your App, Web service, company or portfolio! Magna tincidunt sociis ac integer amet non. Rhoncus augue? Tempor porttitor sed, aliquet phasellus a, nisi nunc aliquet nec rhoncus enim porttitor ultrices lacus tristique?</p>
