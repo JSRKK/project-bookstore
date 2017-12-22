@@ -7,4 +7,9 @@ class HomeController extends CI_Controller {
 	{
 		$this->load->view('home_view');
 	}
+	public function logout()
+	{
+		$this->session->unset_userdata('loged_in', null);
+		redirect('HomeController');
+	}
 }

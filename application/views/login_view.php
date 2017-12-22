@@ -62,6 +62,7 @@
   <div id="background-wrapper" class="benches" data-stellar-background-ratio="0.8">
 
     <!-- ======== @Region: #content ======== -->
+   
     <div id="content">
       <div class="header">
         <div class="header-inner">
@@ -83,18 +84,19 @@
                 </h3>
             </div>
             <div class="panel-body">
-              <form accept-charset="UTF-8" role="form">
+              <form accept-charset="UTF-8" role="form" action = "<?php echo base_url('index.php/LoginController/check_login'); ?>" method="POST" enctype="multipart/form-data">
+              
                 <fieldset>
                   <div class="form-group">
                     <div class="input-group input-group-lg">
                       <span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
-                      <input type="text" class="form-control" placeholder="Email">
+                      <input id = "username" name = "username" type="text" class="form-control" placeholder="Username" required = "required">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="input-group input-group-lg">
                       <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
-                      <input type="password" class="form-control" placeholder="Password">
+                      <input name = "password" type="password" class="form-control" placeholder="Password" required = "required">
                     </div>
                   </div>
                   <div class="checkbox">
@@ -103,7 +105,7 @@
                         Remember Me
                       </label>
                   </div>
-                  <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
+                  <input id="send" class="btn btn-lg btn-primary btn-block" type="submit" value="Sign in">
                 </fieldset>
               </form>
               <p class="m-b-0 m-t">Not signed up? <a href="register.html">Sign up here</a>.</p>

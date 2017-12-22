@@ -79,9 +79,30 @@
             <div class="col-md-4">
               <!--user menu-->
               <ul class="list-inline user-menu pull-right">
+                
+            <?php 
+            if (isset($this->session->userdata['loged_in'])) { ?>
+                 <li class="user-register"><i class="fa fa-edit text-primary "></i> <a href= "#" class="text-uppercase">
+                <?php $session_data = $this->session->userdata('loged_in');
+                          echo $session_data['userId']." ".$session_data['password'] ;
+                   ?>
+              
+              </a></li>
+
+              <li class="user-logout"><i class="fa fa-edit text-primary "></i> <a href="<?php echo base_url('index.php/HomeController/logout')?>" class="text-uppercase">Log out</a></li>
+            <?php }  ?>
+               
+              <?php if(!isset($this->session->userdata['loged_in'])) { ?>
+              
                 <li class="user-register"><i class="fa fa-edit text-primary "></i> <a href="<?php echo base_url('index.php/RegisterController')?>" class="text-uppercase">Register</a></li>
                 <li class="user-login"><i class="fa fa-sign-in text-primary"></i> <a href="<?php echo base_url('index.php/LoginController')?>" class="text-uppercase">Login</a></li>
+              <?php }
+             ?>
               </ul>
+
+
+
+              
             </div>
           </div>
         </div>
