@@ -89,6 +89,12 @@
               
               </a></li>
 
+              <li>
+              <?php $session_data = $this->session->userdata('loged_in');
+                          echo "cash ".$session_data['cash'] ;
+                   ?>
+            </li>
+
               <li class="user-logout"><i class="fa fa-edit text-primary "></i> <a href="<?php echo base_url('index.php/HomeController/logout')?>" class="text-uppercase">Log out</a></li>
             <?php }  ?>
                

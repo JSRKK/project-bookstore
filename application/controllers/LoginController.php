@@ -18,8 +18,8 @@ class LoginController extends CI_Controller {
 			$sess_array = array(
 
 				'fName' => $data[0]['ReaderFname'],
-				'lName' => $data[0]['ReaaderLname']
-				
+				'lName' => $data[0]['ReaaderLname'],
+				'cash' => $data[0]['ReaderCash'],
 			);
 			$this->session->set_userdata('loged_in',$sess_array);
 			redirect('HomeController');
