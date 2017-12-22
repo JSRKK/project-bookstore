@@ -15,7 +15,7 @@ class HomeController extends CI_Controller {
 		 	);	
 		}
 
-		$dataShow['data'] = $data;
+		$dataShow['books'] = $data;
 		$this->load->view('home_view', $dataShow);
 	}
 

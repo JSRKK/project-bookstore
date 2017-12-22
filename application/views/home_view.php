@@ -68,10 +68,10 @@
           </h2>
           <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":5, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
           
-          <?php if($data != null)
-              foreach($data as $key => $row):?>              
+          <?php if($books != null)
+              foreach($books as $key => $row):?>              
                 <div class="item">                 
-                  <a href="#" class="overlay-wrapper">   
+                  <a href="<?php echo base_url('BookDetailController')?>" class="overlay-wrapper">   
                       <img src="<?php echo base_url('book-img/00'.$row['book_id'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay">
                       <span class="overlay">                    
                         <span class="overlay-content"> <span class="h4">View</span> </span>
@@ -82,7 +82,7 @@
                        <?php echo '<a href="#">'.$row['book_name'].' </a>' ?>
                       </h5>
                       <?php echo '<p href="#">'.$row['book_price'].' </p>' ?>
-                    <a href="#" class="btn btn-more"><i class="fa fa-cart-plus"></i>Buy</a><br><br>
+                    </a>
                     <span style="color:#FE980F">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
