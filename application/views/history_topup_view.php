@@ -71,7 +71,44 @@
     </div>
    
      <!-- ******************เขียน****************** code -->
-
+   <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
+              <tr>
+              <th class="table-active">ลำดับ</th>
+              <th class="table-active">ชื่อหนังสือ</th>
+              <th class="table-active">วันที่/เวลา</th>
+              <th class="table-active">ราคา</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>แค่คิดว่าทำได้ คุณก็ชนะ</td>
+              <td>10/10/2017 16:30:00</td>
+              <td>199</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>สร้างลูกอัจฉริยะสองภาษา</td>
+              <td>11/10/2017 10:30:00</td>
+              <td>250</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>คันจิ Daily</td>
+              <td>11/10/2017 10:30:00</td>
+              <td>75</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
      <!-- ******************เขียน****************** code -->
 
   <!-- ======== @Region: #footer ======== -->
