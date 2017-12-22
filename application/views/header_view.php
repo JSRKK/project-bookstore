@@ -84,7 +84,7 @@
             if (isset($this->session->userdata['loged_in'])) { ?>
                  <li class="user-register"><i class="fa fa-edit text-primary "></i> <a href= "#" class="text-uppercase">
                 <?php $session_data = $this->session->userdata('loged_in');
-                          echo $session_data['userId']." ".$session_data['password'] ;
+                          echo $session_data['fName']." ".$session_data['lName'] ;
                    ?>
               
               </a></li>
