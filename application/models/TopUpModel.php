@@ -1,10 +1,14 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
-class TopUpController extends CI_Controller {
-
-	public function index()
+class TopUpModel extends CI_Model {
+	public function __construct()
 	{
-		$this->load->view('topup_view');
+			parent::__construct();
+			// Your own constructor code
 	}
+	public function getTopUp(){
+		$query = $this->db->query("SELECT user_ID FROM user"); // session
+		return $query->result_array();
+	}
+
 }
