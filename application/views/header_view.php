@@ -120,7 +120,7 @@
                 <ul class="dropdown-menu">
                   <li class="dropdown-header">Flexor Version Pages</li>
                   <li><a href="<?php echo base_url('index.php/LibraryController')?>" tabindex="-1" class="menu-item">Elements</a></li>
-                  <li><a href="about.html" tabindex="-1" class="menu-item">About / Inner Page</a></li>
+                  <li><a href="<?php echo base_url('index.php/ReadBookController')?>" tabindex="-1" class="menu-item">Read</a></li>
                   <li><a href="login.html" tabindex="-1" class="menu-item">Login</a></li>
                   <li><a href="register.html" tabindex="-1" class="menu-item">Sign-Up</a></li>
                   <li class="dropdown-footer">Dropdown footer</li>

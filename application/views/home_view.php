@@ -45,7 +45,9 @@
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
+  <!-- <script src="https://oss.maxcdn.com/bootbox/4.2.0/bootbox.min.js"></script> -->
   <!-- =======================================================
     Theme Name: Flexor
     Theme URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
@@ -55,11 +57,13 @@
 </head>
 
 <body class="page-index has-hero">
+
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
   <?php include('header_view.php') ?>  
-
+  
   <!-- ======== @Region: #content ======== -->
-  <div id="content">   
+  <div id="content">  
+     
     <!--Showcase-->
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
@@ -67,18 +71,18 @@
             Recommended
           </h2>
           <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":5, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
-          
+
           <?php if($books != null)
               foreach($books as $key => $row):?>              
-                <div class="item">                 
-                  <a href="<?php echo base_url('BookDetailController')?>" class="overlay-wrapper">   
-                      <img src="<?php echo base_url('book-img/00'.$row['book_id'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay">
+                <div class="item ">                 
+                  <a href="<?php echo base_url('index.php/ReadBookController/index?book_id='.$row['book_id']);?>" class="overlay-wrapper">   
+                      <img src="<?php echo base_url('book-img/'.$row['book_id'].'/'.$row['book_img'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto; width:200px;height:250px">
                       <span class="overlay">                    
                         <span class="overlay-content"> <span class="h4">View</span> </span>
                       </span>
                     </a>                                      
                   <div class="item-details bg-noise text-center">
-                    <h5 class="item-title">
+                    <h5 class="item-title" style="max-width: 160px">
                        <?php echo '<a href="#">'.$row['book_name'].' </a>' ?>
                       </h5>
                       <?php echo '<p href="#">'.$row['book_price'].' </p>' ?>
@@ -90,6 +94,14 @@
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star-o"></i>
                     </span>
+                    <a data-toggle="modal" 
+                      data-id="<?php echo $row['book_id']?>"
+                      data-name="<?php echo $row['book_name']?>" 
+                      data-price="<?php echo $row['book_price']?>" 
+                      data-img="<?php echo $row['book_img']?>"
+                      class="btn btn-warning open-myModal">buy
+                    </a>
+
                   </div>
               </div>                                         
             <?php endforeach ?> 
@@ -188,7 +200,47 @@
 
     </div>
   </footer>
+    
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">รายละเอียดการชำระเงิน</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+                <div class="col-md-4">
+                  <img id="img-url" src="<?php echo base_url('')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;">
+                </div>
+                <div class="col-md-8">
+                    <span type="text" id="book-name"></span><hr>
+                    ฿<span type="text" id="book-price"></span><hr>
+                </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">ชำระเงิน</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>          
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <script type="text/javascript">
+    $(document).on("click", ".open-myModal", function () 
+    {
+      var url = "<?php echo base_url(); ?>"+'book-img/'+$(this).data('id')+'/'+$(this).data('img')+'.jpg';      
+      $(".modal-body #book-name").html($(this).data('name'));
+      $(".modal-body #book-price").html($(this).data('price'));
+      $('.modal-body img').attr('src', url);
+      $('#exampleModal').modal('show');
+    });       
+  </script>
+ 
   <!-- Required JavaScript Libraries -->
   <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js')?>"></script>
   <script src="<?php echo base_url('assets/lib/bootstrap/js/bootstrap.min.js')?>"></script>

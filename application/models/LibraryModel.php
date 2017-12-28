@@ -6,7 +6,7 @@ class LibraryModel extends CI_Model {
         }
 
         public function get($userID) {
-            $query = $this->db->query("SELECT p.book_ID, b.bookName 
+            $query = $this->db->query("SELECT p.book_ID, b.bookName, b.bookImageCover 
                                         FROM purchased p INNER JOIN book b on p.book_ID = b.book_ID 
                                         WHERE p.user_ID = '$userID'"); 
             return $query->result_array(); 

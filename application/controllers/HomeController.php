@@ -11,7 +11,8 @@ class HomeController extends CI_Controller {
 			$data[] = array(
 			'book_id' => $row['book_ID'],
 			'book_name' => $row['bookName'],					
-			'book_price' => sprintf('%0.2f',$row['bookPrice'])		//กำหนดทศนิยม 2 ตำแหน่ง		
+			'book_price' => sprintf('%0.2f',$row['bookPrice']),		//กำหนดทศนิยม 2 ตำแหน่ง		
+			'book_img' => $row['bookImageCover']
 		 	);	
 		}
 

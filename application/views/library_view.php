@@ -68,12 +68,12 @@
         <div class="item-carousel row" >
           <?php if($books != null)
               foreach($books as $key => $row):?> 
-                <div class="item item-book col-md-2">
-                  <a href="#" class="overlay-wrapper">
-                  <img src="<?php echo base_url('book-img/00'.$row['book_id'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay">             
+                <div class="item item-book col-md-3" >
+                  <a href="<?php echo base_url('index.php/BookDetailController?book_id='.$row['book_id']);?>" class="overlay-wrapper">
+                  <img src="<?php echo base_url('book-img/'.$row['book_id'].'/'.$row['book_img'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;width:200px;height:250px">             
                   </a>
                   <div class="item-details bg-noise">
-                     <h5 class="item-title">
+                    <h5 class="item-title text-center">
                        <?php echo '<a href="#">'.$row['book_name'].' </a>' ?>
                     </h5>
                   </div>
@@ -137,7 +137,7 @@
         </div>
 
         <div class="col-md-3">
-          <h4 class="text-uppercase">
+            <h4 class="text-uppercase">
               Follow Us On:
             </h4>
           <!--social media icons-->
@@ -180,34 +180,6 @@
     </div>
   </footer>
 
- 
-  <!-- <script>
-      //Pagination
-      var pageSize = 1;
-
-      var pageCount = $(".item-book").length / pageSize;
-      // alert(pageCount);
-      for (var i = 0; i < pageCount; i++) {
-          $("#pagination").append('<li><a href="#">' + (i + 1) + '</a></li> ');
-      }
-      $("#pagination li").first().find("a").addClass("current")
-      showPage = function (page) {
-          $(".item-book").hide();
-          $(".item-book").each(function (n) {
-              if (n >= pageSize * (page - 1) && n < pageSize * page)
-                  $(this).show();
-          });
-      }
-      showPage(1);
-
-      $("#pagination li a").click(function () {
-          $("#pagination li a").removeClass("current");
-          $(this).addClass("current");
-          showPage(parseInt($(this).text()))
-      });
-
-  </script>  -->
-  
   <script type="text/javascript">
     function getPageList(totalPages, page, maxLength) {
       if (maxLength < 5) throw "maxLength must be at least 5";
@@ -246,7 +218,7 @@
   $(function () {
       // Number of items and limits the number of items per page
       var numberOfItems = $(".item-book").length;
-      var limitPerPage = 10;
+      var limitPerPage = 12;
       // Total pages rounded upwards
       var totalPages = Math.ceil(numberOfItems / limitPerPage);
       // Number of buttons at the top, not counting prev/next,

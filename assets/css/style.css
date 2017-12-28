@@ -1257,7 +1257,7 @@
     display: block;
     overflow: hidden;
     border: 1px solid #F7F7F5;
-    margin-bottom: 30px;
+    /* margin-bottom: 5px; */
 }
 
 .overlay-wrapper.overlay-wrapper-bordered {
