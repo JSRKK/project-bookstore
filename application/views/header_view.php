@@ -108,10 +108,10 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Books<b class="caret"></b></a>
                 <!-- Dropdown Menu -->
                 <ul class="dropdown-menu">
-                  <li class="dropdown-header">Flexor Version Pages</li>
-                  <li><a href="elements.html" tabindex="-1" class="menu-item">Elements</a></li>
-                  <li><a href="about.html" tabindex="-1" class="menu-item">About / Inner Page</a></li>
-                  <li><a href="login.html" tabindex="-1" class="menu-item">Login</a></li>
+                  <li class="dropdown-header">Book types</li>
+                  <li><a href="elements.html" tabindex="-1" class="menu-item">Magazine1</a></li>
+                  <li><a href="about.html" tabindex="-1" class="menu-item">Magazine2</a></li>
+                  <li><a href="login.html" tabindex="-1" class="menu-item">Magazine3</a></li>
                   <li><a href="register.html" tabindex="-1" class="menu-item">Sign-Up</a></li>
                   <li class="dropdown-footer">Dropdown footer</li>
                 </ul>
@@ -126,7 +126,7 @@
                       <li class="dropdown-header">Websites and Apps</li>
                       <li><a href="#">Profile</a></li>
                       <li><a href="<?php echo base_url('index.php/LibaryController')?>">My Library</a></li>
-                      <li><a href="#">History purchase</a></li>
+                      <li><a href="<?php echo base_url('index.php/HistoryPurchaseController') ?>">History purchase</a></li>
                       <li><a href="#">History top-up</a></li>
                       <li><a href="#">Favorite</a></li>
                       <li><a href="#">Top-up</a></li>

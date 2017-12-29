@@ -71,7 +71,30 @@
     </div>
    
      <!-- ******************เขียน code******************  -->
+    <div class="container">
+      <h4 class="block-title">History Purchase</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>ลำดับ</th>
+                <th>ชื่อหนังสือ</th>
+                <th>วันที่ซื้อ</th>
+                <th>ราคา</th>
+              </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($books as $key => $book): ?>
+                <tr>
+                  <td rowcol-md-="2"> <?php echo $key+1; ?> </td>
+                  <td><?php echo $book['bookName']; ?></td>
+                  <td><?php echo $book['purchasedDateTime']; ?></td>
+                  <td><?php echo sprintf('%0.2f', $book['purchasedPrice']); ?></td>
+                </tr>
+              <?php endforeach;?>
 
+            </tbody>
+          </table>
+      </div>
      <!-- ******************เขียน code******************  -->
 
   <!-- ======== @Region: #footer ======== -->
