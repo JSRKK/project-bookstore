@@ -1,6 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+  <style>
+body {
+    padding-top: 50px;
+}
+.dropdown.dropdown-lg .dropdown-menu {
+    margin-top: -1px;
+    padding: 6px 20px;
+}
+.input-group-btn .btn-group {
+    display: flex !important;
+}
+.btn-group .btn {
+    border-radius: 0;
+    margin-left: -1px;
+}
+.btn-group .btn:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.btn-group .form-horizontal .btn[type="submit"] {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+.form-group .form-control:last-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
 
+@media screen and (min-width: 768px) {
+    #adv-search {
+        width: 500px;
+        margin: 0 auto;
+    }
+    .dropdown.dropdown-lg {
+        position: static !important;
+    }
+    .dropdown.dropdown-lg .dropdown-menu {
+        min-width: 500px;
+    }
+}
+</style>
 <head>
   <meta charset="utf-8">
   <title>BookStore Online</title>
@@ -46,7 +90,6 @@
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <!-- =======================================================
     Theme Name: Flexor
     Theme URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
@@ -57,36 +100,31 @@
 
 <body class="page-index has-hero">
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-  <?php include('header_view.php') ?>
+  <?php include('header_view.php') ?>  
 
   <!-- ======== @Region: #content ======== -->
   <div id="content">
-    <!--Showcase-->
-    <div class="showcase block block-border-bottom-grey">
+    <!-- Mission Statement -->
+    <div class="mission text-center block block-pd-sm block-bg-noise">
       <div class="container">
-        <h2 class="block-title"> My Libary</h2>
-        <div class="item-carousel row" >
-          <?php if($books != null)
-              foreach($books as $key => $row):?> 
-                <div class="item item-book col-md-2">
-                  <a href="<?php echo base_url('index.php/BookDetailController?book_id='.$row['book_id']);?>"" class="overlay-wrapper">
-                  <img src="<?php echo base_url('book-img/00'.$row['book_id'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay" style="margin-left:20px">             
-                  </a>
-                  <div class="item-details bg-noise">
-                     <h5 class="item-title text-center">
-                       <?php echo '<a href="#">'.$row['book_name'].' </a>' ?>
-                    </h5>
-                  </div>
-                </div>                        
-              <?php endforeach ?> 
-        </div>
-        <div class="row">
-          <ul class="pagination" id="pagination">
-          </ul>
-        </div>
+        <h2 class="text-shadow-white">
+            We are a full digital agency based in London. We are experienced professionals in building websites, applications, mobile solutions.
+            <a href="about.html" class="btn btn-more"><i class="fa fa-plus"></i>Read more</a>
+          </h2>
       </div>
     </div>
-  </div>
+   
+     <!-- ******************เขียน code******************  -->
+<?php if($data !=null){
+  foreach($data as $key => $row){
+    echo "<TR>";
+    echo "<TD>" .$row['books_id']. "</TD>";
+    echo "<TD>" .$row['book_name']. "</TD>";
+    echo "<TD>" .$row['book_price']. "</TD>";
+  }
+}
+?>
+     <!-- ******************เขียน code******************  -->
 
   <!-- ======== @Region: #footer ======== -->
   <footer id="footer" class="block block-bg-grey-dark" data-block-bg-img="img/bg_footer-map.png" data-stellar-background-ratio="0.4">
@@ -180,134 +218,6 @@
     </div>
   </footer>
 
- 
-  <!-- <script>
-      //Pagination
-      var pageSize = 1;
-
-      var pageCount = $(".item-book").length / pageSize;
-      // alert(pageCount);
-      for (var i = 0; i < pageCount; i++) {
-          $("#pagination").append('<li><a href="#">' + (i + 1) + '</a></li> ');
-      }
-      $("#pagination li").first().find("a").addClass("current")
-      showPage = function (page) {
-          $(".item-book").hide();
-          $(".item-book").each(function (n) {
-              if (n >= pageSize * (page - 1) && n < pageSize * page)
-                  $(this).show();
-          });
-      }
-      showPage(1);
-
-      $("#pagination li a").click(function () {
-          $("#pagination li a").removeClass("current");
-          $(this).addClass("current");
-          showPage(parseInt($(this).text()))
-      });
-
-  </script>  -->
-  
-  <script type="text/javascript">
-    function getPageList(totalPages, page, maxLength) {
-      if (maxLength < 5) throw "maxLength must be at least 5";
-  
-      function range(start, end) {
-          return Array.from(Array(end - start + 1), (_, i) => i + start); 
-      }
-  
-      var sideWidth = maxLength < 9 ? 1 : 2;
-      var leftWidth = (maxLength - sideWidth*2 - 3) >> 1;
-      var rightWidth = (maxLength - sideWidth*2 - 2) >> 1;
-      if (totalPages <= maxLength) {
-          // no breaks in list
-          return range(1, totalPages);
-      }
-      if (page <= maxLength - sideWidth - 1 - rightWidth) {
-          // no break on left of page
-          return range(1, maxLength-sideWidth-1)
-              .concat([0])
-              .concat(range(totalPages-sideWidth+1, totalPages));
-      }
-      if (page >= totalPages - sideWidth - 1 - rightWidth) {
-          // no break on right of page
-          return range(1, sideWidth)
-              .concat([0])
-              .concat(range(totalPages - sideWidth - 1 - rightWidth - leftWidth, totalPages));
-      }
-      // Breaks on both sides
-      return range(1, sideWidth)
-          .concat([0])
-          .concat(range(page - leftWidth, page + rightWidth)) 
-          .concat([0])
-          .concat(range(totalPages-sideWidth+1, totalPages));
-  }
-  
-  $(function () {
-      // Number of items and limits the number of items per page
-      var numberOfItems = $(".item-book").length;
-      var limitPerPage = 10;
-      // Total pages rounded upwards
-      var totalPages = Math.ceil(numberOfItems / limitPerPage);
-      // Number of buttons at the top, not counting prev/next,
-      // but including the dotted buttons.
-      // Must be at least 5:
-      var paginationSize = 7; 
-      var currentPage;
-  
-      function showPage(whichPage) {
-          if (whichPage < 1 || whichPage > totalPages) return false;
-          currentPage = whichPage;
-          $(".item-book").hide()
-              .slice((currentPage-1) * limitPerPage, 
-                      currentPage * limitPerPage).show();
-          // Replace the navigation items (not prev/next):            
-          $(".pagination li").slice(1, -1).remove();
-          getPageList(totalPages, currentPage, paginationSize).forEach( item => {
-              $("<li>").addClass("page-item")
-                       .addClass(item ? "current-page" : "disabled")
-                       .toggleClass("active", item === currentPage).append(
-                  $("<a>").addClass("page-link").attr({
-                      href: "javascript:void(0)"}).text(item || "...")
-              ).insertBefore("#next-page");
-          });
-          // Disable prev/next when at first/last page:
-          $("#previous-page").toggleClass("disabled", currentPage === 1);
-          $("#next-page").toggleClass("disabled", currentPage === totalPages);
-          return true;
-      }
-  
-      // Include the prev/next buttons:
-      $(".pagination").append(
-          $("<li>").addClass("page-item").attr({ id: "previous-page" }).append(
-              $("<a>").addClass("page-link").attr({
-                  href: "javascript:void(0)"}).text("Prev")
-          ),
-          $("<li>").addClass("page-item").attr({ id: "next-page" }).append(
-              $("<a>").addClass("page-link").attr({
-                  href: "javascript:void(0)"}).text("Next")
-          )
-      );
-      // Show the page links
-      $(".item-book").show();
-      showPage(1);
-  
-      // Use event delegation, as these items are recreated later    
-      $(document).on("click", ".pagination li.current-page:not(.active)", function () {
-          return showPage(+$(this).text());
-      });
-      $("#next-page").on("click", function () {
-          return showPage(currentPage+1);
-      });
-  
-      $("#previous-page").on("click", function () {
-          return showPage(currentPage-1);
-      });
-  });
-</script>
-
-
-
   <!-- Required JavaScript Libraries -->
   <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js')?>"></script>
   <script src="<?php echo base_url('assets/lib/bootstrap/js/bootstrap.min.js')?>"></script>
@@ -325,7 +235,7 @@
 
   <!--Contactform script -->
   <script src="<?php echo base_url('assets/contactform/contactform.js')?>"></script>
-  
+
 </body>
 
 </html>
