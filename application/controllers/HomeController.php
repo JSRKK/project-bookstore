@@ -19,6 +19,10 @@ class HomeController extends CI_Controller {
 		$dataShow['books'] = $data;
 		$this->load->view('home_view', $dataShow);
 	}
-
-
+	
+	public function logout()
+	{
+		$this->session->unset_userdata('loged_in', null);
+		redirect('HomeController');
+	}
 }
