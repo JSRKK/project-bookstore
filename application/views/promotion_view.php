@@ -71,8 +71,28 @@
     </div>
    
     <!-- ******************เขียน code******************  -->
-
-     <!-- ******************เขียน code******************  -->
+    <h3><b><center>Promotion</center></b></h3>
+    <div class="row">
+      <div class="container">
+        <div class="col-md-2" style="margin-right: 80px"><img src="<?php echo base_url('book-img/009.jpg')?>" ALIGN = "BOTTOM" VSPACE = "10">
+          <div class= "text-center">
+          ทำดีเพื่อพ่อ <br>
+          <font color="red"> 63 ฿ </font><br>
+          <del>90 ฿</del> &nbsp;-30% <br>
+          <font color="red"> หมดเขต 2 มกราคม 2018 </font>
+          </div>
+        </div> 
+        <div class="col-md-2" style="margin-right: 80px"><img src="<?php echo base_url('book-img/006.jpg')?>" ALIGN = "BOTTOM" VSPACE = "10">
+          <div class= "text-center">
+          TRIS Academy Club : Issue 3 (DEC 2017) <br>
+          <font color="red"> 88 ฿ </font><br>
+          <del>110 ฿</del> &nbsp;-20% <br>
+          <font color="red"> หมดเขต 2 มกราคม 2018 </font>
+          </div>
+        </div> 
+      </div>
+    </div>
+    <!-- ******************เขียน code******************  -->
 
   <!-- ======== @Region: #footer ======== -->
   <footer id="footer" class="block block-bg-grey-dark" data-block-bg-img="img/bg_footer-map.png" data-stellar-background-ratio="0.4">
