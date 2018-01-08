@@ -76,13 +76,8 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-<<<<<<< HEAD
 	'username' => 'root',
 	'password' => '',
-=======
-	'username' => 'Bewcs',
-	'password' => '123456',
->>>>>>> origin/search
 	'database' => 'ebook',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
