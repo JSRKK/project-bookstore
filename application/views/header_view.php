@@ -1,4 +1,5 @@
 <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
+
 <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
 
     <!-- ======== @Region: #navigation ======== -->
@@ -114,16 +115,16 @@
         </div>
       </div>
       <div class="container">
-        <div class="row">
-          <div class="col-md-2 col-md-offset-8" style="margin-left:77%">
-            <div class="form-group ">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Search" />
-            </div>
-          </div>
-          <div class="col-md-1" style="margin-left:-2%">
-          <button type="button" class="btn btn-info"><i class="fa fa-fw fa-search"></i></button>
-          </div>
+      <div class ="row">
+        <div class ="col-md-2 col-md-offset-8" style="margin-left:77%">
+        <div class = "form-group">
+          <input type="text" name="name" class ="form-control" id="name" placeholder ="search" />
         </div>
+      </div>
+      <div class = "col-md-1" style = "margin-left:-2%">
+      <a  href="<?php echo base_url('index.php/BooksController')?>"> <button type="button" class="btn btn-info"><i href="<?php echo base_url('index.php/BooksController')?>" class ="fa fa-fw fa-search"></i></button></a>
+      </div>
+      </div>
         <div class="navbar navbar-default">
           <!--mobile collapse menu button-->
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
