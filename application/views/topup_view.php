@@ -69,9 +69,34 @@
           </h2>
       </div>
     </div>
-   
+  </div>
     <!-- ******************เขียน code******************  -->
-
+  <div id="topup">
+      <div class="container">
+        <h2 class="block-title text-weight-strong">TopUp</h2>
+        
+        <form class="form-horizontal" action=>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Username:</label>
+              <div class="col-sm-10">
+                <?php foreach ($user as $key => $usernameDatas): 
+                  if($key == 1){?>
+                <p class="lead"><?php echo $usernameDatas['user_ID']; ?></p>
+                <?php } 
+                endforeach;?>
+              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">SerialNo.(TrueMoney):</label>
+              <div class="col-sm-10">
+              <input type="text" style="width:300px;" class="form-control" id="serialno" maxlength=14 placeholder="Enter Serial Number(14)" name="serial">
+              </div>
+          </div>
+          
+          <input type="submit" class="btn btn-lg btn-success" value="Enter"></input>
+        </form>
+      </div>
+  </div>
      <!-- ******************เขียน code******************  -->
 
   <!-- ======== @Region: #footer ======== -->
