@@ -59,8 +59,10 @@
   <?php include('header_view.php') ?>  
 
   <!-- ======== @Region: #content ======== -->
+  <!--
   <div id="content">
     <!-- Mission Statement -->
+  <!--
     <div class="mission text-center block block-pd-sm block-bg-noise">
       <div class="container">
         <h2 class="text-shadow-white">
@@ -69,9 +71,96 @@
           </h2>
       </div>
     </div>
-   
+   -->
      <!-- ******************เขียน code******************  -->
+        <div class="container">
+          <div class="row contact" id="contact">
+              <div class="col-md-1"> </div>
+              <div class="col-md-3">
+                <h1>Book Detail</h1>
+                <img src="<?php echo base_url('book-img/thinkvictory.jpg')?>"  width="300" height="150">
+                <center><button type="button" class="btn btn-lg btn-success">ทดลองอ่าน</button></center>
+              </div>
+                <div class="col-md-8 ">
+                
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h3><strong>แค่คิดว่าทำได้คุณก็ชนะ</strong></h3>
+                    <br>
+                    
+                    <span style = "color :#FE980F">
+                    <class="list-group-item col-lg "> 
+                      <i class="fa fa-fw fa-star pull-right"></i>
+                    
+                    <class="list-group-item col-lg "> 
+                      <i class="fa fa-fw fa-star pull-right"></i>
+                    
+                    <class="list-group-item col-lg "> 
+                      <i class="fa fa-fw fa-star pull-right"></i>
+                    
+                    <class="list-group-item col-lg "> 
+                      <i class="fa fa-fw fa-star pull-right"></i>
+                    
+                    <class="list-group-item col-lg "> 
+                      <i class="fa fa-fw fa-star pull-right"></i>
+                    </span>
+                    <p class = "pull-right"> คะแนน</p>
+                    <br>
+                    <h4><span style="color :green">199฿</span></h4> 
+                    <br>
+                    รายละเอียด :
+                    <br>
+                    "แค่คิดว่าทำได้ คุณก็ชนะ" เล่มนี้ ถ่ายทอดเคล็ดลับที่จะทำให้คุณประสบความสำเร็จ ร่ำรวย และบรรลุทุกเป้าหมายในชีวิตอย่างใจคิด เป็น "เคล็ดลับ" ที่ทรงพลังจากแนวคิดและถ้อยคำของบุคคลที่ประสบความสำเร็จระดับตำนาน ที่จะผลักดันให้คุณ "ประสบความสำเร็จ" ได้เช่นกัน
+                    <br>
+                    <h4>
+                    วันที่วางขาย <p class = "pull-right"> 19 ตุลาคม 2560</p>
+                    <br>
+                    <br>
+                    สำนักพิมพ์ <p class = "pull-right"> บิสคิต, สนพ.</p>
+                    <br>
+                    <br>
+                    จำนวนหน้า <p class = "pull-right"> 190</p>
+                    <br>
+                    <br>         
+                    แชร์หนังสือ <p class = "pull-right"><span style="color :blue"><i class="fa fa-fw fa-facebook-square"></i></span></p>
+                    <br>
+                    <br>
+                    </h4>
+                    <button type="button" class="btn btn-lg btn-success pull-right" style = "margin-left: 20px">
+                      ซื้อ
+                    </button>
+                    <button type="button" class="btn btn-lg btn-success pull-right">
+                      ส่งของขวัญ
+                    </button>
+                </div>
+            </div>
+          
 
+          <div class="row comment" id="comment">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+            <button type="button" class="btn btn-lg btn-success" style = "margin-right: 20px">
+              แสดงความคิดเห็น
+            </button>
+            <button type="button" class="btn btn-lg btn-success" style = "margin-right: 20px">
+              หนังสือที่เกี่ยวข้อง
+            </button>
+            <button type="button" class="btn btn-lg btn-success">
+              ให้คะแนน
+            </button>
+              <h3> ความคิดเห็น </h3>
+
+              ID : xxxxxxxxxx
+              <br>
+              <input type="text" class="form-control"  placeholder="ความคิดเห็น">
+              <paper-button class="align-by-text style-scope ytd-comment-replies-renderer" noink="" role="button" tabindex="0" animated="" aria-disabled="false" elevation="0">
+                View all 12 replies
+              </paper-button>
+            </div>
+          </div>  
+        </div>
      <!-- ******************เขียน code******************  -->
 
   <!-- ======== @Region: #footer ======== -->
