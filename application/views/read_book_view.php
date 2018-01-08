@@ -17,7 +17,6 @@
 		<p id="pageSize" data-book="<?php echo $pages[0]['book_ID'];?>" data-size="<?php echo sizeof($pages);?>"></p>
 		<a type="button" href="<?php echo base_url('index.php/HomeController');?>" class="btn btn-danger button-back">Exit</a>
 		<div class="zoom-icon zoom-icon-in"></div>   
-		<span class="page-number"></span>		
 		<div class="magazine-viewport" >
 			<div class="container">
 				<div class="magazine">
@@ -27,11 +26,12 @@
 					<div ignore="1" class="previous-button"></div>
 				</div>
 			</div>
-			<!-- <div class="bottom">
+			<span class="page-number"></span>					
+			<div class="bottom">
 				<div id="slider-bar" class="turnjs-slider">
 					<div id="slider"></div>
 				</div>
-			</div> -->
+			</div>
 		</div>
 	</div>
 
@@ -320,38 +320,38 @@ function loadApp() {
 
    // Slider
 
-//    $( "#slider" ).slider({
-// 	   min: 1,
-// 	   max: numberOfViews(flipbook),
+   $( "#slider" ).slider({
+	   min: 1,
+	   max: numberOfViews(flipbook),
 
-// 	   start: function(event, ui) {
+	   start: function(event, ui) {
 
-// 		   if (!window._thumbPreview) {
-// 			   _thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
-// 			   setPreview(pathBook, page);
-// 			   _thumbPreview.appendTo($(ui.handle));
-// 		   } else
-// 			   setPreview(pathBook, pageNumber);
+		   if (!window._thumbPreview) {
+			   _thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
+			   setPreview(pathBook, page);
+			   _thumbPreview.appendTo($(ui.handle));
+		   } else
+			   setPreview(pathBook, pageNumber);
 
-// 		   moveBar(false);
+		   moveBar(false);
 
-// 	   },
+	   },
 
-// 	   slide: function(event, ui) {
+	   slide: function(event, ui) {
 
-// 		   setPreview(pathBook, pageNumber);
+		   setPreview(pathBook, pageNumber);
 
-// 	   },
+	   },
 
-// 	   stop: function() {
+	   stop: function() {
 
-// 		   if (window._thumbPreview)
-// 			   _thumbPreview.removeClass('show');
+		   if (window._thumbPreview)
+			   _thumbPreview.removeClass('show');
 		   
-// 		   $('.magazine').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
+		   $('.magazine').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
 
-// 	   }
-//    });
+	   }
+   });
 
    resizeViewport();
 
