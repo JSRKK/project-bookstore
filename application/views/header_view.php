@@ -154,7 +154,7 @@
                   <li class="dropdown-footer">Dropdown footer</li>
                 </ul>
               </li>
-              <li><a href="#">Promotion</a></li>
+              <li><a href="<?php echo base_url('index.php/PromotionController')?>">Promotion</a></li>
               <li class="dropdown dropdown-mm">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reader<b class="caret"></b></a>
                 <!-- Dropdown Menu -->
