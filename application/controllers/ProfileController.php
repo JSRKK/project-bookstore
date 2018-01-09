@@ -5,6 +5,9 @@ class ProfileController extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('profile_view');
+		$this->load->model('ProfileModel');
+		$datas = $this->ProfileModel->get();
+		$dataShow['profile'] = $datas;
+		$this->load->view('profile_reader_view', $dataShow);
 	}
 }
