@@ -83,7 +83,7 @@
                 
             <?php 
             if (isset($this->session->userdata['loged_in'])) { ?>
-                 <li class="user-register"><i class="fa fa-edit text-primary "></i> <a href= "#" class="text-uppercase">
+                 <li class="user-register"><i class="glyphicon glyphicon-user"></i> <a href= "#" class="text-uppercase">
                 <?php $session_data = $this->session->userdata('loged_in');
                           echo $session_data['fName']." ".$session_data['lName'] ;
                    ?>
@@ -92,11 +92,11 @@
 
               <li>
               <?php $session_data = $this->session->userdata('loged_in');
-                          echo "cash ".$session_data['cash'] ;
+                          echo "<b>| cash : </b>".$session_data['cash'] ;
                    ?>
             </li>
 
-              <li class="user-logout"><i class="fa fa-edit text-primary "></i> <a href="<?php echo base_url('index.php/HomeController/logout')?>" class="text-uppercase">Log out</a></li>
+              <li class="user-logout"><i class="fa fa-fw fa-lock"></i> <a href="<?php echo base_url('index.php/HomeController/logout')?>" class="text-uppercase">Log out</a></li>
             <?php }  ?>
                
               <?php if(!isset($this->session->userdata['loged_in'])) { ?>

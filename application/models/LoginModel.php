@@ -24,7 +24,6 @@ class LoginModel extends CI_Model {
                    $data = $this->db->query("SELECT * FROM reader
                                                 WHERE user_ID = '$id';");
                     $data = $data->result_array();
-                    $data[0]['ReaderCash'] =  1000;
                     return $data;
                }
                else if($query[0]['userType'] == 'P')
@@ -35,7 +34,7 @@ class LoginModel extends CI_Model {
                     $query = $query ->result_array();
                     $query[0]['ReaderFname'] =  $query[0]['publisherName'];
                     $query[0]['ReaaderLname'] =  $query[0]['publisherAutherName'];
-                    $query[0]['ReaderCash'] =  null;
+                    $query[0]['ReaderCash'] =  '-';
                 return $query;
                }
                 
