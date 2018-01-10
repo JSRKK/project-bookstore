@@ -162,7 +162,7 @@
                   <li class="row">
                     <ul class="col-md-6">
                       <li class="dropdown-header">Websites and Apps</li>
-                      <li><a href="#">Profile</a></li>
+                      <li><a href="<?php echo base_url('index.php/ProfileController')?>">Profile</a></li>
                       <li><a href="<?php echo base_url('index.php/LibraryController')?>">My Library</a></li>
                       <li><a href="<?php echo base_url('index.php/HistoryPurchaseController') ?>">History purchase</a></li>
                       <li><a href="<?php echo base_url('index.php/HistoryTopUpController')?>">History top-up</a></li>

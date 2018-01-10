@@ -52,6 +52,7 @@
     Author: BootstrapMade.com
     Author URL: https://bootstrapmade.com
   ======================================================= -->
+
 </head>
 
 <body class="page-index has-hero">
@@ -69,10 +70,58 @@
           </h2>
       </div>
     </div>
-   
-     <!-- ******************เขียน code******************  -->
+   <br>
+    <!-- ******************เขียน code******************  -->
+    <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src=<?php echo base_url('book-img/profile.png')?> alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                      <?php if($profile != null){
+                        echo "<h4>".$profile[0]['ReaderFname']."</h4>";
+                        echo "<h4>".$profile[0]['ReaaderLname']."</h4>";
+                        }?>
 
-     <!-- ******************เขียน code******************  -->
+                       <br>
+                    
+                            <i class="glyphicon glyphicon-user"></i> Gender <?php if($profile != null){
+                        echo "<p>".$profile[0]['ReaderGender']."</p>";}?>
+                    
+                            <i class="glyphicon glyphicon-calendar"></i> Birthday <?php if($profile != null){
+                        echo "<p>".$profile[0]['ReaderDateBirth']."</p>";}?>
+                        
+                            <i class="glyphicon glyphicon-send"></i> Telephone <?php if($profile != null){
+                        echo "<p>".$profile[0]['ReaderTel']."</p>";}?>
+            
+
+                        <!-- Split button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary">
+                                Social</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span><span class="sr-only">Social</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">                               
+                                <li><a href="https://www.facebook.com/">Facebook</a></li>
+                                <li><a href="https://twitter.com/">Twitter</a></li>
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary">
+                                Edit Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <!-- ******************เขียน code******************  -->
 
   <!-- ======== @Region: #footer ======== -->
   <footer id="footer" class="block block-bg-grey-dark" data-block-bg-img="img/bg_footer-map.png" data-stellar-background-ratio="0.4">
@@ -184,6 +233,7 @@
   <!--Contactform script -->
   <script src="<?php echo base_url('assets/contactform/contactform.js')?>"></script>
 
+  
 </body>
 
 </html>
