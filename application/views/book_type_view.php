@@ -68,7 +68,7 @@
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
         <h2 class="block-title">
-            Recommended
+            <?php echo $title ?>
           </h2>
           <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":5, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
 

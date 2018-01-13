@@ -25,6 +25,7 @@ class BookTypeController extends CI_Controller {
 		$this->load->view('header_view',$datas);
 
 		$dataShow['books'] = $data;
+		$dataShow['title'] = $this->BookTypeModel->getBookType($bookID)[0]['typeName'];
 		$this->load->view('book_type_view', $dataShow);
 	}
 }

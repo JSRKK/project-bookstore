@@ -12,4 +12,11 @@ class BookTypeModel extends CI_Model {
                 $query = $this->db->get(); 
                 return $query->result_array(); 
         }
+        public function getBookType($id) {
+                $this->db->select('*'); 
+                $this->db->from('type'); 
+                $this->db->where('type_ID', $id);
+                $query = $this->db->get(); 
+                return $query->result_array(); 
+        }
 }?>
