@@ -1,5 +1,4 @@
 <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-
 <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
 
     <!-- ======== @Region: #navigation ======== -->
@@ -140,18 +139,19 @@
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav" id="main-menu">
               <li class="icon-link">
-                <a href="<?php echo base_url('index.php/HomeController')?>"><i class="fa fa-home"></i></a>
+                <a href="<?php echo base_url('index.php/HomeController') ?>"><i class="fa fa-home"></i></a>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Books<b class="caret"></b></a>
                 <!-- Dropdown Menu -->
                 <ul class="dropdown-menu">
                   <li class="dropdown-header">Book types</li>
-                  <li><a href="elements.html" tabindex="-1" class="menu-item">Magazine1</a></li>
+                  <?php 
+                    foreach ($bookTypes as $key => $type) { ?> 
+                      <li><a href="<?php echo base_url('index.php/BookTypeController/getByType/'.$type['type_ID']) ?>" tabindex="-1" class="menu-item"><?php echo $type['typeName']?></a></li>
+                  <?php } ?> 
                   <li><a href="about.html" tabindex="-1" class="menu-item">Magazine2</a></li>
-                  <li><a href="login.html" tabindex="-1" class="menu-item">Magazine3</a></li>
-                  <li><a href="register.html" tabindex="-1" class="menu-item">Sign-Up</a></li>
-                  <li class="dropdown-footer">Dropdown footer</li>
+                  <li class="dropdown-footer">End types</li>
                 </ul>
               </li>
               <li><a href="<?php echo base_url('index.php/PromotionController')?>">Promotion</a></li>

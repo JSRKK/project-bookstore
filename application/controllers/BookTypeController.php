@@ -1,12 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class HomeController extends CI_Controller {
+class BookTypeController extends CI_Controller {
 
-	public function index()
+	public function getByType($id)
 	{
-		$this->load->model('HomeModel');	
-		$datas = $this->HomeModel->get();	
+		$this->load->helper('url');
+		$bookID = $this->uri->segment(3);
+
+		$this->load->model('BookTypeModel');	
+		$datas = $this->BookTypeModel->getByType($bookID);	
+		$data = null;
 		foreach ($datas as $row){
 			$data[] = array(
 			'book_id' => $row['book_ID'],
@@ -14,19 +18,13 @@ class HomeController extends CI_Controller {
 			'book_price' => sprintf('%0.2f',$row['bookPrice']),		//กำหนดทศนิยม 2 ตำแหน่ง		
 			'book_img' => $row['bookImageCover']
 		 	);	
-		}
-
+        }
+		
 		$this->load->model('HeaderModel');
 		$datas['bookTypes'] = $this->HeaderModel->getBookType();
 		$this->load->view('header_view',$datas);
 
 		$dataShow['books'] = $data;
-		$this->load->view('home_view', $dataShow);
-	}
-
-	public function logout()
-	{
-		$this->session->unset_userdata('loged_in', null);
-		redirect('HomeController');
+		$this->load->view('book_type_view', $dataShow);
 	}
 }

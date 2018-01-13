@@ -45,7 +45,9 @@
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
+  <!-- <script src="https://oss.maxcdn.com/bootbox/4.2.0/bootbox.min.js"></script> -->
   <!-- =======================================================
     Theme Name: Flexor
     Theme URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
@@ -55,37 +57,57 @@
 </head>
 
 <body class="page-index has-hero">
+
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
 
+  
   <!-- ======== @Region: #content ======== -->
-  <div id="content">
-   
-     <!-- ******************เขียน code******************  -->
-    <div class="container">
-      <h4 class="block-title">History Purchase</h4>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>ลำดับ</th>
-                <th>ชื่อหนังสือ</th>
-                <th>วันที่ซื้อ</th>
-                <th>ราคา</th>
-              </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($books as $key => $book): ?>
-                <tr>
-                  <td rowcol-md-="2"> <?php echo $key+1; ?> </td>
-                  <td><?php echo $book['bookName']; ?></td>
-                  <td><?php echo $book['purchasedDateTime']; ?></td>
-                  <td><?php echo sprintf('%0.2f', $book['purchasedPrice']); ?></td>
-                </tr>
-              <?php endforeach;?>
+  <div id="content">  
+     
+    <!--Showcase-->
+    <div class="showcase block block-border-bottom-grey">
+      <div class="container">
+        <h2 class="block-title">
+            Recommended
+          </h2>
+          <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":5, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
 
-            </tbody>
-          </table>
+          <?php if($books != null)
+              foreach($books as $key => $row):?>              
+                <div class="item ">                 
+                  <a href="<?php echo base_url('index.php/BookDetailController');?>" class="overlay-wrapper">   
+                      <img src="<?php echo base_url('book-img/'.$row['book_id'].'/'.$row['book_img'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto; width:200px;height:250px">
+                      <span class="overlay">                    
+                        <span class="overlay-content"> <span class="h4">View</span> </span>
+                      </span>
+                    </a>                                      
+                  <div class="item-details bg-noise text-center">
+                    <h5 class="item-title" style="max-width: 160px">
+                       <?php echo '<a href="#">'.$row['book_name'].' </a>' ?>
+                      </h5>
+                      <?php echo '<p href="#">'.$row['book_price'].' </p>' ?>
+                    </a>
+                    <span style="color:#FE980F">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </span>
+                    <a data-toggle="modal" 
+                      data-id="<?php echo $row['book_id']?>"
+                      data-name="<?php echo $row['book_name']?>" 
+                      data-price="<?php echo $row['book_price']?>" 
+                      data-img="<?php echo $row['book_img']?>"
+                      class="btn btn-warning open-myModal">buy
+                    </a>
+
+                  </div>
+              </div>                                         
+            <?php endforeach ?> 
+        </div>
       </div>
-     <!-- ******************เขียน code******************  -->
+    </div>
 
   <!-- ======== @Region: #footer ======== -->
   <footer id="footer" class="block block-bg-grey-dark" data-block-bg-img="img/bg_footer-map.png" data-stellar-background-ratio="0.4">
@@ -178,7 +200,47 @@
 
     </div>
   </footer>
+    
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">รายละเอียดการชำระเงิน</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+                <div class="col-md-4">
+                  <img id="img-url" src="<?php echo base_url('')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;">
+                </div>
+                <div class="col-md-8">
+                    <span type="text" id="book-name"></span><hr>
+                    ฿<span type="text" id="book-price"></span><hr>
+                </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">ชำระเงิน</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>          
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <script type="text/javascript">
+    $(document).on("click", ".open-myModal", function () 
+    {
+      var url = "<?php echo base_url(); ?>"+'book-img/'+$(this).data('id')+'/'+$(this).data('img')+'.jpg';      
+      $(".modal-body #book-name").html($(this).data('name'));
+      $(".modal-body #book-price").html($(this).data('price'));
+      $('.modal-body img').attr('src', url);
+      $('#exampleModal').modal('show');
+    });       
+  </script>
+ 
   <!-- Required JavaScript Libraries -->
   <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js')?>"></script>
   <script src="<?php echo base_url('assets/lib/bootstrap/js/bootstrap.min.js')?>"></script>

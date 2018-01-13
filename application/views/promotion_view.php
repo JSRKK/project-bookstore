@@ -56,7 +56,7 @@
 
 <body class="page-index has-hero">
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-  <?php include('header_view.php') ?>  
+
 
   <!-- ======== @Region: #content ======== -->
   <div id="content">
