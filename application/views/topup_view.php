@@ -75,7 +75,7 @@
       <div class="container">
         <h2 class="block-title text-weight-strong">TopUp</h2>
         
-        <form class="form-horizontal" action= "<?php echo base_url('index.php/TopUpController/setTopUp'); ?>" method="POST" onsubmit="return confirm('คุณต้องการจะใช้งาน?');">
+        <form class="form-horizontal" action= "<?php echo base_url('index.php/TopUpController/setTopUp'); ?>" method="POST" onsubmit="return confirm('คุณต้องการจะเติมเงินใช่หรือไม่?');">
           <div class="form-group">
             <label class="col-sm-2 control-label">Username:</label>
               <div class="col-sm-10">

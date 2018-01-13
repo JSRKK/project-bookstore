@@ -28,8 +28,7 @@ class TopUpModel extends CI_Model {
 		$this->db->insert('payment',$data);
 		echo "<script>
 		alert('ท่านได้เติมเงินเรียบร้อยแล้ว');</script>";
-		$usernameDatas['user'] = $this->getTopUp();
-		$this->load->view('topup_view',$usernameDatas);
+		$this->load->view('history_topup_view');
 		
 	}
 
