@@ -5,17 +5,30 @@ class LibraryController extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->model('LibraryModel');	
-		$datas = $this->LibraryModel->get('test1');
-		foreach ($datas as $row){
-			$data[] = array(
-			'book_id' => $row['book_ID'],				
-			'book_name' => $row['bookName'],
-			'book_img' => $row['bookImageCover'],
-		 	);	
-		}
+		$session_data = $this->session->userdata('loged_in');
+		$id = $session_data['userid'];
 
-		$dataShow['books'] = $data;
-		$this->load->view('library_view', $dataShow);
+		if(!empty($id)){
+			$this->load->model('LibraryModel');				
+			$datas = $this->LibraryModel->get($id);
+			if(!empty($datas)){
+				foreach ($datas as $row){
+					$data[] = array(
+					'book_id' => $row['book_ID'],				
+					'book_name' => $row['bookName'],
+					'book_img' => $row['bookImageCover'],
+					);	
+				}	
+				$dataShow['books'] = $data;
+			}
+			else{
+				$dataShow['books'] = null;
+			}
+			$this->load->view('library_view', $dataShow);
+		}
+		else{
+			redirect('LoginController');
+		}
+		
 	}
 }

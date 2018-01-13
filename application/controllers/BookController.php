@@ -8,7 +8,7 @@ class BooksController extends CI_Controller {
 		$this->load->model('BooksModel');
 		$datas = $this->BooksModel->get();
 
-		$datashow['data'] = $datas;
-		$this->load->view('Books_view',$datashow);
+		$datashow['books'] = $datas;
+		$this->load->view('book_view',$datashow);
 	}
 }

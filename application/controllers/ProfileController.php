@@ -5,9 +5,16 @@ class ProfileController extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->model('ProfileModel');
-		$datas = $this->ProfileModel->get();
-		$dataShow['profile'] = $datas;
-		$this->load->view('profile_reader_view', $dataShow);
+		$session_data = $this->session->userdata('loged_in');
+		$id = $session_data['userid'];
+		if(!empty($id)){
+			$this->load->model('ProfileModel');
+			$datas = $this->ProfileModel->get();
+			$dataShow['profile'] = $datas;
+			$this->load->view('profile_reader_view', $dataShow);
+		}
+		else{
+			redirect('LoginController');
+		}
 	}
 }

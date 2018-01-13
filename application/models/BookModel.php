@@ -8,7 +8,7 @@ class BooksModel extends CI_Model {
 	public function get(){
 		$bookname = $this->input->post('name');
 
-		$query = $this->db->query("SELECT book_ID,bookName,bookPrice
+		$query = $this->db->query("SELECT book_ID, bookName, bookPrice, bookImageCover
 									FROM book WHERE bookName LIKE '%'$bookname'%' ");
 		return $query->result_array();
 	}

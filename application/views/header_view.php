@@ -83,7 +83,7 @@
                 
             <?php 
             if (isset($this->session->userdata['loged_in'])) { ?>
-                 <li class="user-register"><i class="glyphicon glyphicon-user"></i> <a href= "#" class="text-uppercase">
+                 <li class="user-register"><i class="glyphicon glyphicon-user"></i> <a href= "<?php echo base_url('index.php/ProfileController')?>" class="text-uppercase">
                 <?php $session_data = $this->session->userdata('loged_in');
                           echo $session_data['fName']." ".$session_data['lName'] ;
                    ?>
@@ -116,14 +116,16 @@
       </div>
       <div class="container">
       <div class ="row">
+      <form accept-charset="UTF-8" role="form" action = "<?php echo base_url('index.php/BookController'); ?>" method="POST" enctype="multipart/form-data">
         <div class ="col-md-2 col-md-offset-8" style="margin-left:77%">
-        <div class = "form-group">
-          <input type="text" name="name" class ="form-control" id="name" placeholder ="search" />
+          <div class = "form-group">
+            <input type="text" name="name" class ="form-control" id="name" placeholder ="search" />
+          </div>
         </div>
-      </div>
-      <div class = "col-md-1" style = "margin-left:-2%">
-      <a  href="<?php echo base_url('index.php/BooksController')?>"> <button type="button" class="btn btn-info"><i href="<?php echo base_url('index.php/BooksController')?>" class ="fa fa-fw fa-search"></i></button></a>
-      </div>
+        <div class = "col-md-1" style = "margin-left:-2%">
+          <button type="button" class="btn btn-info"><i href="<?php echo base_url('index.php/BooksController')?>" class ="fa fa-fw fa-search"></i></button>
+        </div>
+      </form>
       </div>
         <div class="navbar navbar-default">
           <!--mobile collapse menu button-->
@@ -208,50 +210,4 @@
         </div>
       </div>
     </div>
-    <div class="hero" id="highlighted">
-      <div class="inner">
-        <!--Slideshow-->
-        <div id="highlighted-slider" class="container">
-          <div class="item-slider" data-toggle="owlcarousel" data-owlcarousel-settings='{"singleItem":true, "navigation":true, "transitionStyle":"fadeUp"}'>
-            <!--Slideshow content-->
-            <!--Slide 1-->
-            <div class="item">
-              <div class="row">
-                <div class="col-md-6 col-md-push-6 item-caption">
-                  <h2 class="h1 text-weight-light">
-                      Welcome to <span class="text-primary">Flexor</span>
-                    </h2>
-                    <h4>
-                      Super flexible responsive theme with a modest design touch.
-                    </h4>
-                  <p>Perfect for your App, Web service, company or portfolio! Magna tincidunt sociis ac integer amet non. Rhoncus augue? Tempor porttitor sed, aliquet phasellus a, nisi nunc aliquet nec rhoncus enim porttitor ultrices lacus tristique?</p>
-                  <a href="https://bootstrapmade.com" class="btn btn-more btn-lg i-right">Buy Now <i class="fa fa-plus"></i></a>
-                </div>
-                <div class="col-md-6 col-md-pull-6 hidden-xs">
-                  <img src="<?php echo base_url('assets/img/slides/slide1.png')?>" alt="Slide 1" class="center-block img-responsive">
-                </div>
-              </div>
-            </div>
-            <!--Slide 2-->
-            <div class="item">
-              <div class="row">
-                <div class="col-md-6 text-right-md item-caption">
-                  <h2 class="h1 text-weight-light">
-                      <span class="text-primary">Flexor</span> Bootstrap Theme
-                    </h2>
-                  <h4>
-                      High quality, responsive theme!
-                    </h4>
-                  <p>Perfect for your App, Web service, company or portfolio! Magna tincidunt sociis ac integer amet non. Rhoncus augue? Tempor porttitor sed, aliquet phasellus a, nisi nunc aliquet nec rhoncus enim porttitor ultrices lacus tristique?</p>
-                  <a href="https://bootstrapmade.com" class="btn btn-more btn-lg"><i class="fa fa-plus"></i> Learn More</a>
-                </div>
-                <div class="col-md-6 hidden-xs">
-                  <img src="<?php echo base_url('assets/img/slides/slide2.png')?>" alt="Slide 2" class="center-block img-responsive">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+ </div>

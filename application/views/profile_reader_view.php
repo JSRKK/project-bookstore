@@ -57,59 +57,86 @@
 
 <body class="page-index has-hero">
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-  <?php include('header_view.php') ?>  
+  <?php include('header_view.php') ?> 
 
   <!-- ======== @Region: #content ======== -->
   <div id="content">
-   
-   <br>
+  
     <!-- ******************เขียน code******************  -->
-    <div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6">
-            <div class="well well-sm">
-                <div class="row">
-                    <div class="col-sm-6 col-md-4">
-                        <img src=<?php echo base_url('book-img/profile.png')?> alt="" class="img-rounded img-responsive" />
-                    </div>
-                    <div class="col-sm-6 col-md-8">
-                      <?php if($profile != null){
-                        echo "<h4>".$profile[0]['ReaderFname']."</h4>";
-                        echo "<h4>".$profile[0]['ReaaderLname']."</h4>";
-                        }?>
-
-                       <br>
-                    
-                            <i class="glyphicon glyphicon-user"></i> Gender <?php if($profile != null){
-                        echo "<p>".$profile[0]['ReaderGender']."</p>";}?>
-                    
-                            <i class="glyphicon glyphicon-calendar"></i> Birthday <?php if($profile != null){
-                        echo "<p>".$profile[0]['ReaderDateBirth']."</p>";}?>
-                        
-                            <i class="glyphicon glyphicon-send"></i> Telephone <?php if($profile != null){
-                        echo "<p>".$profile[0]['ReaderTel']."</p>";}?>
-            
-
-                        <!-- Split button -->
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-primary">
-                                Social</button>
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span><span class="sr-only">Social</span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">                               
-                                <li><a href="https://www.facebook.com/">Facebook</a></li>
-                                <li><a href="https://twitter.com/">Twitter</a></li>
-                            </ul>
-                        </div>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-primary">
-                                Edit Profile</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="showcase block block-border-bottom-grey">
+      <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <h2 class="block-title">My Profile</h2>   
         </div>
+      </div><br>
+      <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8 col-sm-12 col-xs-12">
+              <div class="well well-sm">
+                  <div class="row">
+                      <div class="col-md-3 col-sm-6">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <img src=<?php echo base_url('book-img/profile.png')?> alt="" class="img-thumbnail img-responsive" />
+                            </div>
+                          </div><br>                     
+                          <div class="row">
+                            <div class="col-md-12 text-center">
+                              <button type="button" class="btn btn-primary">Edit Profile</button>
+                            </div>
+                          </div>
+                      </div>  
+                      <div class="col-md-1"></div>                   
+                      <div class="col-md-8 col-sm-6">
+                        <?php if($profile != null){
+                          echo '<div class="row"><hr>
+                                  <div class="col-md-4">
+                                    <h5>First name:</h5>
+                                  </div>
+                                  <div class="col-md-8">
+                                    <h5>'.$profile[0]['ReaderFname'].'</h5>
+                                  </div>
+                                </div><hr>';
+                          echo '<div class="row">
+                                  <div class="col-md-4">
+                                    <h5>Last name:</h5>
+                                  </div>
+                                  <div class="col-md-8">
+                                    <h5>'.$profile[0]['ReaaderLname'].'</h5>
+                                  </div>
+                              </div><hr>';              
+                          echo '<div class="row">
+                                  <div class="col-md-4">
+                                    <h5>Gender:</h5>
+                                  </div>
+                                  <div class="col-md-8">
+                                    <h5>'.$profile[0]['ReaderGender'].'</h5>
+                                  </div>
+                              </div><hr>';  
+                          echo '<div class="row">
+                                  <div class="col-md-4">
+                                    <h5>Birthday:</h5>
+                                  </div>
+                                  <div class="col-md-8">
+                                    <h5>'.$profile[0]['ReaderDateBirth'].'</h5>
+                                  </div>
+                              </div><hr>';
+                          echo '<div class="row">
+                                  <div class="col-md-4">
+                                    <h5>Telephone:</h5>
+                                  </div>
+                                  <div class="col-md-8">
+                                    <h5>'.$profile[0]['ReaderTel'].'</h5>
+                                  </div>
+                              </div><hr>';
+                        }?>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
     </div>
 </div>
     

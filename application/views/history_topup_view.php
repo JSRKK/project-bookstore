@@ -62,38 +62,32 @@
   <div id="content">
      
      <!-- ******************เขียน****************** code -->
-   <div class="py-5">
+   <div class="showcase block block-border-bottom-grey">
     <div class="container">
+      <h2 class="block-title">History Top-up</h2>
       <div class="row">
-        <div class="col-md-12">
-          <table class="table">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <table class="table table-bordered">
             <thead>
               <tr>
               <th class="table-active">ลำดับ</th>
-              <th class="table-active">ชื่อหนังสือ</th>
+              <th class="table-active">หมายเลข</th>
               <th class="table-active">วันที่/เวลา</th>
               <th class="table-active">ราคา</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>แค่คิดว่าทำได้ คุณก็ชนะ</td>
-              <td>10/10/2017 16:30:00</td>
-              <td>199</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>สร้างลูกอัจฉริยะสองภาษา</td>
-              <td>11/10/2017 10:30:00</td>
-              <td>250</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>คันจิ Daily</td>
-              <td>11/10/2017 10:30:00</td>
-              <td>75</td>
-              </tr>
+            <?php if($payment != null){
+                foreach($payment as $key => $row){
+                  echo "<TR>";
+                  echo "<TD>" .$row['number']. "</TD>";
+                  echo "<TD>" .$row['pay_id']. "</TD>";
+                  echo "<TD>" .$row['pay_date']. "</TD>";
+                  echo "<TD>" .$row['pay_price']. "</TD>";
+                }
+              }
+              ?>
             </tbody>
           </table>
         </div>

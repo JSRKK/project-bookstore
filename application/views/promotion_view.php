@@ -46,6 +46,7 @@
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <!-- =======================================================
     Theme Name: Flexor
     Theme URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
@@ -60,29 +61,40 @@
 
   <!-- ======== @Region: #content ======== -->
   <div id="content">
-   
-    <!-- ******************เขียน code******************  -->
-    <h3><b><center>Promotion</center></b></h3>
-    <div class="row">
+    <!--Showcase-->
+    <div class="showcase block block-border-bottom-grey">
       <div class="container">
-        <div class="col-md-2" style="margin-right: 80px"><img src="<?php echo base_url('book-img/009.jpg')?>" ALIGN = "BOTTOM" VSPACE = "10">
-          <div class= "text-center">
-          ทำดีเพื่อพ่อ <br>
-          <font color="red"> 63 ฿ </font><br>
-          <del>90 ฿</del> &nbsp;-30% <br>
-          <font color="red"> หมดเขต 2 มกราคม 2018 </font>
-          </div>
-        </div> 
-        <div class="col-md-2" style="margin-right: 80px"><img src="<?php echo base_url('book-img/006.jpg')?>" ALIGN = "BOTTOM" VSPACE = "10">
-          <div class= "text-center">
-          TRIS Academy Club : Issue 3 (DEC 2017) <br>
-          <font color="red"> 88 ฿ </font><br>
-          <del>110 ฿</del> &nbsp;-20% <br>
-          <font color="red"> หมดเขต 2 มกราคม 2018 </font>
-          </div>
-        </div> 
+        <h2 class="block-title">Promotion</h2>
+        <div class="item-carousel row" >
+          <?php if($bookPromotion != null)
+              foreach($bookPromotion as $key => $row):?> 
+                <div class="item item-book col-md-3" >
+                  <a href="<?php echo base_url('index.php/BookDetailController?book_id='.$row['book_id']);?>" class="overlay-wrapper">
+                  <img src="<?php echo base_url('book-img/'.$row['book_id'].'/'.$row['book_img'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;width:200px;height:250px">             
+                  </a>
+                  <div class="item-details bg-noise">
+                    <h5 class="item-title text-center">
+                       <?php echo '<a href="#">'.$row['book_name'].' </a>';
+                             echo '<p style="text-decoration: line-through; margin-top: 10px; color:red;">'."฿".$row['book_price'].'</p>';
+                             echo '<p style="color:green;">'."฿".$row['book_total'].'</p>';
+                             echo '<p">'."วันที่ ".$row['book_start']." - ".$row['book_stop'].'</p>';
+                       ?>
+                    </h5>
+                  </div>
+                </div>                        
+              <?php endforeach ?> 
+          <?php if($bookPromotion === null) 
+            echo "<h3 class='text-center'>Empty</h3>";
+          ?>
+        </div>
+        <div class="row">
+          <?php if($bookPromotion != null)
+            echo '<ul class="pagination" id="pagination"></ul>';
+          ?>
+        </div>
       </div>
     </div>
+  </div>
     <!-- ******************เขียน code******************  -->
 
   <!-- ======== @Region: #footer ======== -->
@@ -177,6 +189,103 @@
     </div>
   </footer>
 
+  <script type="text/javascript">
+    function getPageList(totalPages, page, maxLength) {
+      if (maxLength < 5) throw "maxLength must be at least 5";
+  
+      function range(start, end) {
+          return Array.from(Array(end - start + 1), (_, i) => i + start); 
+      }
+  
+      var sideWidth = maxLength < 9 ? 1 : 2;
+      var leftWidth = (maxLength - sideWidth*2 - 3) >> 1;
+      var rightWidth = (maxLength - sideWidth*2 - 2) >> 1;
+      if (totalPages <= maxLength) {
+          // no breaks in list
+          return range(1, totalPages);
+      }
+      if (page <= maxLength - sideWidth - 1 - rightWidth) {
+          // no break on left of page
+          return range(1, maxLength-sideWidth-1)
+              .concat([0])
+              .concat(range(totalPages-sideWidth+1, totalPages));
+      }
+      if (page >= totalPages - sideWidth - 1 - rightWidth) {
+          // no break on right of page
+          return range(1, sideWidth)
+              .concat([0])
+              .concat(range(totalPages - sideWidth - 1 - rightWidth - leftWidth, totalPages));
+      }
+      // Breaks on both sides
+      return range(1, sideWidth)
+          .concat([0])
+          .concat(range(page - leftWidth, page + rightWidth)) 
+          .concat([0])
+          .concat(range(totalPages-sideWidth+1, totalPages));
+  }
+  
+  $(function () {
+      // Number of items and limits the number of items per page
+      var numberOfItems = $(".item-book").length;
+      var limitPerPage = 12;
+      // Total pages rounded upwards
+      var totalPages = Math.ceil(numberOfItems / limitPerPage);
+      // Number of buttons at the top, not counting prev/next,
+      // but including the dotted buttons.
+      // Must be at least 5:
+      var paginationSize = 7; 
+      var currentPage;
+  
+      function showPage(whichPage) {
+          if (whichPage < 1 || whichPage > totalPages) return false;
+          currentPage = whichPage;
+          $(".item-book").hide()
+              .slice((currentPage-1) * limitPerPage, 
+                      currentPage * limitPerPage).show();
+          // Replace the navigation items (not prev/next):            
+          $(".pagination li").slice(1, -1).remove();
+          getPageList(totalPages, currentPage, paginationSize).forEach( item => {
+              $("<li>").addClass("page-item")
+                       .addClass(item ? "current-page" : "disabled")
+                       .toggleClass("active", item === currentPage).append(
+                  $("<a>").addClass("page-link").attr({
+                      href: "javascript:void(0)"}).text(item || "...")
+              ).insertBefore("#next-page");
+          });
+          // Disable prev/next when at first/last page:
+          $("#previous-page").toggleClass("disabled", currentPage === 1);
+          $("#next-page").toggleClass("disabled", currentPage === totalPages);
+          return true;
+      }
+  
+      // Include the prev/next buttons:
+      $(".pagination").append(
+          $("<li>").addClass("page-item").attr({ id: "previous-page" }).append(
+              $("<a>").addClass("page-link").attr({
+                  href: "javascript:void(0)"}).text("Prev")
+          ),
+          $("<li>").addClass("page-item").attr({ id: "next-page" }).append(
+              $("<a>").addClass("page-link").attr({
+                  href: "javascript:void(0)"}).text("Next")
+          )
+      );
+      // Show the page links
+      $(".item-book").show();
+      showPage(1);
+  
+      // Use event delegation, as these items are recreated later    
+      $(document).on("click", ".pagination li.current-page:not(.active)", function () {
+          return showPage(+$(this).text());
+      });
+      $("#next-page").on("click", function () {
+          return showPage(currentPage+1);
+      });
+  
+      $("#previous-page").on("click", function () {
+          return showPage(currentPage-1);
+      });
+  });
+</script>
   <!-- Required JavaScript Libraries -->
   <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js')?>"></script>
   <script src="<?php echo base_url('assets/lib/bootstrap/js/bootstrap.min.js')?>"></script>

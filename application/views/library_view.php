@@ -64,7 +64,7 @@
     <!--Showcase-->
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
-        <h2 class="block-title"> My Libary</h2>
+        <h2 class="block-title">My Libary</h2>
         <div class="item-carousel row" >
           <?php if($books != null)
               foreach($books as $key => $row):?> 
@@ -79,10 +79,14 @@
                   </div>
                 </div>                        
               <?php endforeach ?> 
+          <?php if($books === null) 
+            echo "<h3 class='text-center'>Empty</h3>";
+          ?>
         </div>
         <div class="row">
-          <ul class="pagination" id="pagination">
-          </ul>
+          <?php if($books != null)
+            echo '<ul class="pagination" id="pagination"></ul>';
+          ?>
         </div>
       </div>
     </div>
