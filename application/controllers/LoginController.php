@@ -16,7 +16,7 @@ class LoginController extends CI_Controller {
 
 		if(count($data) > 0){
 			$sess_array = array(
-
+				'usern'=> $data[0]['user_ID'],
 				'fName' => $data[0]['ReaderFname'],
 				'lName' => $data[0]['ReaaderLname'],
 				'cash' => $data[0]['ReaderCash'],
