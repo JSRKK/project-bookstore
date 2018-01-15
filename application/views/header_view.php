@@ -123,7 +123,8 @@
           </div>
         </div>
         <div class = "col-md-1" style = "margin-left:-2%">
-          <button type="button" class="btn btn-info"><i href="<?php echo base_url('index.php/BooksController')?>" class ="fa fa-fw fa-search"></i></button>
+          <input id="send" class="btn btn-info" type="submit" value="Search">
+          
         </div>
       </form>
       </div>
