@@ -46,6 +46,7 @@
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- =======================================================
     Theme Name: Flexor
     Theme URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
@@ -67,8 +68,24 @@
               <div class="col-md-1"> </div>
               <div class="col-md-3">
                 <h1>Book Detail</h1>
-                <img src="<?php echo base_url('book-img/thinkvictory.jpg')?>"  width="300" height="150">
-                <center><button type="button" class="btn btn-lg btn-success">ทดลองอ่าน</button></center>
+                                                      
+              <?php if($books != null)?>
+                
+                <img src="<?php echo base_url('book-img/'.$books[0]['book_id'].'/'.$books[0]['book_img'].'.jpg')?>"  width="300" height="150">
+                <br>
+                <?php if($book_check == null){?>
+                  <center><button type="button" class="btn btn-lg btn-success">ทดลองอ่าน<button></center>
+                <?php } ?>
+                <?php if($book_check != null){?>
+                  <center>
+                  <a href=
+                  "<?php echo base_url('index.php/ReadbookController/index?book_id='.$books[0]['book_id'])?>" 
+                   class="btn btn-lg btn-success">
+                   อ่าน</a></center>
+                <?php }?>
+              
+                
+                
               </div>
                 <div class="col-md-8 ">
                 
@@ -76,7 +93,7 @@
                     <br>
                     <br>
                     <br>
-                    <h3><strong>แค่คิดว่าทำได้คุณก็ชนะ</strong></h3>
+                    <h3><strong><?php echo $books[0]['book_name']?></strong></h3>
                     <br>
                     
                     <span style = "color :#FE980F">
@@ -97,14 +114,14 @@
                     </span>
                     <p class = "pull-right"> คะแนน</p>
                     <br>
-                    <h4><span style="color :green">199฿</span></h4> 
+                    <h4><span style="color :green"><?php echo $books[0]['book_price']?>฿</span></h4> 
                     <br>
                     รายละเอียด :
                     <br>
-                    "แค่คิดว่าทำได้ คุณก็ชนะ" เล่มนี้ ถ่ายทอดเคล็ดลับที่จะทำให้คุณประสบความสำเร็จ ร่ำรวย และบรรลุทุกเป้าหมายในชีวิตอย่างใจคิด เป็น "เคล็ดลับ" ที่ทรงพลังจากแนวคิดและถ้อยคำของบุคคลที่ประสบความสำเร็จระดับตำนาน ที่จะผลักดันให้คุณ "ประสบความสำเร็จ" ได้เช่นกัน
+                    <?php echo $books[0]['book_detail']?>
                     <br>
                     <h4>
-                    วันที่วางขาย <p class = "pull-right"> 19 ตุลาคม 2560</p>
+                    วันที่วางขาย <p class = "pull-right"> <?php echo $books[0]['book_date']?></p>
                     <br>
                     <br>
                     สำนักพิมพ์ <p class = "pull-right"> บิสคิต, สนพ.</p>
@@ -117,12 +134,21 @@
                     <br>
                     <br>
                     </h4>
-                    <button type="button" class="btn btn-lg btn-success pull-right" style = "margin-left: 20px">
-                      ซื้อ
-                    </button>
-                    <button type="button" class="btn btn-lg btn-success pull-right">
-                      ส่งของขวัญ
-                    </button>
+                    <?php if($book_check == null){
+                      echo '<button data-toggle="modal" 
+                        data-id="<?php echo $books[0]["book_id"]?>"
+                        data-name="<?php echo $books[0]["book_name"]?>" 
+                        data-price="<?php echo $books[0]["book_price"]?>" 
+                        data-img="<?php echo $books[0]["book_img"]?>"
+                        class="btn btn-lg btn-warning pull-right open-myModal">'
+                        ."ซื้อ".
+                      '</button>';
+                    
+                      echo '<button type="button" class="btn btn-lg btn-success pull-right" style = "margin-right: 20px">'
+                        ."ส่งของขวัญ".
+                      '</button>';
+                    }
+                    ?>
                 </div>
             </div>
           
@@ -243,6 +269,45 @@
 
     </div>
   </footer>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">รายละเอียดการชำระเงิน</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+                <div class="col-md-4">
+                  <img id="img-url" src="<?php echo base_url('')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;">
+                </div>
+                <div class="col-md-8">
+                    <span type="text" id="book-name"></span><hr>
+                    ฿<span type="text" id="book-price"></span><hr>
+                </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">ชำระเงิน</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    $(document).on("click", ".open-myModal", function () 
+    {
+      var url = "<?php echo base_url(); ?>"+'book-img/'+$(this).data('id')+'/'+$(this).data('img')+'.jpg';      
+      $(".modal-body #book-name").html($(this).data('name'));
+      $(".modal-body #book-price").html($(this).data('price'));
+      $('.modal-body img').attr('src', url);
+      $('#exampleModal').modal('show');
+    });       
+  </script>
 
   <!-- Required JavaScript Libraries -->
   <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js')?>"></script>
