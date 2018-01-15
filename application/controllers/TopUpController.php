@@ -13,8 +13,10 @@ class TopUpController extends CI_Controller {
 		$this->load->view('topup_view',$usernameDatas);
 	}
 	public function setTopUp(){
+		$session_data = $this->session->userdata('loged_in');
+		$userid = $session_data['userid'];
+
 		$this->load->model('TopUpModel');
-		$user = $_POST['user'];
 		$serial = $_POST['serial'];
 		$serial =  intval($serial); 
 		$code = $serial%11;
@@ -39,7 +41,7 @@ class TopUpController extends CI_Controller {
 			else {
 				$money = 300;
 			}
-			$this->TopUpModel->setTopUp($money,$user);
+			$this->TopUpModel->setTopUp($money,$userid);
 		}
 		else{
 			echo "<script>

@@ -10,7 +10,7 @@ class TopUpModel extends CI_Model {
 		$query = $this->db->query("SELECT user_ID FROM user"); // session
 		return $query->result_array();
 	}
-	public function setTopUp($money,$user){
+	public function setTopUp($money,$userid){
 		//echo $user."    ".$money;
 		$query = $this->db->query("SELECT payment_ID FROM payment");
 		foreach ($query->result() as $row)
@@ -23,7 +23,7 @@ class TopUpModel extends CI_Model {
 			'payment_ID' => $latest,
 			'paymentDateTime' => $date,
 			'paymentPrice' => $money,
-			'user_ID' => $user
+			'user_ID' => $userid
 		);
 		$this->db->insert('payment',$data);
 		echo "<script>

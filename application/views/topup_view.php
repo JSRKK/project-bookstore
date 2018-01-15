@@ -60,36 +60,45 @@
 
   <!-- ======== @Region: #content ======== -->
   <div id="content">
-    
-    <!-- ******************เขียน code******************  -->
-  <div id="topup">
+    <div class="showcase block block-border-bottom-grey">
       <div class="container">
-        <h2 class="block-title text-weight-strong">TopUp</h2>
-        
-        <form class="form-horizontal" action= "<?php echo base_url('index.php/TopUpController/setTopUp'); ?>" method="POST" onsubmit="return confirm('คุณต้องการจะเติมเงินใช่หรือไม่?');">
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Username:</label>
-              <div class="col-sm-10">
-              <?php  
-                if (isset($this->session->userdata['loged_in'])) {
-                  $session_data = $this->session->userdata('loged_in'); ?>
-                    <p class="lead"><?php echo $session_data['userid']; ?></p><?php 
-                }
-                ?>
-                <input type="hidden" style="width:300px;" class="form-control" value="<?php echo $session_data['userid']; ?>" id="userid" maxlength=14 name="user">
+        <h2 class="block-title">Top-up</h2> 
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6 well">
+          <form class="form-horizontal" action= "<?php echo base_url('index.php/TopUpController/setTopUp'); ?>" method="POST" onsubmit="return confirm('คุณต้องการจะเติมเงินใช่หรือไม่?');">
+            <div class="form-group row">
+              <div class="col-md-1"></div>
+              <div class="col-md-4">
+                <label class="control-label pull-right" >Username:</label>
               </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">SerialNo.(TrueMoney):</label>
-              <div class="col-sm-10">
-              <input type="text" style="width:300px;" class="form-control" value="" id="serialno" maxlength=14 placeholder="Enter Serial Number(14)" name="serial" required>
+              <div class="col-md-6">
+                <?php if (isset($this->session->userdata['loged_in'])) {
+                      $session_data = $this->session->userdata('loged_in'); ?>
+                      <label class="control-label"><?php echo $session_data['userid']; ?></label>
+                <?php }?>
               </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-1"></div>
+              <div class="col-md-4">
+                <label class="control-label pull-right">SerialNo.(TrueMoney):</label>
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" value="" id="serialno"  minlength="14" maxlength="14" placeholder="Enter Serial Number (14)" name="serial" required>
+              </div>
+            </div>  
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <input type="submit" class="btn btn-success" value="เติมเงิน"> 
+              </div>
+            </div>                
+          </form>
           </div>
-          <input type="submit" class="btn btn-lg btn-success" value="Enter"></input>
-        </form>
-      </div>
-  </div>
-     <!-- ******************เขียน code******************  -->
+        </div>
+      </div>   
+    </div>   
+
 
   <!-- ======== @Region: #footer ======== -->
   <footer id="footer" class="block block-bg-grey-dark" data-block-bg-img="img/bg_footer-map.png" data-stellar-background-ratio="0.4">

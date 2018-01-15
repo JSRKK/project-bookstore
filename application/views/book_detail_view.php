@@ -47,6 +47,8 @@
   <link href="#" id="colour-scheme" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
   <!-- =======================================================
     Theme Name: Flexor
     Theme URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
@@ -60,122 +62,153 @@
 
   <!-- ======== @Region: #content ======== -->
   <div id="content">
- 
-     <!-- ******************เขียน code******************  -->
+    <div class="container">
+      <div class="showcase block block-border-bottom-grey">
         <div class="container">
-          <div class="row contact" id="contact">
-              <div class="col-md-1"> </div>
-              <div class="col-md-3">
-                <h1>Book Detail</h1>
-                                                      
-              <?php if($books != null)?>
-                
+          <h2 class="block-title">Book Detail</h2>
+          <div class="row"> 
+            <div class="col-md-3">                                               
+              <?php if($books != null){?>        
                 <img src="<?php echo base_url('book-img/'.$books[0]['book_id'].'/'.$books[0]['book_img'].'.jpg')?>"  width="300" height="150">
                 <br>
                 <?php if($book_check == null){?>
-                  <center><button type="button" class="btn btn-lg btn-success">ทดลองอ่าน<button></center>
+                  <div class="text-center">
+                    <a href="" class="btn btn-success">ทดลองอ่านฟรี</a>
+                  </div>
                 <?php } ?>
+
                 <?php if($book_check != null){?>
-                  <center>
-                  <a href=
-                  "<?php echo base_url('index.php/ReadbookController/index?book_id='.$books[0]['book_id'])?>" 
-                   class="btn btn-lg btn-success">
-                   อ่าน</a></center>
-                <?php }?>
-              
-                
-                
-              </div>
-                <div class="col-md-8 ">
-                
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <h3><strong><?php echo $books[0]['book_name']?></strong></h3>
-                    <br>
-                    
-                    <span style = "color :#FE980F">
-                    <class="list-group-item col-lg "> 
-                      <i class="fa fa-fw fa-star pull-right"></i>
-                    
-                    <class="list-group-item col-lg "> 
-                      <i class="fa fa-fw fa-star pull-right"></i>
-                    
-                    <class="list-group-item col-lg "> 
-                      <i class="fa fa-fw fa-star pull-right"></i>
-                    
-                    <class="list-group-item col-lg "> 
-                      <i class="fa fa-fw fa-star pull-right"></i>
-                    
-                    <class="list-group-item col-lg "> 
-                      <i class="fa fa-fw fa-star pull-right"></i>
-                    </span>
-                    <p class = "pull-right"> คะแนน</p>
-                    <br>
-                    <h4><span style="color :green"><?php echo $books[0]['book_price']?>฿</span></h4> 
-                    <br>
-                    รายละเอียด :
-                    <br>
-                    <?php echo $books[0]['book_detail']?>
-                    <br>
-                    <h4>
-                    วันที่วางขาย <p class = "pull-right"> <?php echo $books[0]['book_date']?></p>
-                    <br>
-                    <br>
-                    สำนักพิมพ์ <p class = "pull-right"> บิสคิต, สนพ.</p>
-                    <br>
-                    <br>
-                    จำนวนหน้า <p class = "pull-right"> 190</p>
-                    <br>
-                    <br>         
-                    แชร์หนังสือ <p class = "pull-right"><span style="color :blue"><i class="fa fa-fw fa-facebook-square"></i></span></p>
-                    <br>
-                    <br>
-                    </h4>
-                    <?php if($book_check == null){
-                      echo '<button data-toggle="modal" 
-                        data-id="<?php echo $books[0]["book_id"]?>"
-                        data-name="<?php echo $books[0]["book_name"]?>" 
-                        data-price="<?php echo $books[0]["book_price"]?>" 
-                        data-img="<?php echo $books[0]["book_img"]?>"
-                        class="btn btn-lg btn-warning pull-right open-myModal">'
-                        ."ซื้อ".
-                      '</button>';
-                    
-                      echo '<button type="button" class="btn btn-lg btn-success pull-right" style = "margin-right: 20px">'
-                        ."ส่งของขวัญ".
-                      '</button>';
-                    }
-                    ?>
+                  <div class="text-center">
+                    <a href="<?php echo base_url('index.php/ReadbookController/index?book_id='.$books[0]['book_id'])?>" class="btn btn-success pull-right">อ่าน</a>
+                  </div>
+                <?php }?> 
+              <?php } ?> 
+            </div>                       
+            <div class="col-md-9">
+              <div class="row">
+                <div class="col-md-12">
+                  <h2 style="font-weight: bold"><?php echo $books[0]['book_name']?></h2><hr>
                 </div>
+              </div>                
+              <div class="row">
+                <div class="col-md-3">
+                  <span style="font-size: 18px;">รายละเอียด:</span>
+                </div>
+                <div class="col-md-9">
+                  <span style="font-size: 18px;"><?php echo $books[0]['book_detail']?></span>
+                </div>
+              </div><hr>
+              <div class="row">
+                <div class="col-md-3">
+                  <span style="font-size: 18px;">วันที่วางขาย:</span>
+                </div>
+                <div class="col-md-9">
+                  <span style="font-size: 18px;" class="pull-right"> <?php echo $books[0]['book_date']?></span>
+                </div>
+              </div><hr>  
+              <div class="row">
+                <div class="col-md-3">
+                  <span style="font-size: 18px;">สำนักพิมพ์/ผู้แต่ง:</span>
+                </div>
+                <div class="col-md-9">
+                  <span style="font-size: 18px;" class="pull-right">บิสคิต, สนพ.</span>
+                </div>
+              </div><hr>  
+              <div class="row">
+                <div class="col-md-3">
+                  <span style="font-size: 18px;">จำนวนหน้า:</span>
+                </div>
+                <div class="col-md-9">
+                  <span style="font-size: 18px;" class="pull-right">190</span>
+                </div>
+              </div><hr>  
+              <div class="row">
+                <div class="col-md-3">
+                  <span style="font-size: 18px;">แชร์หนังสือ:</span>
+                </div>
+                <div class="col-md-9">
+                <span style="font-size: 18px;" class="pull-right"><a href="#" style="color:blue"><i class="fa fa-fw fa-facebook-square" ></i>แชร์</a></span>
+                </div>
+              </div><hr> 
+              <div class="row"> 
+                <div class="col-md-12">                      
+                  <?php if($book_check == null){?>
+                    <button data-toggle="modal" 
+                      data-id="<?php echo $books[0]["book_id"]?>"
+                      data-name="<?php echo $books[0]["book_name"]?>" 
+                      data-price="<?php echo $books[0]["book_price"]?>" 
+                      data-img="<?php echo $books[0]["book_img"]?>"
+                      class="btn btn-info pull-right open-myModal">
+                      ซื้อ THB <?php echo $books[0]['book_price']?>
+                    </button>
+                  
+                    <button type="button" class="btn btn-warning pull-right" style = "margin-right: 20px"><i class="fa fa-fw fa-gift"></i> ส่งของขวัญ</button>
+                  <?php }?>
+                </div>
+              </div>
             </div>
-          
-
-          <div class="row comment" id="comment">
-            <div class="col-md-4"></div>
-            <div class="col-md-8">
-            <button type="button" class="btn btn-lg btn-success" style = "margin-right: 20px">
-              แสดงความคิดเห็น
-            </button>
-            <button type="button" class="btn btn-lg btn-success" style = "margin-right: 20px">
-              หนังสือที่เกี่ยวข้อง
-            </button>
-            <button type="button" class="btn btn-lg btn-success">
-              ให้คะแนน
-            </button>
-              <h3> ความคิดเห็น </h3>
-
-              ID : xxxxxxxxxx
-              <br>
-              <input type="text" class="form-control"  placeholder="ความคิดเห็น">
-              <paper-button class="align-by-text style-scope ytd-comment-replies-renderer" noink="" role="button" tabindex="0" animated="" aria-disabled="false" elevation="0">
-                View all 12 replies
-              </paper-button>
+          </div><hr>
+          <div class="row container">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-3">
+                  <h4>ความคิดเห็น</h4>
+                </div>
+                <div class="col-md-9">
+                  <a href="#" class="btn btn-default pull-right"><i class="fa fa-pencil"></i> เขียนความคิดเห็น</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                    <h1 class="text-center"><?php echo $books[0]['score']?></h1>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                    <h3 class="text-center" style="color:#FE980F">
+                      <span class="stars-container stars-<?php echo ($books[0]['score']/5)*100 ?>">★★★★★</span>
+                    </h3>
+                </div>
+              </div><br>
+              <div class="row">
+                <div class="col-md-12">
+                  <?php if($users != null)
+                    foreach($users as $key => $row):?>
+                      <div class="row">
+                        <div class="col-md-1">
+                          <img src="<?php echo base_url('user-img/user-img.jpg')?>" alt="User image" class="img-circle">
+                        </div>
+                        <div class="col-md-10">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <span><?php echo $row['ReaderFname']?></span>
+                              <span><?php echo $row['ReaderLname']?></span>
+                              <span style="color:#33333361;"><?php echo date("d M Y H:m", strtotime($row['reviewDateTime']))?></span>                              
+                            </div>
+                          </div>                                                
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="row">
+                                <div class="col-md-10">
+                                  <span><?php echo $row['reviewComment']?></span>
+                                </div>
+                                <div class="col-md-2">
+                                  <span class="pull-right stars-container stars-<?php echo ($row['reviewScore']/5)*100 ?>">★★★★★</span>                              
+                                </div>
+                              </div>
+                            </div>
+                          </div>                                                  
+                        </div>
+                      </div><hr>
+                    <?php endforeach ?> 
+                </div>
+              </div>
             </div>
-          </div>  
-        </div>
-     <!-- ******************เขียน code******************  -->
+          </div>
+      </div>  
+    </div>
+  </div>
 
   <!-- ======== @Region: #footer ======== -->
   <footer id="footer" class="block block-bg-grey-dark" data-block-bg-img="img/bg_footer-map.png" data-stellar-background-ratio="0.4">
@@ -285,12 +318,12 @@
                 </div>
                 <div class="col-md-8">
                     <span type="text" id="book-name"></span><hr>
-                    ฿<span type="text" id="book-price"></span><hr>
+                    THB <span type="text" id="book-price"></span><hr>
                 </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">ชำระเงิน</button>
+          <button type="button" class="btn btn-info">ชำระเงิน</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>          
         </div>
       </div>
@@ -307,6 +340,33 @@
       $('#exampleModal').modal('show');
     });       
   </script>
+
+<script>  
+ $(document).ready(function(){  
+      $(document).on('click', '#btn_more', function(){  
+           var last_video_id = $(this).data("vid");  
+           $('#btn_more').html("Loading...");  
+           $.ajax({  
+                url:"load_data.php",  
+                method:"POST",  
+                data:{last_video_id:last_video_id},  
+                dataType:"text",  
+                success:function(data)  
+                {  
+                     if(data != '')  
+                     {  
+                          $('#remove_row').remove();  
+                          $('#load_data_table').append(data);  
+                     }  
+                     else  
+                     {  
+                          $('#btn_more').html("No Data");  
+                     }  
+                }  
+           });  
+      });  
+ });  
+ </script>
 
   <!-- Required JavaScript Libraries -->
   <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js')?>"></script>

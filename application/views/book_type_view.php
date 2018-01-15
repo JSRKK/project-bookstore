@@ -45,7 +45,7 @@
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <!-- <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> -->
   <!-- <script src="https://oss.maxcdn.com/bootbox/4.2.0/bootbox.min.js"></script> -->
   <!-- =======================================================
@@ -70,44 +70,32 @@
         <h2 class="block-title">
             <?php echo $title ?>
           </h2>
-          <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":5, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
-
+          <div class="item-carousel row" >
           <?php if($books != null)
-              foreach($books as $key => $row):?>              
-                <div class="item ">                 
-                  <a href="<?php echo base_url('index.php/BookDetailController');?>" class="overlay-wrapper">   
-                      <img src="<?php echo base_url('book-img/'.$row['book_id'].'/'.$row['book_img'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto; width:200px;height:250px">
-                      <span class="overlay">                    
-                        <span class="overlay-content"> <span class="h4">View</span> </span>
-                      </span>
-                    </a>                                      
-                  <div class="item-details bg-noise text-center">
-                    <h5 class="item-title" style="max-width: 160px">
+              foreach($books as $key => $row):?> 
+                <div class="item item-book col-md-3" >
+                  <a href="<?php echo base_url('index.php/BookDetailController?book_id='.$row['book_id']);?>" class="overlay-wrapper">
+                  <img src="<?php echo base_url('book-img/'.$row['book_id'].'/'.$row['book_img'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;width:200px;height:250px">             
+                  </a>
+                  <div class="item-details bg-noise">
+                    <h5 class="item-title text-center">
                        <?php echo '<a href="#">'.$row['book_name'].' </a>' ?>
-                      </h5>
-                      <?php echo '<p href="#">'.$row['book_price'].' </p>' ?>
-                    </a>
-                    <span style="color:#FE980F">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </span>
-                    <a data-toggle="modal" 
-                      data-id="<?php echo $row['book_id']?>"
-                      data-name="<?php echo $row['book_name']?>" 
-                      data-price="<?php echo $row['book_price']?>" 
-                      data-img="<?php echo $row['book_img']?>"
-                      class="btn btn-warning open-myModal">buy
-                    </a>
-
+                    </h5>
                   </div>
-              </div>                                         
-            <?php endforeach ?> 
+                </div>                        
+              <?php endforeach ?> 
+          <?php if($books === null) 
+            echo "<h3 class='text-center'>Empty</h3>";
+          ?>
+        </div>
+        <div class="row">
+          <?php if($books != null)
+            echo '<ul class="pagination" id="pagination"></ul>';
+          ?>
         </div>
       </div>
     </div>
+  </div>
 
   <!-- ======== @Region: #footer ======== -->
   <footer id="footer" class="block block-bg-grey-dark" data-block-bg-img="img/bg_footer-map.png" data-stellar-background-ratio="0.4">
@@ -200,46 +188,104 @@
 
     </div>
   </footer>
-    
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">รายละเอียดการชำระเงิน</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-                <div class="col-md-4">
-                  <img id="img-url" src="<?php echo base_url('')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;">
-                </div>
-                <div class="col-md-8">
-                    <span type="text" id="book-name"></span><hr>
-                    ฿<span type="text" id="book-price"></span><hr>
-                </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">ชำระเงิน</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>          
-        </div>
-      </div>
-    </div>
-  </div>
 
   <script type="text/javascript">
-    $(document).on("click", ".open-myModal", function () 
-    {
-      var url = "<?php echo base_url(); ?>"+'book-img/'+$(this).data('id')+'/'+$(this).data('img')+'.jpg';      
-      $(".modal-body #book-name").html($(this).data('name'));
-      $(".modal-body #book-price").html($(this).data('price'));
-      $('.modal-body img').attr('src', url);
-      $('#exampleModal').modal('show');
-    });       
-  </script>
+    function getPageList(totalPages, page, maxLength) {
+      if (maxLength < 5) throw "maxLength must be at least 5";
+  
+      function range(start, end) {
+          return Array.from(Array(end - start + 1), (_, i) => i + start); 
+      }
+  
+      var sideWidth = maxLength < 9 ? 1 : 2;
+      var leftWidth = (maxLength - sideWidth*2 - 3) >> 1;
+      var rightWidth = (maxLength - sideWidth*2 - 2) >> 1;
+      if (totalPages <= maxLength) {
+          // no breaks in list
+          return range(1, totalPages);
+      }
+      if (page <= maxLength - sideWidth - 1 - rightWidth) {
+          // no break on left of page
+          return range(1, maxLength-sideWidth-1)
+              .concat([0])
+              .concat(range(totalPages-sideWidth+1, totalPages));
+      }
+      if (page >= totalPages - sideWidth - 1 - rightWidth) {
+          // no break on right of page
+          return range(1, sideWidth)
+              .concat([0])
+              .concat(range(totalPages - sideWidth - 1 - rightWidth - leftWidth, totalPages));
+      }
+      // Breaks on both sides
+      return range(1, sideWidth)
+          .concat([0])
+          .concat(range(page - leftWidth, page + rightWidth)) 
+          .concat([0])
+          .concat(range(totalPages-sideWidth+1, totalPages));
+  }
+  
+  $(function () {
+      // Number of items and limits the number of items per page
+      var numberOfItems = $(".item-book").length;
+      var limitPerPage = 12;
+      // Total pages rounded upwards
+      var totalPages = Math.ceil(numberOfItems / limitPerPage);
+      // Number of buttons at the top, not counting prev/next,
+      // but including the dotted buttons.
+      // Must be at least 5:
+      var paginationSize = 7; 
+      var currentPage;
+  
+      function showPage(whichPage) {
+          if (whichPage < 1 || whichPage > totalPages) return false;
+          currentPage = whichPage;
+          $(".item-book").hide()
+              .slice((currentPage-1) * limitPerPage, 
+                      currentPage * limitPerPage).show();
+          // Replace the navigation items (not prev/next):            
+          $(".pagination li").slice(1, -1).remove();
+          getPageList(totalPages, currentPage, paginationSize).forEach( item => {
+              $("<li>").addClass("page-item")
+                       .addClass(item ? "current-page" : "disabled")
+                       .toggleClass("active", item === currentPage).append(
+                  $("<a>").addClass("page-link").attr({
+                      href: "javascript:void(0)"}).text(item || "...")
+              ).insertBefore("#next-page");
+          });
+          // Disable prev/next when at first/last page:
+          $("#previous-page").toggleClass("disabled", currentPage === 1);
+          $("#next-page").toggleClass("disabled", currentPage === totalPages);
+          return true;
+      }
+  
+      // Include the prev/next buttons:
+      $(".pagination").append(
+          $("<li>").addClass("page-item").attr({ id: "previous-page" }).append(
+              $("<a>").addClass("page-link").attr({
+                  href: "javascript:void(0)"}).text("Prev")
+          ),
+          $("<li>").addClass("page-item").attr({ id: "next-page" }).append(
+              $("<a>").addClass("page-link").attr({
+                  href: "javascript:void(0)"}).text("Next")
+          )
+      );
+      // Show the page links
+      $(".item-book").show();
+      showPage(1);
+  
+      // Use event delegation, as these items are recreated later    
+      $(document).on("click", ".pagination li.current-page:not(.active)", function () {
+          return showPage(+$(this).text());
+      });
+      $("#next-page").on("click", function () {
+          return showPage(currentPage+1);
+      });
+  
+      $("#previous-page").on("click", function () {
+          return showPage(currentPage-1);
+      });
+  });
+</script>
  
   <!-- Required JavaScript Libraries -->
   <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js')?>"></script>
