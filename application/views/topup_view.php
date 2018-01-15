@@ -66,24 +66,25 @@
       <div class="container">
         <h2 class="block-title text-weight-strong">TopUp</h2>
         
-        <form class="form-horizontal" action=>
+        <form class="form-horizontal" action= "<?php echo base_url('index.php/TopUpController/setTopUp'); ?>" method="POST" onsubmit="return confirm('คุณต้องการจะเติมเงินใช่หรือไม่?');">
           <div class="form-group">
             <label class="col-sm-2 control-label">Username:</label>
               <div class="col-sm-10">
-                <?php foreach ($user as $key => $usernameDatas): 
-                  if($key == 1){?>
-                <p class="lead"><?php echo $usernameDatas['user_ID']; ?></p>
-                <?php } 
-                endforeach;?>
+              <?php  
+                if (isset($this->session->userdata['loged_in'])) {
+                  $session_data = $this->session->userdata('loged_in'); ?>
+                    <p class="lead"><?php echo $session_data['userid']; ?></p><?php 
+                }
+                ?>
+                <input type="hidden" style="width:300px;" class="form-control" value="<?php echo $session_data['userid']; ?>" id="userid" maxlength=14 name="user">
               </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">SerialNo.(TrueMoney):</label>
               <div class="col-sm-10">
-              <input type="text" style="width:300px;" class="form-control" id="serialno" maxlength=14 placeholder="Enter Serial Number(14)" name="serial">
+              <input type="text" style="width:300px;" class="form-control" value="" id="serialno" maxlength=14 placeholder="Enter Serial Number(14)" name="serial" required>
               </div>
           </div>
-          
           <input type="submit" class="btn btn-lg btn-success" value="Enter"></input>
         </form>
       </div>
