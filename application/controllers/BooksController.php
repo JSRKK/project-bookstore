@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class BookDetailController extends CI_Controller {
+class BooksController extends CI_Controller {
 
 	public function index()
 	{
@@ -9,7 +9,9 @@ class BookDetailController extends CI_Controller {
 		$datas['bookTypes'] = $this->HeaderModel->getBookType();
 		$this->load->view('header_view',$datas);
 
-		//$this->load->model('bookdetailmodel');
-		$this->load->view('book_detail_view');
+		$this->load->model('BooksModel');
+		$datas = $this->BooksModel->get();
+		$datashow['data'] = $datas;
+		$this->load->view('Books_view',$datashow);
 	}
 }

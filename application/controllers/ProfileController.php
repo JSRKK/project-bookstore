@@ -8,9 +8,14 @@ class ProfileController extends CI_Controller {
 		$session_data = $this->session->userdata('loged_in');
 		$id = $session_data['userid'];
 		if(!empty($id)){
+			$this->load->model('HeaderModel');
+			$datas['bookTypes'] = $this->HeaderModel->getBookType();
+		
 			$this->load->model('ProfileModel');
 			$datas = $this->ProfileModel->get();
 			$dataShow['profile'] = $datas;
+			
+			$this->load->view('header_view', $datas);
 			$this->load->view('profile_reader_view', $dataShow);
 		}
 		else{

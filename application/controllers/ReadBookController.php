@@ -9,6 +9,11 @@ class ReadBookController extends CI_Controller {
 		$this->load->model('ReadBookModel');	
 		$datas = $this->ReadBookModel->get($bookId);
 		$dataShow['pages'] = $datas;
+
+		$this->load->model('HeaderModel');
+		$datas['bookTypes'] = $this->HeaderModel->getBookType();		
+		$this->load->view('header_view',$datas);
+
 		$this->load->view('read_book_view', $dataShow);
 	}
 }

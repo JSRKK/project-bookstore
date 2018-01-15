@@ -59,7 +59,6 @@
 <body class="page-index has-hero">
 
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-  <?php include('header_view.php') ?>  
   <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
     <div class="hero" id="highlighted">
       <div class="inner">

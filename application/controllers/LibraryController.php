@@ -9,7 +9,7 @@ class LibraryController extends CI_Controller {
 		$id = $session_data['userid'];
 
 		if(!empty($id)){
-			$this->load->model('LibraryModel');				
+			$this->load->model('LibraryModel');	
 			$datas = $this->LibraryModel->get($id);
 			if(!empty($datas)){
 				foreach ($datas as $row){
@@ -23,7 +23,11 @@ class LibraryController extends CI_Controller {
 			}
 			else{
 				$dataShow['books'] = null;
-			}
+			}	
+			$this->load->model('HeaderModel');
+			$datas['bookTypes'] = $this->HeaderModel->getBookType();		
+			$this->load->view('header_view',$datas);
+
 			$this->load->view('library_view', $dataShow);
 		}
 		else{
