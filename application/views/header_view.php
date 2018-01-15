@@ -160,7 +160,6 @@
                 foreach ($bookTypes as $key => $type) { ?> 
                   <li><a href="<?php echo base_url('index.php/BookTypeController/getByType/'.$type['type_ID']) ?>" tabindex="-1" class="menu-item"><?php echo $type['typeName']?></a></li>
               <?php } ?> 
-              <li><a href="about.html" tabindex="-1" class="menu-item">Magazine2</a></li>
               <li class="dropdown-footer">End types</li>
             </ul>
           </li>
