@@ -129,8 +129,7 @@
       </div>
     </div>
     <div class = "col-md-1" style = "margin-left:-2%">
-      <input id="send" class="btn btn-info" type="submit" value="Search">
-      
+      <input id="send" class="btn btn-info" type="submit" value="Search">   
     </div>
   </form>
   </div>

@@ -41,8 +41,40 @@ class BookDetailModel extends CI_Model {
 	public function get_score($book_id){
 		$query = $this->db->query("SELECT r.reviewScore, r.reviewComment, r.reviewDateTime, r.user_ID, u.ReaderFname, u.ReaderLname
 									FROM review r INNER JOIN reader u ON r.user_ID = u.user_ID
-									WHERE r.book_ID = '$book_id'");
+									WHERE r.book_ID = '$book_id' ORDER BY r.reviewDateTime DESC");
 		return  $query->result_array();
+	}
+
+	public function buy_book($user_id, $book_id, $book_price, $user_cash){
+
+		$date = date("Y-m-d H:i:s");
+		$data = array(
+			'book_ID' => $book_id,			
+			'user_ID' => $user_id,
+			'purchasedDateTime' => $date,
+			'purchasedPrice' => $book_price
+		);
+		$this->db->insert('purchased',$data);
+
+		$tempCash = $user_cash - $book_price;
+		$data = array(
+			'ReaderCash' => $tempCash,
+		);
+		$this->db->where('user_ID', $user_id);
+		$this->db->update('reader', $data);
+
+		return $tempCash;
+	}
+
+	public function update_session($cash){
+		$session_data = $this->session->userdata('loged_in');
+		$sess_array = array(
+			'userid' => $session_data['userid'],
+			'fName' => $session_data['fName'],
+			'lName' => $session_data['lName'],
+			'cash' => $cash
+		);
+		$this->session->set_userdata('loged_in',$sess_array);
 	}
 }
 

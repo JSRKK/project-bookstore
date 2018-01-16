@@ -77,6 +77,7 @@
                        <?php echo '<a href="#">'.$row['book_name'].' </a>';
                              echo '<p style="text-decoration: line-through; margin-top: 10px; color:red;">'."฿".$row['book_price'].'</p>';
                              echo '<p style="color:green;">'."฿".$row['book_total'].'</p>';
+                             echo '<p class="stars-container stars-"'.$row["book_score"].'" style="color:#FE980F;font-size: 18px;">★★★★★</p><br>';
                              echo '<p">'."วันที่ ".$row['book_start']." - ".$row['book_stop'].'</p>';
                        ?>
                     </h5>

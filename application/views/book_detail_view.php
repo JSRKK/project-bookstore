@@ -73,13 +73,13 @@
                 <br>
                 <?php if($book_check == null){?>
                   <div class="text-center">
-                    <a href="" class="btn btn-success">ทดลองอ่านฟรี</a>
+                    <a href="" class="btn btn-success"><i class="fa fa-book"></i> ทดลองอ่านฟรี</a>
                   </div>
                 <?php } ?>
 
                 <?php if($book_check != null){?>
                   <div class="text-center">
-                    <a href="<?php echo base_url('index.php/ReadbookController/index?book_id='.$books[0]['book_id'])?>" class="btn btn-success pull-right">อ่าน</a>
+                    <a href="<?php echo base_url('index.php/ReadbookController/index?book_id='.$books[0]['book_id'])?>" class="btn btn-success"><i class="fa fa-book"></i> อ่าน</a>
                   </div>
                 <?php }?> 
               <?php } ?> 
@@ -156,7 +156,12 @@
                   <h4>ความคิดเห็น</h4>
                 </div>
                 <div class="col-md-9">
-                  <a href="#" class="btn btn-default pull-right"><i class="fa fa-pencil"></i> เขียนความคิดเห็น</a>
+                  <a href="#" data-toggle="modal" 
+                  data-id="<?php echo $books[0]["book_id"]?>" 
+                  data-name="<?php echo $books[0]["book_name"]?>"
+                  data-img="<?php echo $books[0]["book_img"]?>"
+                  class="btn btn-default pull-right open-myModal2">
+                  <i class="fa fa-pencil"></i> เขียนความคิดเห็น</a>
                 </div>
               </div>
               <div class="row">
@@ -171,10 +176,12 @@
                     </h3>
                 </div>
               </div><br>
-              <div class="row">
-                <div class="col-md-12">
+              <div class="row" >
+                <div class="col-md-12" id="user-comment">
                   <?php if($users != null)
+                  
                     foreach($users as $key => $row):?>
+                      <?php if($key > $books[0]['limit']) break; ?>
                       <div class="row">
                         <div class="col-md-1">
                           <img src="<?php echo base_url('user-img/user-img.jpg')?>" alt="User image" class="img-circle">
@@ -201,7 +208,13 @@
                           </div>                                                  
                         </div>
                       </div><hr>
-                    <?php endforeach ?> 
+                    <?php endforeach ?>
+                    <div class="row" id="comment">
+                      <div class="col-md-12 text-center">
+                        <a href="#comment" id="btn_more">view more</a>
+                       <input type="hidden" id="hiddencomment" name="hiddencomment" value="0"/>                                         
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
@@ -306,10 +319,11 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">รายละเอียดการชำระเงิน</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h4 class="modal-title" id="exampleModalLabel">รายละเอียดการชำระเงิน
+          <span class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
+          </span>
+        </h4>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -323,7 +337,44 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info">ชำระเงิน</button>
+          <a href="<?php echo base_url('index.php/BookDetailController/buy?book_id='.$books[0]['book_id'])?>" class="btn btn-info">ชำระเงิน</a>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal-comment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">
+            <?php if (isset($this->session->userdata['loged_in'])) {
+                $session_data = $this->session->userdata('loged_in'); ?>
+                <span style="font-size: 16px;"><?php echo $session_data['fName']; ?></span>
+                <span><?php echo $session_data['lName']; ?></span>
+            <?php }?>
+            <span class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </span>
+          </h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+                <div class="col-md-4">
+                  <img id="img-url2" src="<?php echo base_url('')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;">
+                  <p class="text-center" type="text" id="book-name"></p>
+                </div>
+                <div class="col-md-8 text-center">
+                  <textarea class="form-control" id="user-comment" rows="7" style="resize: none;"placeholder="พิมพ์ข้อความเพื่อแสดงความคิดเห็นเกี่ยวกับหนังสือเล่มนี้" require></textarea><hr>
+                  <p style="margin-bottom:-15px">ให้คะแนน</p>
+                  <h2 class="stars-container stars-50">★★★★★</h2>
+                </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="<?php echo base_url('index.php/BookDetailController/buy?book_id='.$books[0]['book_id'])?>" class="btn btn-info">ตกลง</a>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>          
         </div>
       </div>
@@ -338,32 +389,38 @@
       $(".modal-body #book-price").html($(this).data('price'));
       $('.modal-body img').attr('src', url);
       $('#exampleModal').modal('show');
-    });       
+    });  
+
+    $(document).on("click", ".open-myModal2", function () 
+    {
+      var url = "<?php echo base_url(); ?>"+'book-img/'+$(this).data('id')+'/'+$(this).data('img')+'.jpg';      
+      $(".modal-body #book-name").html($(this).data('name'));
+      $('.modal-body #img-url2').attr('src', url);
+      $('#modal-comment').modal('show');
+    });     
+
   </script>
 
 <script>  
  $(document).ready(function(){  
       $(document).on('click', '#btn_more', function(){  
-           var last_video_id = $(this).data("vid");  
-           $('#btn_more').html("Loading...");  
-           $.ajax({  
-                url:"load_data.php",  
-                method:"POST",  
-                data:{last_video_id:last_video_id},  
-                dataType:"text",  
-                success:function(data)  
-                {  
-                     if(data != '')  
-                     {  
-                          $('#remove_row').remove();  
-                          $('#load_data_table').append(data);  
-                     }  
-                     else  
-                     {  
-                          $('#btn_more').html("No Data");  
-                     }  
-                }  
-           });  
+           var comment = <?php echo $key; ?>;  
+           var limit = <?php echo $books[0]['count']; ?>;
+           var myhidden = document.getElementById("hiddencomment"); 
+           if(limit >= comment){
+              if(limit - comment >= 0){
+                comment += 1;
+              }
+              else{
+                comment = limit;
+              }
+           }
+           else{
+            comment = limit;
+           }
+           myhidden.value = comment;   
+           alert( myhidden.value);                          
+           header("Refresh:0");
       });  
  });  
  </script>

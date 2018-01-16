@@ -23,7 +23,6 @@ class BookDetailController extends CI_Controller {
 				'book_date' => date("d M Y", strtotime($row['bookDateImp']))
 				);	
 			}
-			
 			$scores = $this->BookDetailModel->get_score($book_id);
 			$count = 0;
 			$tempScore = 0;
@@ -33,7 +32,9 @@ class BookDetailController extends CI_Controller {
 					$count++;
 				}
 				$tempScore = ($tempScore*5) / ($count*5);
-				$data[0]['score'] = sprintf('%0.1f',$tempScore);			
+				$data[0]['score'] = sprintf('%0.1f',$tempScore);
+				$data[0]['limit'] = 100;
+				$data[0]['count'] = $count;			
 			}
 			else{
 				$data[0]['score'] = 0;
@@ -59,5 +60,31 @@ class BookDetailController extends CI_Controller {
 		$this->load->view('header_view',$datas);
 
 		$this->load->view('book_detail_view', $dataShow);
+	}
+
+	public function buy(){
+		$session_data = $this->session->userdata('loged_in');
+		$id = $session_data['userid'];
+		$book_id = $this->input->get('book_id');
+
+		$this->load->model('BookDetailModel');
+		$datas = $this->BookDetailModel->get_book($book_id);
+		$book_price = $datas[0]['bookPrice'];
+		$user_cash = $session_data['cash'];
+
+		if(!empty($id)){
+			if($user_cash >= $book_price){
+				$this->load->model('BookDetailModel');
+				$cash = $this->BookDetailModel->buy_book($id, $book_id, $book_price, $user_cash);
+				$this->BookDetailModel->update_session($cash);
+				redirect('LibraryController');
+			}
+			else{
+
+			}
+		}
+		else{
+			redirect("LoginController");
+		}
 	}
 }

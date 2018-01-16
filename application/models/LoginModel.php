@@ -33,7 +33,7 @@ class LoginModel extends CI_Model {
                   
                     $query = $query ->result_array();
                     $query[0]['ReaderFname'] =  $query[0]['publisherName'];
-                    $query[0]['ReaaderLname'] =  $query[0]['publisherAutherName'];
+                    $query[0]['ReaderLname'] =  $query[0]['publisherAutherName'];
                     $query[0]['ReaderCash'] =  '-';
                     
                 return $query;

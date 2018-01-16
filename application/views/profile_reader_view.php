@@ -103,7 +103,7 @@
                                     <h5>Last name:</h5>
                                   </div>
                                   <div class="col-md-8">
-                                    <h5>'.$profile[0]['ReaaderLname'].'</h5>
+                                    <h5>'.$profile[0]['ReaderLname'].'</h5>
                                   </div>
                               </div><hr>';              
                           echo '<div class="row">

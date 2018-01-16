@@ -12,11 +12,13 @@ class BookTypeController extends CI_Controller {
 		$datas = $this->BookTypeModel->getByType($bookID);	
 		$data = null;
 		foreach ($datas as $row){
+			$score = $this->BookTypeModel->get_score($row['book_ID']);
 			$data[] = array(
 			'book_id' => $row['book_ID'],
 			'book_name' => $row['bookName'],					
 			'book_price' => sprintf('%0.2f',$row['bookPrice']),		//กำหนดทศนิยม 2 ตำแหน่ง		
-			'book_img' => $row['bookImageCover']
+			'book_img' => $row['bookImageCover'],
+			'book_score' => ($score[0]['sum_score']/5)*100
 		 	);	
         }
 		

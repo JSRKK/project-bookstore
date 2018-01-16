@@ -113,16 +113,18 @@ body {
           <?php if($books != null)
               foreach($books as $key => $row):?> 
                 <div class="item item-book col-md-3" >
-                  <a href="<?php echo base_url('index.php/BookDetailController?book_id='.$row['book_ID']);?>" class="overlay-wrapper">
-                  <img src="<?php echo base_url('book-img/'.$row['book_ID'].'/'.$row['bookImageCover'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;width:200px;height:250px">             
+                  <a href="<?php echo base_url('index.php/BookDetailController?book_id='.$row['book_id']);?>" class="overlay-wrapper">
+                  <img src="<?php echo base_url('book-img/'.$row['book_id'].'/'.$row['book_img'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;width:200px;height:250px">             
                   </a>
-                  <div class="item-details bg-noise">
-                    <h5 class="item-title text-center">
-                       <?php echo '<a href="#">'.$row['bookName'].' </a>' ?>
+                  <div class="item-details bg-noise text-center">
+                    <h5 class="item-title">
+                      <?php echo '<a href="#">'.$row['book_name'].' </a>' ?>
                     </h5>
+                    <?php echo '<p href="#">'.$row['book_price'].' </p>' ?>
+                    <h4 class="stars-container stars-<?php echo $row['book_score']?>" style="color:#FE980F">★★★★★</h4> 
                   </div>
                 </div>                        
-              <?php endforeach ?> 
+            <?php endforeach ?>                        
           <?php if($books === null) 
             echo "<h3 class='text-center'>Empty</h3>";
           ?>

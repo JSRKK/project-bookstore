@@ -124,20 +124,13 @@
                       <span class="overlay">                    
                         <span class="overlay-content"> <span class="h4">View</span> </span>
                       </span>
-                    </a>                                      
+                  </a>                                      
                   <div class="item-details bg-noise text-center">
                     <h5 class="item-title" style="max-width: 160px">
                        <?php echo '<a href="#">'.$row['book_name'].' </a>' ?>
                       </h5>
                       <?php echo '<p href="#">'.$row['book_price'].' </p>' ?>
-                    </a>
-                    <span style="color:#FE980F">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </span>                
+                    <h4 class="stars-container stars-<?php echo $row['book_score']?>" style="color:#FE980F">★★★★★</h4>             
                   </div>
               </div>                                         
             <?php endforeach ?> 
