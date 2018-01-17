@@ -58,8 +58,8 @@ class BookDetailController extends CI_Controller {
 		$this->load->model('HeaderModel');
 		$datas['bookTypes'] = $this->HeaderModel->getBookType();
 		$this->load->view('header_view',$datas);
-
 		$this->load->view('book_detail_view', $dataShow);
+		$this->load->view('footer_view');		
 	}
 
 	public function buy(){

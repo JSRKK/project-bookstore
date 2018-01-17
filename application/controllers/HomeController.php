@@ -21,9 +21,9 @@ class HomeController extends CI_Controller {
 		$this->load->model('HeaderModel');
 		$datas['bookTypes'] = $this->HeaderModel->getBookType();
 		$this->load->view('header_view',$datas);
-
 		$dataShow['books'] = $data;
 		$this->load->view('home_view', $dataShow);
+		$this->load->view('footer_view');
 	}
 
 	public function logout()

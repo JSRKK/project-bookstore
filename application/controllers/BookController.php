@@ -27,5 +27,6 @@ class BookController extends CI_Controller {
 
 		$this->load->view('header_view',$datas);
 		$this->load->view('Book_view',$datashow);
+		$this->load->view('footer_view');		
 	}
 }

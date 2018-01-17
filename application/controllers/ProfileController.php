@@ -17,6 +17,7 @@ class ProfileController extends CI_Controller {
 			
 			$this->load->view('header_view', $datas);
 			$this->load->view('profile_reader_view', $dataShow);
+			$this->load->view('footer_view');			
 		}
 		else{
 			redirect('LoginController');

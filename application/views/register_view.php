@@ -32,7 +32,10 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link href="<?php echo base_url('assets/lib/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
   <!-- Libraries CSS Files -->
   <link href="<?php echo base_url('assets/lib/font-awesome/css/font-awesome.min.css')?>" rel="stylesheet">
@@ -82,56 +85,69 @@
                 </h3>
             </div>
             <div class="panel-body">
-              <form accept-charset="UTF-8" role="form">
-                <fieldset>
-                  <div class="form-group">
-                    <div class="input-group input-group-lg">
-                      <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
-                      <input type="text" class="form-control" placeholder="Username">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group input-group-lg">
-                      <span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
-                      <input type="text" class="form-control" placeholder="Email">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group input-group-lg">
-                      <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
-                      <input type="password" class="form-control" placeholder="Password">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="radio">
-                      <label>
-                          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                          Free Account
-                        </label>
-                    </div>
-                    <div class="radio">
-                      <label>
-                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                          Plus Account ($12/month)
-                        </label>
-                    </div>
-                    <div class="radio">
-                      <label>
-                          <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                          Corporate Account ($100month)
-                        </label>
-                    </div>
-                  </div>
-                  <div class="checkbox">
-                    <label>
-                        <input name="remember" type="checkbox" value="Terms">
-                        I agree to the <a href="#">terms and conditions</a>.
-                      </label>
-                  </div>
-                  <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign Me Up">
-                </fieldset>
-              </form>
-              <p class="m-b-0 m-t">Already signed up? <a href="login.html">Login here</a>.</p>
+              <div class="row"><br>
+              <div class="col-md-1"></div>
+                <div class="col-md-10">               
+                  <form data-toggle="validator" accept-charset="UTF-8" role="form" action= "<?php echo base_url('index.php/RegisterController/register'); ?>" method="POST">
+                    <fieldset>
+                      <div class="form-group">
+                        <div class="input-group input-group">
+                          <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                          <input type="text" class="form-control" id="username" name="username" minlength="5" placeholder="Username" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group input-group">
+                          <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
+                          <input type="password" id="password" name="password" minlength="6" placeholder="Password" class="form-control" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group input-group">
+                          <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
+                          <input type="password" id="confirmPassword" data-match="#password" placeholder="Confirm Password" class="form-control" required>
+                        </div>
+                      </div> 
+                      <div class="form-group">
+                        <div class="input-group input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-text-background"></i></span>
+                          <input type="text" class="form-control" id="fname" name="fname" placeholder="First name" required>
+                        </div>
+                      </div> 
+                      <div class="form-group">
+                        <div class="input-group input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-text-background"></i></span>
+                          <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name" required>
+                        </div>
+                      </div> 
+                      <div class="form-group">
+                        <div class="input-group input-group">
+                          <span class="input-group-addon"><i class="fa fa-transgender"></i></span>
+                          <select id="gender" name="gender" class="form-control" required>
+                            <option value="" selected>Choose...</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group input-group">
+                          <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                          <input type="date" class="form-control" id="birthday" name="birthday" placeholder="Date of Birth" required>
+                        </div>
+                      </div>   
+                      <div class="form-group">
+                        <div class="input-group input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                          <input type="tel" class="form-control" name="tel" minlength="10" maxlength="10" placeholder="Tel" required>
+                        </div>
+                      </div>                            
+                      <input class="btn btn-lg btn-primary btn-block" id="submit" type="submit" value="Register">
+                    </fieldset>
+                  </form>
+                </div>
+              </div>
+              <p class="m-b-0 m-t">Already signed up? <a href="<?php echo base_url('index.php/LoginController'); ?>">Login here</a>.</p>
               <div class="credits">
             <!--
               All the links in the footer should remain intact.
@@ -148,9 +164,25 @@
       <!-- /row -->
     </div>
   </div>
+
+  <script>
+      var password = document.getElementById("password"), confirm_password = document.getElementById("confirmPassword");
+
+      function validatePassword(){
+        if(password.value != confirm_password.value) {
+          confirm_password.setCustomValidity("โปรดใส่รหัสผ่านให้ถูกต้อง");
+        } else {
+          confirm_password.setCustomValidity('');
+        }
+      }
+
+      password.onchange = validatePassword;
+      confirm_password.onkeyup = validatePassword;
+  </script>
   <!-- Required JavaScript Libraries -->
   <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js')?>"></script>
-  <script src="<?php echo base_url('assets/lib/bootstrap/js/bootstrap.min.js')?>"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="<?php echo base_url('assets/lib/owlcarousel/owl.carousel.min.js')?>"></script>
   <script src="<?php echo base_url('assets/lib/stellar/stellar.min.js')?>"></script>
   <script src="<?php echo base_url('assets/lib/waypoints/waypoints.min.js')?>"></script>

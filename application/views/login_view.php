@@ -108,7 +108,7 @@
                   <input id="send" class="btn btn-lg btn-primary btn-block" type="submit" value="Sign in">
                 </fieldset>
               </form>
-              <p class="m-b-0 m-t">Not signed up? <a href="register.html">Sign up here</a>.</p>
+              <p class="m-b-0 m-t">Not signed up? <a href="<?php echo base_url('index.php/RegisterController'); ?>">Sign up here</a>.</p>
               <div class="credits">
             <!--
               All the links in the footer should remain intact.
