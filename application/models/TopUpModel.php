@@ -13,7 +13,7 @@ class TopUpModel extends CI_Model {
 	public function setTopUp($money,$userid){
 		//echo $user."    ".$money;
 		$session_data = $this->session->userdata('loged_in');
-		$query = $this->db->query("SELECT MAX(payment_ID) FROM payment");
+		$query = $this->db->query("SELECT MAX(payment_ID) AS payment_ID FROM payment");
 		if($query->result() != null){
 			foreach ($query->result() as $row)
 			{
