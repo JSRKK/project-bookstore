@@ -27,31 +27,35 @@ class TopUpController extends CI_Controller {
 		$userid = $session_data['userid'];
 
 		$this->load->model('TopUpModel');
-		$serial = $_POST['serial'];
-		$serial =  intval($serial); 
-		$code = $serial%11;
-		echo $code;
-		if($code == 0 || $code == 2 || $code == 4 ||$code == 7 ||$code == 9 ||$code == 3){
+		$serial = $this->input->post('serial');
+		print_r($serial);
+		$code = $serial%6;
+		//echo $code;
+		if($code == 0 || $code == 1 || $code == 2 ||$code == 3 ||$code == 4 ||$code == 5){
 			//echo "ทดสอบ";
 			if($code == 0){
 				$money = 50;
 			}
-			else if($code == 2){
+			else if($code == 1){
 				$money = 90;
 			}
-			else if($code == 3){
+			else if($code == 2){
 				$money = 150;
 			}
-			else if($code == 4){
+			else if($code == 3){
 				$money = 500;
 			}
-			else if($code == 7){
+			else if($code == 4){
 				$money = 1000;
 			}
 			else {
 				$money = 300;
 			}
-			$this->TopUpModel->setTopUp($money,$userid);
+			$cash = $this->TopUpModel->setTopUp($money,$userid);
+			$this->TopUpModel->update_session($cash);
+			echo "<script>
+			alert('ท่านได้เติมเงินเรียบร้อยแล้ว');</script>";
+			redirect('HistoryTopUpController');
 		}
 		else{
 			echo "<script>

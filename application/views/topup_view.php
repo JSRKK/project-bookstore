@@ -85,7 +85,7 @@
                 <label class="control-label pull-right">SerialNo.(TrueMoney):</label>
               </div>
               <div class="col-md-6">
-                <input type="text" pattern="[0-9]" class="form-control" value="" id="serialno"  minlength="14" maxlength="14" placeholder="Enter Serial Number (14)" name="serial" required>
+                <input type="text" class="form-control" value="" id="serialno"  minlength="14" maxlength="14" placeholder="Enter Serial Number (14)" name="serial" required>
               </div>
             </div>  
             <div class="row">
