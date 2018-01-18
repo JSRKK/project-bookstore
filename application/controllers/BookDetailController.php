@@ -20,7 +20,8 @@ class BookDetailController extends CI_Controller {
 				'book_price' => sprintf('%0.2f',$row['bookPrice']),		//กำหนดทศนิยม 2 ตำแหน่ง		
 				'book_detail' => $row['bookDetail'],
 				'book_img' => $row['bookImageCover'],
-				'book_date' => date("d M Y", strtotime($row['bookDateImp']))
+				'book_date' => date("d M Y", strtotime($row['bookDateImp'])),
+				'publisher_name'  => $row['publisherName']
 				);	
 			}
 			$scores = $this->BookDetailModel->get_score($book_id);

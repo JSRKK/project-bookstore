@@ -111,13 +111,11 @@
     <!--Showcase-->
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
-        <h2 class="block-title">
-            Recommended
-          </h2>
+        <h2 class="block-title">Recommended</h2>
           <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":5, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
 
-          <?php if($books != null)
-              foreach($books as $key => $row):?>              
+          <?php if($books1 != null)
+              foreach($books1 as $key => $row):?>              
                 <div class="item ">                 
                   <a href="<?php echo base_url('index.php/BookDetailController/index?book_id='.$row["book_id"])?>" class="overlay-wrapper">   
                       <img src="<?php echo base_url('book-img/'.$row['book_id'].'/'.$row['book_img'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto; width:200px;height:250px">
@@ -125,12 +123,42 @@
                         <span class="overlay-content"> <span class="h4">View</span> </span>
                       </span>
                   </a>                                      
-                  <div class="item-details bg-noise text-center">
-                    <h5 class="item-title" style="max-width: 160px">
-                       <?php echo '<a href="#">'.$row['book_name'].' </a>' ?>
-                      </h5>
-                      <?php echo '<p href="#">'.$row['book_price'].' </p>' ?>
-                    <h4 class="stars-container stars-<?php echo $row['book_score']?>" style="color:#FE980F">★★★★★</h4>             
+                  <div class="item-details bg-noise">
+                    <h5 class="item-title" style="max-width: 160px"><?php echo '<a href="#">'.$row['book_name'].' </a>' ?></h5>
+                    <p style="color:#595959; font-size:12px;"><?php echo $row['publisher_name'] ?></p>
+                    <h4 class="stars-container stars-<?php echo $row['book_score']?>" style="color:#FE980F">★★★★★</h4>
+                    <?php 
+                      if($row['book_discount'] > 0)
+                        echo '<h5><span style="text-decoration: line-through; color:#595959;">THB '.$row["book_price"].'</span>'.' '.'<span style="color:red;">'.$row["book_discount"].'</span></h5>';
+                      else
+                        echo '<h5><span href="#">THB '.$row['book_price'].'</span></h5>'; 
+                    ?>                                                  
+                  </div>
+              </div>                                         
+            <?php endforeach ?> 
+        </div><hr style="color:#595959">
+        <h2 class="block-title">Popular</h2>
+        <div class="item-carousel" data-toggle="owlcarousel" data-owlcarousel-settings='{"items":5, "pagination":false, "navigation":true, "itemsScaleUp":true}'>
+
+          <?php if($books2 != null)
+              foreach($books2 as $key => $row):?>              
+                <div class="item ">                 
+                  <a href="<?php echo base_url('index.php/BookDetailController/index?book_id='.$row["book_id"])?>" class="overlay-wrapper">   
+                      <img src="<?php echo base_url('book-img/'.$row['book_id'].'/'.$row['book_img'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto; width:200px;height:250px">
+                      <span class="overlay">                    
+                        <span class="overlay-content"> <span class="h4">View</span> </span>
+                      </span>
+                  </a>                                      
+                  <div class="item-details bg-noise">
+                    <h5 class="item-title" style="max-width: 160px"><?php echo '<a href="#">'.$row['book_name'].' </a>' ?></h5>
+                    <p style="color:#595959; font-size:12px;"><?php echo $row['publisher_name'] ?></p>
+                    <h4 class="stars-container stars-<?php echo $row['book_score']?>" style="color:#FE980F">★★★★★</h4>   
+                    <?php 
+                      if($row['book_discount'] > 0)
+                        echo '<h5><span style="text-decoration: line-through; color:#595959;">THB '.$row["book_price"].'</span>'.' '.'<span style="color:red;">'.$row["book_discount"].'</span></h5>';
+                      else
+                        echo '<h5><span href="#">THB '.$row['book_price'].'</span></h5>'; 
+                    ?>                                 
                   </div>
               </div>                                         
             <?php endforeach ?> 

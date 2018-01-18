@@ -109,26 +109,32 @@ body {
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
         <h2 class="block-title">Search</h2>
-        <div class="item-carousel row" >
-          <?php if($books != null)
-              foreach($books as $key => $row):?> 
-                <div class="item item-book col-md-3" >
-                  <a href="<?php echo base_url('index.php/BookDetailController?book_id='.$row['book_id']);?>" class="overlay-wrapper">
-                  <img src="<?php echo base_url('book-img/'.$row['book_id'].'/'.$row['book_img'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;width:200px;height:250px">             
-                  </a>
-                  <div class="item-details bg-noise text-center">
-                    <h5 class="item-title">
-                      <?php echo '<a href="#">'.$row['book_name'].' </a>' ?>
-                    </h5>
-                    <?php echo '<p href="#">'.$row['book_price'].' </p>' ?>
-                    <h4 class="stars-container stars-<?php echo $row['book_score']?>" style="color:#FE980F">★★★★★</h4> 
-                  </div>
-                </div>                        
-            <?php endforeach ?>                        
+        <?php if($books != null){
+                for($i=0;$i<sizeof($books);$i++){
+                    echo  "<div class='item-carousel row'>";
+                    for($j=0;$j<sizeof($books[$i][0]);$j++){?>                  
+                        <div class="item item-book col-md-3" >
+                            <a href="<?php echo base_url('index.php/BookDetailController?book_id='.$books[$i][0][$j]['book_id']);?>" class="overlay-wrapper">
+                            <img src="<?php echo base_url('book-img/'.$books[$i][0][$j]['book_id'].'/'.$books[$i][0][$j]['book_img'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;width:200px;height:250px">             
+                            </a>
+                            <div class="item-details bg-noise" style="margin-left:25px">
+                                <h5 class="item-title"><?php echo '<a href="#">'.$books[$i][0][$j]['book_name'].' </a>' ?></h5>
+                                <p style="color:#595959;font-size:12px;"><?php echo $books[$i][0][$j]['publisher_name'] ?></p>
+                                <h4 class="stars-container stars-<?php echo $books[$i][0][$j]['book_score']?>" style="color:#FE980F">★★★★★</h4>   
+                                <?php 
+                                    if($books[$i][0][$j]['book_discount'] > 0)
+                                        echo '<h5><span style="text-decoration: line-through; color:#595959;">THB '.$books[$i][0][$j]["book_price"].'</span>'.' '.'<span style="color:red;">'.$books[$i][0][$j]["book_discount"].'</span></h5>';
+                                    else
+                                        echo '<h5><span href="#">THB '.$books[$i][0][$j]['book_price'].'</span></h5>'; 
+                                ?>                                   
+                            </div>
+                        </div>                       
+                    <?php } ?>
+                    <?php  echo '</div>'; ?>
+                <?php }} ?>                         
           <?php if($books === null) 
             echo "<h3 class='text-center'>Empty</h3>";
           ?>
-        </div>
         <div class="row">
           <?php if($books != null)
             echo '<ul class="pagination" id="pagination"></ul>';

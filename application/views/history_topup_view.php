@@ -70,7 +70,7 @@
             <thead>
               <tr>
               <th class="table-active">ลำดับ</th>
-              <th class="table-active">หมายเลข</th>
+              <th class="table-active">หมายเลข serial</th>
               <th class="table-active">วันที่/เวลา</th>
               <th class="table-active">ราคา</th>
             </tr>

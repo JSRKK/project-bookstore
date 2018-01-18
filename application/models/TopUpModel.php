@@ -10,33 +10,30 @@ class TopUpModel extends CI_Model {
 		$query = $this->db->query("SELECT user_ID FROM user"); // session
 		return $query->result_array();
 	}
-	public function setTopUp($money,$userid){
+	public function setTopUp($money, $userid, $serial){
 		//echo $user."    ".$money;
 		$session_data = $this->session->userdata('loged_in');
-		$query = $this->db->query("SELECT MAX(payment_ID) AS payment_ID FROM payment");
-		if($query->result() != null){
-			foreach ($query->result() as $row)
-			{
-				$latest = $row->payment_ID +1;
-			}
+		$query = $this->db->query("SELECT * FROM payment WHERE payment_ID = '$serial'");
+		if($query->result() == null){	
+			$date = date("Y-m-d H:i:s");
+			$data = array(
+				'payment_ID' => $serial,
+				'paymentDateTime' => $date,
+				'paymentPrice' => $money,
+				'user_ID' => $userid
+			);
+			$this->db->insert('payment',$data);
+			$tempCash = $session_data['cash']+ $money;
+			$data = array(
+				'ReaderCash' => $tempCash,
+			);
+			$this->db->where('user_ID', $userid);
+			$this->db->update('reader', $data);
+			
+			return $query->result();
 		}
-		else $latest = 1;
-		$date = date("Y-m-d H:i:s");
-		$data = array(
-			'payment_ID' => $latest,
-			'paymentDateTime' => $date,
-			'paymentPrice' => $money,
-			'user_ID' => $userid
-		);
-		$this->db->insert('payment',$data);
-		$tempCash = $session_data['cash']+ $money;
-		$data = array(
-			'ReaderCash' => $tempCash,
-		);
-		$this->db->where('user_ID', $userid);
-		$this->db->update('reader', $data);
-		return $money;
 		
+		return $query->result();
 	}
 	
 	public function update_session($cash){

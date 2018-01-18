@@ -1208,7 +1208,7 @@
 .item-carousel .item-details {
     padding: 1em;
     background: #f3f3f3;
-    border-bottom: 1px solid #bfbfbf;
+    /* border-bottom: 1px solid #bfbfbf; */
 }
 
 .item-carousel .item-details .item-title {

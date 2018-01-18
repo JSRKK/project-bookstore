@@ -51,19 +51,20 @@ class TopUpController extends CI_Controller {
 			else {
 				$money = 300;
 			}
-			$cash = $this->TopUpModel->setTopUp($money,$userid);
-			$this->TopUpModel->update_session($cash);
-			echo "<script>
-			alert('ท่านได้เติมเงินเรียบร้อยแล้ว');</script>";
-			redirect('HistoryTopUpController');
+			$cash = $this->TopUpModel->setTopUp($money, $userid, $serial);
+			if($cash == null){
+				$this->TopUpModel->update_session($money);
+				echo "<script>
+				alert('ท่านได้เติมเงินเรียบร้อยแล้ว');</script>";
+				redirect('HistoryTopUpController');
+			}
+			else{
+				echo "<script>
+				alert('หมายเลขของท่านไม่ถูกต้อง');</script>";
+				$usernameDatas['user'] = $this->getTopUp();
+				redirect('TopUpController');
+			}
 		}
-		else{
-			echo "<script>
-			alert('หมายเลขของท่านไม่ถูกต้อง');</script>";
-			$usernameDatas['user'] = $this->getTopUp();
-			$this->load->view('topup_view',$usernameDatas);
-		}
-		
 	}
 	private function getTopUp(){
 			$this->load->model('TopUpModel');

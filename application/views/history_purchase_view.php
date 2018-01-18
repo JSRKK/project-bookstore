@@ -78,8 +78,8 @@
               <?php foreach ($books as $key => $book): ?>
                   <tr>
                     <td rowcol-md-="2"> <?php echo $key+1; ?> </td>
-                    <td><?php echo $book['bookName']; ?></td>
-                    <td><?php echo $book['purchasedDateTime']; ?></td>
+                    <td><a href="<?php echo base_url('index.php/BookDetailController/index?book_id='.$book['book_ID'])?>" style="color:black; font-weight: bold"><?php echo $book['bookName'] ?></a></td>
+                    <td><?php echo date("d/m/Y H:i:s", strtotime($book['purchasedDateTime'])); ?></td>
                     <td><?php echo sprintf('%0.2f', $book['purchasedPrice']); ?></td>
                   </tr>
                 <?php endforeach;?>

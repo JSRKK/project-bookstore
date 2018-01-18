@@ -24,6 +24,7 @@ class LibraryController extends CI_Controller {
 			else{
 				$dataShow['books'] = null;
 			}	
+			
 			$this->load->model('HeaderModel');
 			$datas['bookTypes'] = $this->HeaderModel->getBookType();		
 			$this->load->view('header_view',$datas);

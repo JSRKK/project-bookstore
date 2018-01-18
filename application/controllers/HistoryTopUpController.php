@@ -16,7 +16,7 @@ class HistoryTopUpController extends CI_Controller {
 					$data[] = array(
 					'number' => $key+1,
 					'pay_id' => $row['payment_ID'],				
-					'pay_date' => $row['paymentDateTime'],
+					'pay_date' => date("d/m/Y H:i:s", strtotime($row['paymentDateTime'])),
 					'pay_price' => $row['paymentPrice'],
 					);	
 				}	

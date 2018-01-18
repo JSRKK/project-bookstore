@@ -15,7 +15,7 @@
 <body>
 	<div id="canvas" class="canvas">	
 		<p id="pageSize" data-book="<?php echo $pages[0]['book_ID'];?>" data-size="<?php echo sizeof($pages);?>"></p>
-		<a type="button" href="<?php echo base_url('index.php/HomeController');?>" class="btn btn-danger button-back">Exit</a>
+		<a type="button" href="<?php echo base_url('index.php/BookDetailController/index?book_id='.$pages[0]['book_ID']);?>" class="btn btn-danger button-back">Exit</a>
 		<div class="zoom-icon zoom-icon-in"></div>   
 		<div class="magazine-viewport" >
 			<div class="container">

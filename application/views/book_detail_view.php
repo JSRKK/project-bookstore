@@ -79,7 +79,7 @@
 
                 <?php if($book_check != null){?>
                   <div class="text-center">
-                    <a href="<?php echo base_url('index.php/ReadbookController/index?book_id='.$books[0]['book_id'])?>" class="btn btn-success"><i class="fa fa-book"></i> อ่าน</a>
+                    <a href="<?php echo base_url('index.php/ReadbookController/index?book_id='.$books[0]['book_id'])?>" class="btn btn-lg btn-success"><i class="fa fa-book"></i> อ่าน</a>
                   </div>
                 <?php }?> 
               <?php } ?> 
@@ -95,7 +95,7 @@
                   <span style="font-size: 18px;">รายละเอียด:</span>
                 </div>
                 <div class="col-md-9">
-                  <span style="font-size: 18px;"><?php echo $books[0]['book_detail']?></span>
+                  <span style="font-size: 14px;"><?php echo $books[0]['book_detail']?></span>
                 </div>
               </div><hr>
               <div class="row">
@@ -111,7 +111,7 @@
                   <span style="font-size: 18px;">สำนักพิมพ์/ผู้แต่ง:</span>
                 </div>
                 <div class="col-md-9">
-                  <span style="font-size: 18px;" class="pull-right">บิสคิต, สนพ.</span>
+                  <span style="font-size: 18px;" class="pull-right"><?php echo $books[0]['publisher_name']?></span>
                 </div>
               </div><hr>  
               <div class="row">
@@ -127,7 +127,14 @@
                   <span style="font-size: 18px;">แชร์หนังสือ:</span>
                 </div>
                 <div class="col-md-9">
-                <span style="font-size: 18px;" class="pull-right"><a href="#" style="color:blue"><i class="fa fa-fw fa-facebook-square" ></i>แชร์</a></span>
+                  <span style="font-size: 18px;" class="pull-right">
+                    <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://www.example.com&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!" 
+                        target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false"
+                        style='color:blue'>
+                        <i class="fa fa-fw fa-facebook-square" ></i>
+                        Share
+                    </a>
+                  </span>
                 </div>
               </div><hr> 
               <div class="row"> 
@@ -184,24 +191,28 @@
                       <?php if($key > $books[0]['limit']) break; ?>
                       <div class="row">
                         <div class="col-md-1">
-                          <img src="<?php echo base_url('user-img/user-img.jpg')?>" alt="User image" class="img-circle">
+                          <img src="<?php echo base_url('user-img/'.strtoupper($row['ReaderFname'][0]).'.png')?>" alt="User image" class="img-circle">
                         </div>
                         <div class="col-md-10">
                           <div class="row">
                             <div class="col-md-12">
                               <span><?php echo $row['ReaderFname']?></span>
-                              <span><?php echo $row['ReaderLname']?></span>
-                              <span style="color:#33333361;"><?php echo date("d M Y H:m", strtotime($row['reviewDateTime']))?></span>                              
+                              <span><?php echo $row['ReaderLname']?></span>                                                       
                             </div>
                           </div>                                                
                           <div class="row">
                             <div class="col-md-12">
                               <div class="row">
                                 <div class="col-md-10">
-                                  <span><?php echo $row['reviewComment']?></span>
+                                  <p style="font-size:13px"><?php echo $row['reviewComment']?></p>
+                                  <p class="stars-container stars-<?php echo ($row['reviewScore']/5)*100 ?>">★★★★★</p>
+                                  <span style="color:#33333361;font-size:14px"><?php echo date("d/m/Y H:m", strtotime($row['reviewDateTime']))?></span>
                                 </div>
-                                <div class="col-md-2">
-                                  <span class="pull-right stars-container stars-<?php echo ($row['reviewScore']/5)*100 ?>">★★★★★</span>                              
+                                <div class="col-md-1">
+                                      <a href="#" style="font-size:20px; color:#4a4747c7;"><i class="fa fa-thumbs-up"></i></a>                          
+                                </div>
+                                <div class="col-md-1">
+                                      <a href="#" style="font-size:20px; color:#4a4747c7;"><i class="glyphicon glyphicon-option-vertical"></i></a>                          
                                 </div>
                               </div>
                             </div>

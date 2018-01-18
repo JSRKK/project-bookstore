@@ -380,7 +380,7 @@ body{
 
 .canvas{
 	background-size: auto;
-	background-image: url('../bg/bg-001.jpg');
+	background-color: #f1e77b57;
 	
 }
 
@@ -390,7 +390,7 @@ body{
 	width:30px;
 	height:30px;
 	top:35px;
-	margin-left:60%;
+	margin-left:90%;
 	background-image:url(../pics/zoom-in1.png);
 	background-size:30px 30px;
 }

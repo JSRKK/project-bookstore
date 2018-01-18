@@ -3,20 +3,21 @@
     <div class="container">
 
       <div class="row" id="contact">
-
-        <div class="col-md-3">
-          <address>
-              <strong>Flexor Bootstrap Theme Inc</strong>
-              <br>
-              <i class="fa fa-map-pin fa-fw text-primary"></i> Sunshine House, Sunville. SUN12
-              <br>
-              <i class="fa fa-phone fa-fw text-primary"></i> 019223 8092344
-              <br>
-              <i class="fa fa-envelope-o fa-fw text-primary"></i> info@flexorinc.com
-              <br>
-            </address>
+        <div class="col-md-4">
+            <h4>CREDITS:</h4>
+            <p><span>Teamplate Flexor by </span><a href="https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/">BootstrapMade.com</a></P>
+            <p><span>Make a flip book with HTML5 by </span><a href="www.turnjs.com">www.turnjs.com</a></P>
+            <p><span>User icons </span><a href="https://github.com/eladnava/material-letter-icons">material-letter-icons generate</a></p>
         </div>
-        <div class="col-md-6"></div>
+        <div class="col-md-5">
+            <h4>CREDITS PHOTO BOOKS:</h4>
+            <p>สำนักพิมพ์ ROKZ</p>
+            <p>สำนักพิมพ์ DayPoets</p>
+            <p>สำนักพิมพ์ MONO</p>
+            <p>สำนักพิมพ์ แม่บ้าน</p>
+            <p>สำนักพิมพ์ 3wow</p>
+            <p>สำนักพิมพ์ DayPoets</p>
+        </div>
         <div class="col-md-3">
           <h4 class="text-uppercase">
               Follow Us On:

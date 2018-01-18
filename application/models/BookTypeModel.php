@@ -6,10 +6,9 @@ class BookTypeModel extends CI_Model {
         }
 
         public function getByType($id) {
-                $this->db->select('book_ID, bookName, bookPrice, bookImageCover'); 
-                $this->db->from('book'); 
-                $this->db->where('type_ID', $id);
-                $query = $this->db->get(); 
+                $query = $this->db->query("SELECT b.book_ID, b.bookName, b.bookPrice, b.bookImageCover, p.publisherName 
+                                           FROM book b NATURAL JOIN publisher p
+                                           WHERE type_ID = '$id'");
                 return $query->result_array(); 
         }
         public function getBookType($id) {
@@ -24,5 +23,12 @@ class BookTypeModel extends CI_Model {
                                         FROM review
                                         WHERE book_ID = '$book_id'");
 		return  $query->result_array();
-	}
+        }
+        
+        public function get_discount($book_id){
+                $query = $this->db->query("SELECT proDiscount 
+                                        FROM promotion
+                                        WHERE book_ID = '$book_id'");
+		return  $query->result_array();
+        }
 }?>
