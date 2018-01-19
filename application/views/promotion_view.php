@@ -75,9 +75,10 @@
                             </a>
                             <div class="item-details bg-noise" style="margin-left:25px">
                                 <h5 class="item-title"><a href="<?php echo base_url('index.php/BookDetailController?book_id='.$books[$i][0][$j]['book_id']);?>"><?php echo $books[$i][0][$j]['book_name'] ?></a></h5>
-                                <h5><?php echo '<span style="color:#595959;font-size:12px">'.$books[$i][0][$j]['publisher_name'].'</span>';?></h5>                     
-                                <h5><?php echo '<span class="stars-container stars-"'.$books[$i][0][$j]["book_score"].'" style="color:#FE980F;font-size: 18px;">★★★★★</span>'?></h5>                           
-                                <h5><?php echo "<span style='text-decoration: line-through; color:#595959;'>THB ".$books[$i][0][$j]['book_price']."</span>"." "."<span style='color:red;'>".$books[$i][0][$j]['book_total'].'</span>';?></h5>
+                                <h5><?php echo '<span style="color:#595959;font-size:12px">'.$books[$i][0][$j]['publisher_name'].'</span>';?></h5>
+                                <h5><?php echo '<span style="color:#f57224">'."฿".$books[$i][0][$j]['book_total'].'</span>';?></h5>                                                                          
+                                <h5><?php echo "<span style='text-decoration: line-through; color:#595959a1;'>฿".$books[$i][0][$j]['book_price']."</span>"." "."<span>"."-".$books[$i][0][$j]['book_discount']."%".'</span>';?></h5>
+                                <h5><?php echo '<span class="stars-container stars-"'.$books[$i][0][$j]["book_score"].'" style="color:#FE980F;">★★★★★</span>'?></h5>                                                       
                             </div>
                         </div>                       
                     <?php } ?>

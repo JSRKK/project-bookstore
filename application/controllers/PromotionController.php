@@ -19,6 +19,7 @@ class PromotionController extends CI_Controller {
 				'book_img' => $row['bookImageCover'],
 				'book_start' => date("d/m/Y", strtotime($row['proDateStart'])),
 				'book_stop' => date("d/m/Y", strtotime($row['proDateStop'])),
+				'book_discount' => $row['proDiscount'],
 				'book_total' => sprintf('%0.2f',$row['bookPrice'] - (($row['bookPrice'] * $row['proDiscount']) / 100)),
 				'book_score' => ($score[0]['sum_score']/5)*100,
 				'publisher_name' => $row['publisherName']

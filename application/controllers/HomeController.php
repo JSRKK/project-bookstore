@@ -11,10 +11,14 @@ class HomeController extends CI_Controller {
 			$score = $this->HomeModel->get_score($row['book_ID']);
 			$discount = $this->HomeModel->get_discount($row['book_ID']);	
 
-			if($discount != null)
-				$tempDis = $row['bookPrice'] - (($row['bookPrice'] * $discount[0]['proDiscount']) / 100);
-			else			
-				$tempDis = 0;	
+			if($discount != null){
+				$tempTotal = $row['bookPrice'] - (($row['bookPrice'] * $discount[0]['proDiscount']) / 100);
+				$tempDis = $discount[0]['proDiscount'];
+			}
+			else{
+				$tempTotal = 0;	
+				$tempDis = 0;
+			}
 
 			if($key < (int)(sizeof($datas)/2)){
 				$data[] = array(
@@ -23,7 +27,8 @@ class HomeController extends CI_Controller {
 				'book_price' => sprintf('%0.2f',$row['bookPrice']),		//กำหนดทศนิยม 2 ตำแหน่ง		
 				'book_img' => $row['bookImageCover'],
 				'book_score' => ($score[0]['sum_score']/5)*100,
-				'book_discount' => sprintf('%0.2f',$tempDis),
+				'book_discount' => $tempDis,
+				'book_total' => sprintf('%0.2f',$tempTotal),
 				'publisher_name' => $row['publisherName']
 				);	
 			}
@@ -34,7 +39,8 @@ class HomeController extends CI_Controller {
 					'book_price' => sprintf('%0.2f',$row['bookPrice']),		//กำหนดทศนิยม 2 ตำแหน่ง		
 					'book_img' => $row['bookImageCover'],
 					'book_score' => ($score[0]['sum_score']/5)*100,
-					'book_discount' => sprintf('%0.2f',$tempDis),
+					'book_discount' => $tempDis,
+					'book_total' => sprintf('%0.2f',$tempTotal),
 					'publisher_name' => $row['publisherName']
 					);	
 			}

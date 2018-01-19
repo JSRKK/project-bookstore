@@ -120,13 +120,16 @@ body {
                             <div class="item-details bg-noise" style="margin-left:25px">
                                 <h5 class="item-title"><?php echo '<a href="#">'.$books[$i][0][$j]['book_name'].' </a>' ?></h5>
                                 <p style="color:#595959;font-size:12px;"><?php echo $books[$i][0][$j]['publisher_name'] ?></p>
-                                <h4 class="stars-container stars-<?php echo $books[$i][0][$j]['book_score']?>" style="color:#FE980F">★★★★★</h4>   
                                 <?php 
-                                    if($books[$i][0][$j]['book_discount'] > 0)
-                                        echo '<h5><span style="text-decoration: line-through; color:#595959;">THB '.$books[$i][0][$j]["book_price"].'</span>'.' '.'<span style="color:red;">'.$books[$i][0][$j]["book_discount"].'</span></h5>';
-                                    else
-                                        echo '<h5><span href="#">THB '.$books[$i][0][$j]['book_price'].'</span></h5>'; 
-                                ?>                                   
+                                    if($books[$i][0][$j]['book_discount'] > 0){
+                                        echo '<h5><span href="#" style="color:#f57224;">฿'.$books[$i][0][$j]['book_total'].'</span></h5>';
+                                        echo '<h5><span style="text-decoration: line-through; color:#595959a1;">฿'.$books[$i][0][$j]["book_price"].'</span>'.' '.'<span">'."-".$books[$i][0][$j]["book_discount"]."%".'</span></h5>';
+                                    }
+                                    else{
+                                        echo '<h5><span href="#">฿'.$books[$i][0][$j]['book_price'].'</span></h5>'; 
+                                    }
+                                ?>    
+                                <h5><span class="stars-container stars-<?php echo $books[$i][0][$j]['book_score']?>" style="color:#FE980F">★★★★★</span></h5>                                   
                             </div>
                         </div>                       
                     <?php } ?>

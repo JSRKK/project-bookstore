@@ -126,13 +126,16 @@
                   <div class="item-details bg-noise">
                     <h5 class="item-title" style="max-width: 160px"><?php echo '<a href="#">'.$row['book_name'].' </a>' ?></h5>
                     <p style="color:#595959; font-size:12px;"><?php echo $row['publisher_name'] ?></p>
-                    <h4 class="stars-container stars-<?php echo $row['book_score']?>" style="color:#FE980F">★★★★★</h4>
                     <?php 
-                      if($row['book_discount'] > 0)
-                        echo '<h5><span style="text-decoration: line-through; color:#595959;">THB '.$row["book_price"].'</span>'.' '.'<span style="color:red;">'.$row["book_discount"].'</span></h5>';
-                      else
-                        echo '<h5><span href="#">THB '.$row['book_price'].'</span></h5>'; 
-                    ?>                                                  
+                      if($row['book_discount'] > 0){
+                        echo '<h5><span href="#" style="color:#f57224;">฿'.$row['book_total'].'</span></h5>';
+                        echo '<h5><span style="text-decoration: line-through; color:#595959a1;">฿'.$row["book_price"].'</span>'.' '.'<span">'."-".$row["book_discount"]."%".'</span></h5>';
+                      }
+                      else{
+                        echo '<h5><span href="#">฿'.$row['book_price'].'</span></h5>'; 
+                      }
+                    ?>
+                    <h5><span class="stars-container stars-<?php echo $row['book_score']?>" style="color:#FE980F">★★★★★</span></h5>                                                                     
                   </div>
               </div>                                         
             <?php endforeach ?> 
@@ -151,14 +154,17 @@
                   </a>                                      
                   <div class="item-details bg-noise">
                     <h5 class="item-title" style="max-width: 160px"><?php echo '<a href="#">'.$row['book_name'].' </a>' ?></h5>
-                    <p style="color:#595959; font-size:12px;"><?php echo $row['publisher_name'] ?></p>
-                    <h4 class="stars-container stars-<?php echo $row['book_score']?>" style="color:#FE980F">★★★★★</h4>   
+                    <p style="color:#595959; font-size:12px;"><?php echo $row['publisher_name'] ?></p>   
                     <?php 
-                      if($row['book_discount'] > 0)
-                        echo '<h5><span style="text-decoration: line-through; color:#595959;">THB '.$row["book_price"].'</span>'.' '.'<span style="color:red;">'.$row["book_discount"].'</span></h5>';
-                      else
-                        echo '<h5><span href="#">THB '.$row['book_price'].'</span></h5>'; 
-                    ?>                                 
+                      if($row['book_discount'] > 0){
+                        echo '<h5><span href="#" style="color:#f57224;">฿'.$row['book_total'].'</span></h5>';
+                        echo '<h5><span style="text-decoration: line-through; color:#595959a1;">฿'.$row["book_price"].'</span>'.' '.'<span">'.$row["book_discount"]."%".'</span></h5>';
+                      }
+                      else{
+                        echo '<h5><span href="#">฿'.$row['book_price'].'</span></h5>'; 
+                      }
+                    ?>    
+                    <h5><span class="stars-container stars-<?php echo $row['book_score']?>" style="color:#FE980F">★★★★★</span></h5>                              
                   </div>
               </div>                                         
             <?php endforeach ?> 
