@@ -63,8 +63,8 @@
       <div class="container">
         <h2 class="block-title">History Purchase</h2>
           <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
             <table class="table table-bordered">
               <thead>
                 <tr>
@@ -77,7 +77,7 @@
               <tbody>
               <?php foreach ($books as $key => $book): ?>
                   <tr>
-                    <td rowcol-md-="2"> <?php echo $key+1; ?> </td>
+                    <td rowcol-sm-="2"> <?php echo $key+1; ?> </td>
                     <td><a href="<?php echo base_url('index.php/BookDetailController/index?book_id='.$book['book_ID'])?>" style="color:black; font-weight: bold"><?php echo $book['bookName'] ?></a></td>
                     <td><?php echo date("d/m/Y H:i:s", strtotime($book['purchasedDateTime'])); ?></td>
                     <td><?php echo sprintf('%0.2f', $book['purchasedPrice']); ?></td>

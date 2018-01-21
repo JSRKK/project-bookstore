@@ -55,56 +55,40 @@
 </head>
 
 <body class="page-index has-hero">
-
+  <?php if($promotion != null) {?>
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-  <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
-    <div class="hero" id="highlighted">
-      <div class="inner">
-        <!--Slideshow-->
-        <div id="highlighted-slider" class="container">
-          <div class="item-slider" data-toggle="owlcarousel" data-owlcarousel-settings='{"singleItem":true, "navigation":true, "transitionStyle":"fadeUp"}'>
-            <!--Slideshow content-->
-            <!--Slide 1-->
-            <div class="item">
-              <div class="row">
-                <div class="col-md-6 col-md-push-6 item-caption">
-                  <h2 class="h1 text-weight-light">
-                      Welcome to <span class="text-primary">Flexor</span>
-                    </h2>
-                    <h4>
-                      Super flexible responsive theme with a modest design touch.
-                    </h4>
-                  <p>Perfect for your App, Web service, company or portfolio! Magna tincidunt sociis ac integer amet non. Rhoncus augue? Tempor porttitor sed, aliquet phasellus a, nisi nunc aliquet nec rhoncus enim porttitor ultrices lacus tristique?</p>
-                  <a href="https://bootstrapmade.com" class="btn btn-more btn-lg i-right">Buy Now <i class="fa fa-plus"></i></a>
-                </div>
-                <div class="col-md-6 col-md-pull-6 hidden-xs">
-                  <img src="<?php echo base_url('assets/img/slides/slide1.png')?>" alt="Slide 1" class="center-block img-responsive">
-                </div>
-              </div>
-            </div>
-            <!--Slide 2-->
-            <div class="item">
-              <div class="row">
-                <div class="col-md-6 text-right-md item-caption">
-                  <h2 class="h1 text-weight-light">
-                      <span class="text-primary">Flexor</span> Bootstrap Theme
-                    </h2>
-                  <h4>
-                      High quality, responsive theme!
-                    </h4>
-                  <p>Perfect for your App, Web service, company or portfolio! Magna tincidunt sociis ac integer amet non. Rhoncus augue? Tempor porttitor sed, aliquet phasellus a, nisi nunc aliquet nec rhoncus enim porttitor ultrices lacus tristique?</p>
-                  <a href="https://bootstrapmade.com" class="btn btn-more btn-lg"><i class="fa fa-plus"></i> Learn More</a>
-                </div>
-                <div class="col-md-6 hidden-xs">
-                  <img src="<?php echo base_url('assets/img/slides/slide2.png')?>" alt="Slide 2" class="center-block img-responsive">
-                </div>
+    <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
+        <div class="hero" id="highlighted">
+          <div class="inner">
+            <!--Slideshow-->
+            <div id="highlighted-slider" class="container">
+              <div class="item-slider" data-toggle="owlcarousel" data-owlcarousel-settings='{"singleItem":true, "navigation":true, "transitionStyle":"fadeUp"}'>
+                <!--Slideshow content-->
+                <!--Slide 1-->               
+                <?php foreach($promotion as $key => $row):?>
+                    <div class="item">
+                      <div class="row">
+                        <div class="col-sm-6 col-sm-push-6 item-caption">
+                          <h2 class=""><span class=""><?php echo $row['bookName'] ?></span></h2>
+                          <h4><?php echo $row['publisherName'] ?></h4>  
+                          <h3><span href="#" style="color:#f57224;">฿<?php echo sprintf('%0.2f',$row['bookPrice'] - (($row['bookPrice'] * $row['proDiscount']) / 100)) ?></span></h3>  
+                          <h4><span style="text-decoration: line-through; color:#ffffffde;">฿<?php echo $row["bookPrice"]; ?></span> <span>-<?php echo $row["proDiscount"]; ?>%</span></h4>  
+                          <h3><span class="stars-container stars-<?php echo $score[0]['sum_score']?>" style="color:#FE980F">★★★★★</span></h3>
+                          <h4><?php echo date("d/m/Y", strtotime($row['proDateStart'])); echo " - ".date("d/m/Y", strtotime($row['proDateStart']));?></h4>
+                          <a class="btn btn-success" href="<?php echo base_url('index.php/BookDetailController/index?book_id='.$row["book_ID"])?>">ดูรายละเอียดเพิ่มเติม</a>
+                        </div>
+                        <div class="col-sm-6 col-sm-pull-6 hidden-xs" style="margin-top:20px">
+                          <img src="<?php echo base_url('book-img/'.$row['book_ID'].'/'.$row['bookImageCover'].'.jpg')?>" width="250" height="320" alt="Slide 1" class="center-block img-responsive">
+                        </div>
+                      </div>
+                    </div>
+                  <?php endforeach ?>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </div>
-</div>
+  <?php }?>
   <!-- ======== @Region: #content ======== -->
   <div id="content">  
      

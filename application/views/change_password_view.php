@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>BookStore Online</title>
+  <title>Login - Flexor Bootstrap Theme</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -23,7 +23,7 @@
   <meta name="twitter:image" content="">
 
   <!-- Fav and touch icons -->
-  <link rel="shortcut icon" href="<?php echo base_url('assets/img/icons/favicon.png')?>">
+  <link rel="shortcut icon" href="img/icons/favicon.png">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url('assets/img/icons/114x114.png')?>">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url('assets/img/icons/72x72.png')?>">
   <link rel="apple-touch-icon-precomposed" href="<?php echo base_url('assets/img/icons/default.png')?>">
@@ -52,47 +52,78 @@
     Author: BootstrapMade.com
     Author URL: https://bootstrapmade.com
   ======================================================= -->
+
 </head>
 
-<body class="page-index has-hero">
-  <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
- 
+<!-- ======== @Region: body ======== -->
 
-  <!-- ======== @Region: #content ======== -->
-  <div id="content">    
-   <div class="showcase block block-border-bottom-grey">
-    <div class="container">
-      <h2 class="block-title">History Top-up</h2>
-      <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-              <th class="table-active">ลำดับ</th>
-              <th class="table-active">หมายเลข serial</th>
-              <th class="table-active">วันที่/เวลา</th>
-              <th class="table-active">ราคา</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php if($payment != null){
-                foreach($payment as $key => $row){
-                  echo "<TR>";
-                  echo "<TD>" .$row['number']. "</TD>";
-                  echo "<TD>" .$row['pay_id']. "</TD>";
-                  echo "<TD>" .$row['pay_date']. "</TD>";
-                  echo "<TD>" .$row['pay_price']. "</TD>";
-                }
-              }
-              ?>
-            </tbody>
-          </table>
+<body class="fullscreen-centered page-login">
+  <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
+  <div id="background-wrapper" class="benches" data-stellar-background-ratio="0.8">
+
+    <!-- ======== @Region: #content ======== -->
+   
+    <div id="content">
+      <div class="header">
+        <div class="header-inner">
+          <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
         </div>
       </div>
+      <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                  Change password
+                </h3>
+            </div>
+            <div class="panel-body">
+                <form accept-charset="UTF-8" role="form" action = "<?php echo base_url('index.php/ChangePasswordController/change_password'); ?>" method="POST" enctype="multipart/form-data">             
+                    <fieldset>
+                    <div class="form-group">
+                        <div class="input-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
+                        <input id="oldPassword" name="oldPassword" type="password" class="form-control" placeholder="Old password" required = "required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
+                        <input id="newPassword" name="newPassword" type="password" class="form-control" placeholder="New Password" required = "required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
+                        <input id="confirmPassword" name ="confirmPassword" type="password" class="form-control" placeholder="Confirm password" required = "required">
+                        </div>
+                    </div>
+                    <input id="send" class="btn btn-primary btn-block" type="submit" value="เปลี่ยนรหัสผ่าน">
+                    </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /row -->
     </div>
   </div>
 
+  <script>
+      var password = document.getElementById("newPassword"), confirm_password = document.getElementById("confirmPassword");
+
+      function validatePassword(){
+        if(password.value != confirm_password.value) {
+          confirm_password.setCustomValidity("โปรดใส่รหัสผ่านให้ถูกต้อง");
+        } else {
+          confirm_password.setCustomValidity('');
+        }
+      }
+
+      password.onchange = validatePassword;
+      confirm_password.onkeyup = validatePassword;
+  </script>
   <!-- Required JavaScript Libraries -->
   <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js')?>"></script>
   <script src="<?php echo base_url('assets/lib/bootstrap/js/bootstrap.min.js')?>"></script>

@@ -63,68 +63,68 @@
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
       <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
           <h2 class="block-title">My Profile</h2>   
         </div>
       </div><br>
       <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-8 col-sm-12 col-xs-12">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-8 col-sm-12 col-xs-12">
               <div class="well well-sm">
                   <div class="row">
-                      <div class="col-md-3 col-sm-6">
+                      <div class="col-sm-3 col-sm-6">
                           <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-sm-12">
                               <img src=<?php echo base_url('book-img/profile.png')?> alt="" class="img-thumbnail img-responsive" />
                             </div>
-                          </div><br>                     
+                          </div><br>                                        
                           <div class="row">
-                            <div class="col-md-12 text-center">
-                              <button type="button" class="btn btn-primary">Edit Profile</button>
+                            <div class="col-sm-12 text-center">
+                              <a href="<?php echo base_url('index.php/ChangePasswordController')?>" class="btn btn-primary">Change password</a>
                             </div>
                           </div>
                       </div>  
-                      <div class="col-md-1"></div>                   
-                      <div class="col-md-8 col-sm-6">
+                      <div class="col-sm-1"></div>                   
+                      <div class="col-sm-8 col-sm-6">
                         <?php if($profile != null){
                           echo '<div class="row"><hr>
-                                  <div class="col-md-4">
+                                  <div class="col-sm-4">
                                     <h5>First name:</h5>
                                   </div>
-                                  <div class="col-md-8">
+                                  <div class="col-sm-8">
                                     <h5>'.$profile[0]['ReaderFname'].'</h5>
                                   </div>
                                 </div><hr>';
                           echo '<div class="row">
-                                  <div class="col-md-4">
+                                  <div class="col-sm-4">
                                     <h5>Last name:</h5>
                                   </div>
-                                  <div class="col-md-8">
+                                  <div class="col-sm-8">
                                     <h5>'.$profile[0]['ReaderLname'].'</h5>
                                   </div>
                               </div><hr>';              
                           echo '<div class="row">
-                                  <div class="col-md-4">
+                                  <div class="col-sm-4">
                                     <h5>Gender:</h5>
                                   </div>
-                                  <div class="col-md-8">
+                                  <div class="col-sm-8">
                                     <h5>'.$profile[0]['ReaderGender'].'</h5>
                                   </div>
                               </div><hr>';  
                           echo '<div class="row">
-                                  <div class="col-md-4">
+                                  <div class="col-sm-4">
                                     <h5>Birthday:</h5>
                                   </div>
-                                  <div class="col-md-8">
+                                  <div class="col-sm-8">
                                     <h5>'.date("d/m/Y", strtotime($profile[0]['ReaderDateBirth'])).'</h5>
                                   </div>
                               </div><hr>';
                           echo '<div class="row">
-                                  <div class="col-md-4">
+                                  <div class="col-sm-4">
                                     <h5>Telephone:</h5>
                                   </div>
-                                  <div class="col-md-8">
+                                  <div class="col-sm-8">
                                     <h5>'.$profile[0]['ReaderTel'].'</h5>
                                   </div>
                               </div><hr>';

@@ -86,14 +86,14 @@
             </div>
             <div class="panel-body">
               <div class="row"><br>
-              <div class="col-md-1"></div>
-                <div class="col-md-10">               
+              <div class="col-sm-1"></div>
+                <div class="col-sm-10">               
                   <form data-toggle="validator" accept-charset="UTF-8" role="form" action= "<?php echo base_url('index.php/RegisterController/register'); ?>" method="POST">
                     <fieldset>
                       <div class="form-group">
                         <div class="input-group input-group">
                           <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
-                          <input type="text" class="form-control" id="username" name="username" minlength="5" placeholder="Username" required>
+                          <input type="text" class="form-control" id="username" name="username" minlength="6" placeholder="Username" required>
                         </div>
                       </div>
                       <div class="form-group">
@@ -148,15 +148,6 @@
                 </div>
               </div>
               <p class="m-b-0 m-t">Already signed up? <a href="<?php echo base_url('index.php/LoginController'); ?>">Login here</a>.</p>
-              <div class="credits">
-            <!--
-              All the links in the footer should remain intact.
-              You can delete the links only if you purchased the pro version.
-              Licensing information: https://bootstrapmade.com/license/
-              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Flexor
-            -->
-            <a href="https://bootstrapmade.com/">Free Bootstrap Templates</a> by BootstrapMade.com
-          </div>
             </div>
           </div>
         </div>

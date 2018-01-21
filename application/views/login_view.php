@@ -76,7 +76,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
+        <div class="col-sm-4 col-sm-offset-4">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">
@@ -88,35 +88,20 @@
               
                 <fieldset>
                   <div class="form-group">
-                    <div class="input-group input-group-lg">
+                    <div class="input-group input-group">
                       <span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
                       <input id = "username" name = "username" type="text" class="form-control" placeholder="Username" required = "required">
                     </div>
                   </div>
                   <div class="form-group">
-                    <div class="input-group input-group-lg">
+                    <div class="input-group input-group">
                       <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
                       <input name = "password" type="password" class="form-control" placeholder="Password" required = "required">
                     </div>
                   </div>
-                  <div class="checkbox">
-                    <label>
-                        <input name="remember" type="checkbox" value="Remember Me">
-                        Remember Me
-                      </label>
-                  </div>
-                  <input id="send" class="btn btn-lg btn-primary btn-block" type="submit" value="Sign in">
+                  <input id="send" class="btn btn-primary btn-block" type="submit" value="เข้าสู่ระบบ">
                 </fieldset>
               </form>
-              <p class="m-b-0 m-t">Not signed up? <a href="<?php echo base_url('index.php/RegisterController'); ?>">Sign up here</a>.</p>
-              <div class="credits">
-            <!--
-              All the links in the footer should remain intact.
-              You can delete the links only if you purchased the pro version.
-              Licensing information: https://bootstrapmade.com/license/
-              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Flexor
-            -->
-            <a href="https://bootstrapmade.com/">Free Bootstrap Templates</a> by BootstrapMade.com
           </div>
             </div>
           </div>

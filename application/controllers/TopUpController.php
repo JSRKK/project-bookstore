@@ -13,7 +13,7 @@ class TopUpController extends CI_Controller {
 			$datas['bookTypes'] = $this->HeaderModel->getBookType();
 			$this->load->view('header_view',$datas);
 		
-			$usernameDatas['user'] = $this->getTopUp();
+			$usernameDatas['user'] = $id;
 			
 			$this->load->view('topup_view',$usernameDatas);
 			$this->load->view('footer_view');
@@ -27,49 +27,24 @@ class TopUpController extends CI_Controller {
 		$userid = $session_data['userid'];
 
 		$this->load->model('TopUpModel');
-		$serial = $this->input->post('serial');
-		print_r($serial);
-		$code = $serial%6;
-		//echo $code;
-		if($code == 0 || $code == 1 || $code == 2 ||$code == 3 ||$code == 4 ||$code == 5){
-			//echo "ทดสอบ";
-			if($code == 0){
-				$money = 50;
-			}
-			else if($code == 1){
-				$money = 90;
-			}
-			else if($code == 2){
-				$money = 150;
-			}
-			else if($code == 3){
-				$money = 500;
-			}
-			else if($code == 4){
-				$money = 1000;
-			}
-			else {
-				$money = 300;
-			}
-			$cash = $this->TopUpModel->setTopUp($money, $userid, $serial);
+		$serial = $this->input->post('serial');			
+		if($serial != null){
+			$money[] = array(50,90,150,300,500,1000);	
+			$code = $serial%6;
+			print_r($code);					
+			$cash = $this->TopUpModel->setTopUp($money[$code], $userid, $serial);
 			if($cash == null){
-				$this->TopUpModel->update_session($money);
+				$this->TopUpModel->update_session($money[$code]);
 				echo "<script>
 				alert('ท่านได้เติมเงินเรียบร้อยแล้ว');</script>";
 				redirect('HistoryTopUpController');
-			}
-			else{
-				echo "<script>
-				alert('หมายเลขของท่านไม่ถูกต้อง');</script>";
-				$usernameDatas['user'] = $this->getTopUp();
-				redirect('TopUpController');
-			}
+			}			
 		}
-	}
-	private function getTopUp(){
-			$this->load->model('TopUpModel');
-			$datas = $this->TopUpModel->getTopUp();
-			return $datas;
+		else{
+			echo "<script>
+			alert('หมายเลขของท่านไม่ถูกต้อง');</script>";
+			redirect('TopUpController');
+		}
 	}
 
 }

@@ -68,7 +68,7 @@
         <div class="item-carousel row" >
           <?php if($books != null)
               foreach($books as $key => $row):?> 
-                <div class="item item-book col-md-3" >
+                <div class="item item-book col-sm-3" >
                   <a href="<?php echo base_url('index.php/BookDetailController?book_id='.$row['book_id']);?>" class="overlay-wrapper">
                   <img src="<?php echo base_url('book-img/'.$row['book_id'].'/'.$row['book_img'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;width:200px;height:250px">             
                   </a>

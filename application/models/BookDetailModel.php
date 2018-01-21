@@ -45,6 +45,13 @@ class BookDetailModel extends CI_Model {
 		return  $query->result_array();
 	}
 
+	public function get_page($book_id){
+		$query = $this->db->query("SELECT COUNT(page_ID) AS pagesBook
+									FROM page
+									WHERE book_ID = '$book_id'");
+		return  $query->result_array();
+	}
+
 	public function buy_book($user_id, $book_id, $book_price, $user_cash){
 
 		$date = date("Y-m-d H:i:s");

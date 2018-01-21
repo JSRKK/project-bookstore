@@ -46,6 +46,16 @@ class HomeController extends CI_Controller {
 			}
 		}
 
+		$promotion = $this->HomeModel->get_promotion();
+		if($datas != null){
+			$score = $this->HomeModel->get_score($promotion[0]['book_ID']);
+			$dataShow['promotion'] = $promotion;
+			$dataShow['score'] = $score;
+		}
+		else{
+			$dataShow['promotion'] = null;
+		}
+
 		$this->load->model('HeaderModel');
 		$datas['bookTypes'] = $this->HeaderModel->getBookType();
 		$this->load->view('header_view',$datas);

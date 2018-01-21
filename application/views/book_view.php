@@ -113,7 +113,7 @@ body {
                 for($i=0;$i<sizeof($books);$i++){
                     echo  "<div class='item-carousel row'>";
                     for($j=0;$j<sizeof($books[$i][0]);$j++){?>                  
-                        <div class="item item-book col-md-3" >
+                        <div class="item item-book col-sm-3" >
                             <a href="<?php echo base_url('index.php/BookDetailController?book_id='.$books[$i][0][$j]['book_id']);?>" class="overlay-wrapper">
                             <img src="<?php echo base_url('book-img/'.$books[$i][0][$j]['book_id'].'/'.$books[$i][0][$j]['book_img'].'.jpg')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;width:200px;height:250px">             
                             </a>

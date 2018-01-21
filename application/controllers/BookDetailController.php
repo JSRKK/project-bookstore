@@ -12,6 +12,8 @@ class BookDetailController extends CI_Controller {
 		$book_id = $this->input->get('book_id');
 
 		$datas = $this->BookDetailModel->get_book($book_id);
+		$pageBook = $this->BookDetailModel->get_page($book_id);
+
 		if(!empty($datas)){
 			foreach ($datas as $row){
 				$data[] = array(
@@ -20,7 +22,8 @@ class BookDetailController extends CI_Controller {
 				'book_price' => sprintf('%0.2f',$row['bookPrice']),		//กำหนดทศนิยม 2 ตำแหน่ง		
 				'book_detail' => $row['bookDetail'],
 				'book_img' => $row['bookImageCover'],
-				'book_date' => date("d M Y", strtotime($row['bookDateImp'])),
+				'book_date' => date("d/m/Y", strtotime($row['bookDateImp'])),
+				'book_page' => $pageBook[0]['pagesBook'],
 				'publisher_name'  => $row['publisherName']
 				);	
 			}

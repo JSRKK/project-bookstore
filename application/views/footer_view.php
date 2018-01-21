@@ -3,13 +3,13 @@
     <div class="container">
 
       <div class="row" id="contact">
-        <div class="col-md-4">
+        <div class="col-sm-4">
             <h4>CREDITS:</h4>
-            <p><span>Teamplate Flexor by </span><a href="https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/">BootstrapMade.com</a></P>
+            <p><span>Free Bootstrap Templates</span><a href="https://bootstrapmade.com/">by BootstrapMade.com</a></P>
             <p><span>Make a flip book with HTML5 by </span><a href="www.turnjs.com">www.turnjs.com</a></P>
             <p><span>User icons </span><a href="https://github.com/eladnava/material-letter-icons">material-letter-icons generate</a></p>
         </div>
-        <div class="col-md-5">
+        <div class="col-sm-5">
             <h4>CREDITS PHOTO BOOKS:</h4>
             <p>สำนักพิมพ์ ROKZ</p>
             <p>สำนักพิมพ์ DayPoets</p>
@@ -18,7 +18,7 @@
             <p>สำนักพิมพ์ 3wow</p>
             <p>สำนักพิมพ์ DayPoets</p>
         </div>
-        <div class="col-md-3">
+        <div class="col-sm-3">
           <h4 class="text-uppercase">
               Follow Us On:
             </h4>
@@ -36,7 +36,7 @@
 
       <div class="row subfooter">
         <!--@todo: replace with company copyright details-->
-        <div class="col-md-7">
+        <div class="col-sm-7">
           <p>Copyright © Flexor Theme</p>
           <div class="credits">
             <!--
@@ -48,7 +48,7 @@
             <a href="https://bootstrapmade.com/">Free Bootstrap Templates</a> by BootstrapMade.com
           </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-sm-5">
           <ul class="list-inline pull-right">
             <li><a href="#">Terms</a></li>
             <li><a href="#">Privacy</a></li>

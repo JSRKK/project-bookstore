@@ -6,11 +6,12 @@ class PromotionModel extends CI_Model {
         }
 
         public function get() {
+            $date =  date('Y-m-d');
             $query = $this->db->query("SELECT p.promotion_ID, p.proName, p.proDateStart, p.proDateStop, 
                                         p.proDiscount, b.book_ID, b.bookName, b.bookPrice, b.bookImageCover, 
                                         pub.publisherName 
                                         FROM (promotion p NATURAL JOIN book b) NATURAL JOIN publisher pub
-                                        WHERE p.proDateStop >= 2018-01-13"); 
+                                        WHERE p.proDateStop >= '$date'"); 
             return $query->result_array(); 
         }
         public function get_score($book_id){

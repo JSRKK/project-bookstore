@@ -67,7 +67,7 @@
         <div class="container">
           <h2 class="block-title">Book Detail</h2>
           <div class="row"> 
-            <div class="col-md-3">                                               
+            <div class="col-sm-3">                                               
               <?php if($books != null){?>        
                 <img src="<?php echo base_url('book-img/'.$books[0]['book_id'].'/'.$books[0]['book_img'].'.jpg')?>"  width="300" height="150">
                 <br>
@@ -84,49 +84,49 @@
                 <?php }?> 
               <?php } ?> 
             </div>                       
-            <div class="col-md-9">
+            <div class="col-sm-9">
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-12">
                   <h2 style="font-weight: bold"><?php echo $books[0]['book_name']?></h2><hr>
                 </div>
               </div>                
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-sm-3">
                   <span style="font-size: 18px;">รายละเอียด:</span>
                 </div>
-                <div class="col-md-9">
+                <div class="col-sm-9">
                   <span style="font-size: 14px;"><?php echo $books[0]['book_detail']?></span>
                 </div>
               </div><hr>
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-sm-3">
                   <span style="font-size: 18px;">วันที่วางขาย:</span>
                 </div>
-                <div class="col-md-9">
+                <div class="col-sm-9">
                   <span style="font-size: 18px;" class="pull-right"> <?php echo $books[0]['book_date']?></span>
                 </div>
               </div><hr>  
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-sm-3">
                   <span style="font-size: 18px;">สำนักพิมพ์/ผู้แต่ง:</span>
                 </div>
-                <div class="col-md-9">
+                <div class="col-sm-9">
                   <span style="font-size: 18px;" class="pull-right"><?php echo $books[0]['publisher_name']?></span>
                 </div>
               </div><hr>  
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-sm-3">
                   <span style="font-size: 18px;">จำนวนหน้า:</span>
                 </div>
-                <div class="col-md-9">
-                  <span style="font-size: 18px;" class="pull-right">190</span>
+                <div class="col-sm-9">
+                  <span style="font-size: 18px;" class="pull-right"><?php echo $books[0]['book_page']?></span>
                 </div>
               </div><hr>  
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-sm-3">
                   <span style="font-size: 18px;">แชร์หนังสือ:</span>
                 </div>
-                <div class="col-md-9">
+                <div class="col-sm-9">
                   <span style="font-size: 18px;" class="pull-right">
                     <a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://www.example.com&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!" 
                         target="_blank" onclick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false"
@@ -138,7 +138,7 @@
                 </div>
               </div><hr> 
               <div class="row"> 
-                <div class="col-md-12">                      
+                <div class="col-sm-12">                      
                   <?php if($book_check == null){?>
                     <button data-toggle="modal" 
                       data-id="<?php echo $books[0]["book_id"]?>"
@@ -156,13 +156,13 @@
             </div>
           </div><hr>
           <div class="row container">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-sm-3">
                   <h4>ความคิดเห็น</h4>
                 </div>
-                <div class="col-md-9">
+                <div class="col-sm-9">
                   <a href="#" data-toggle="modal" 
                   data-id="<?php echo $books[0]["book_id"]?>" 
                   data-name="<?php echo $books[0]["book_name"]?>"
@@ -172,46 +172,46 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-sm-3">
                     <h1 class="text-center"><?php echo $books[0]['score']?></h1>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-sm-3">
                     <h3 class="text-center" style="color:#FE980F">
                       <span class="stars-container stars-<?php echo ($books[0]['score']/5)*100 ?>">★★★★★</span>
                     </h3>
                 </div>
               </div><br>
               <div class="row" >
-                <div class="col-md-12" id="user-comment">
+                <div class="col-sm-12" id="user-comment">
                   <?php if($users != null)
                   
                     foreach($users as $key => $row):?>
                       <?php if($key > $books[0]['limit']) break; ?>
                       <div class="row">
-                        <div class="col-md-1">
+                        <div class="col-sm-1">
                           <img src="<?php echo base_url('user-img/'.strtoupper($row['ReaderFname'][0]).'.png')?>" alt="User image" class="img-circle">
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-sm-10">
                           <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-sm-12">
                               <span><?php echo $row['ReaderFname']?></span>
                               <span><?php echo $row['ReaderLname']?></span>                                                       
                             </div>
                           </div>                                                
                           <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-sm-12">
                               <div class="row">
-                                <div class="col-md-10">
-                                  <p style="font-size:13px"><?php echo $row['reviewComment']?></p>
+                                <div class="col-sm-10">
                                   <p class="stars-container stars-<?php echo ($row['reviewScore']/5)*100 ?>">★★★★★</p>
                                   <span style="color:#33333361;font-size:14px"><?php echo date("d/m/Y H:m", strtotime($row['reviewDateTime']))?></span>
+                                  <p style="font-size:13px"><?php echo $row['reviewComment']?></p>
                                 </div>
-                                <div class="col-md-1">
+                                <div class="col-sm-1">
                                       <a href="#" style="font-size:20px; color:#4a4747c7;"><i class="fa fa-thumbs-up"></i></a>                          
                                 </div>
-                                <div class="col-md-1">
+                                <div class="col-sm-1">
                                       <a href="#" style="font-size:20px; color:#4a4747c7;"><i class="glyphicon glyphicon-option-vertical"></i></a>                          
                                 </div>
                               </div>
@@ -221,8 +221,8 @@
                       </div><hr>
                     <?php endforeach ?>
                     <div class="row" id="comment">
-                      <div class="col-md-12 text-center">
-                        <a href="#comment" id="btn_more">view more</a>
+                      <div class="col-sm-12 text-center">
+                        <a href="#comment" id="btn_more" class="btn btn-default">View more <i class="fa fa-chevron-down"></i> </a>
                        <input type="hidden" id="hiddencomment" name="hiddencomment" value="0"/>                                         
                       </div>
                     </div>
@@ -233,8 +233,7 @@
       </div>  
     </div>
   </div>
-
-  
+ 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -248,10 +247,10 @@
         </div>
         <div class="modal-body">
           <div class="row">
-                <div class="col-md-4">
+                <div class="col-sm-4">
                   <img id="img-url" src="<?php echo base_url('')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;">
                 </div>
-                <div class="col-md-8">
+                <div class="col-sm-8">
                     <span type="text" id="book-name"></span><hr>
                     THB <span type="text" id="book-price"></span><hr>
                 </div>
@@ -283,11 +282,11 @@
         </div>
         <div class="modal-body">
           <div class="row">
-                <div class="col-md-4">
+                <div class="col-sm-4">
                   <img id="img-url2" src="<?php echo base_url('')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;">
                   <p class="text-center" type="text" id="book-name"></p>
                 </div>
-                <div class="col-md-8 text-center">
+                <div class="col-sm-8 text-center">
                   <textarea class="form-control" id="user-comment" rows="7" style="resize: none;"placeholder="พิมพ์ข้อความเพื่อแสดงความคิดเห็นเกี่ยวกับหนังสือเล่มนี้" require></textarea><hr>
                   <p style="margin-bottom:-15px">ให้คะแนน</p>
                   <h2 class="stars-container stars-50">★★★★★</h2>

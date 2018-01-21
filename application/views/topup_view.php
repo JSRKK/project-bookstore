@@ -45,6 +45,7 @@
 
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <!-- =======================================================
     Theme Name: Flexor
@@ -64,15 +65,15 @@
       <div class="container">
         <h2 class="block-title">Top-up</h2> 
         <div class="row">
-          <div class="col-md-3"></div>
-          <div class="col-md-6 well">
-          <form class="form-horizontal" action= "<?php echo base_url('index.php/TopUpController/setTopUp'); ?>" method="POST" onsubmit="return confirm('คุณต้องการจะเติมเงินใช่หรือไม่?');">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6 well">
+          <form id="topupform" class="form-horizontal" method="POST" onsubmit="return confirm('คุณต้องการเติมเงินเข้าสู่ระบบใช่หรือไม่?');">
             <div class="form-group row">
-              <div class="col-md-1"></div>
-              <div class="col-md-4">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-4">
                 <label class="control-label pull-right" >Username:</label>
               </div>
-              <div class="col-md-6">
+              <div class="col-sm-6">
                 <?php if (isset($this->session->userdata['loged_in'])) {
                       $session_data = $this->session->userdata('loged_in'); ?>
                       <label class="control-label"><?php echo $session_data['userid']; ?></label>
@@ -80,16 +81,17 @@
               </div>
             </div>
             <div class="form-group row">
-              <div class="col-md-1"></div>
-              <div class="col-md-4">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-4">
                 <label class="control-label pull-right">SerialNo.(TrueMoney):</label>
               </div>
-              <div class="col-md-6">
-                <input type="text" class="form-control" value="" id="serialno"  minlength="14" maxlength="14" placeholder="Enter Serial Number (14)" name="serial" required>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="serial" onkeypress='return event.charCode >= 48 && event.charCode <= 57' 
+                name="serial" value="" minlength="14" maxlength="14" placeholder="Enter Serial Number (14)" required>
               </div>
             </div>  
             <div class="row">
-              <div class="col-md-12 text-center">
+              <div class="col-sm-12 text-center">
                 <input type="submit" class="btn btn-success" value="เติมเงิน"> 
               </div>
             </div>                
@@ -97,7 +99,7 @@
           </div>
         </div>
       </div>   
-    </div>   
+    </div> 
 
   <!-- Required JavaScript Libraries -->
   <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js')?>"></script>
