@@ -13,9 +13,24 @@ class BookDetailController extends CI_Controller {
 
 		$datas = $this->BookDetailModel->get_book($book_id);
 		$pageBook = $this->BookDetailModel->get_page($book_id);
+		$discount = $this->BookDetailModel->get_discount($book_id);	
 
+		
+		
 		if(!empty($datas)){
 			foreach ($datas as $row){
+				if($discount != null){
+					$tempTotal = $row['bookPrice'] - (($row['bookPrice'] * $discount[0]['proDiscount']) / 100);
+					$tempDis = $discount[0]['proDiscount'];
+					$tempStart = date("d/m/Y", strtotime($discount[0]['proDateStart']));
+					$tempStop = date("d/m/Y", strtotime($discount[0]['proDateStop']));
+				}
+				else{
+					$tempTotal = 0;	
+					$tempDis = 0;
+					$tempStart = null;
+					$tempStop = null;
+				}				
 				$data[] = array(
 				'book_id' => $row['book_ID'],
 				'book_name' => $row['bookName'],					
@@ -24,6 +39,10 @@ class BookDetailController extends CI_Controller {
 				'book_img' => $row['bookImageCover'],
 				'book_date' => date("d/m/Y", strtotime($row['bookDateImp'])),
 				'book_page' => $pageBook[0]['pagesBook'],
+				'book_discount' => $tempDis,
+				'book_total' => $tempTotal,
+				'book_dateStart' => $tempStart,
+				'book_dateStop' => $tempStop,
 				'publisher_name'  => $row['publisherName']
 				);	
 			}

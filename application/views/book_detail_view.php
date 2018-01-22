@@ -137,16 +137,46 @@
                   </span>
                 </div>
               </div><hr> 
+              <?php if($books[0]['book_discount'] > 0 && $book_check == null){ ?>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <span style="font-size: 18px;">โปรโมชั่นส่วนลด:</span>
+                  </div>
+                  <div class="col-sm-9">
+                    <span style="font-size: 18px;" class="pull-right"><?php echo $books[0]['book_discount']?>%</span>
+                  </div>
+                </div><hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <span style="font-size: 18px;">หมดเขต:</span>
+                  </div>
+                  <div class="col-sm-9">
+                    <span style="font-size: 18px;" class="pull-right"><?php echo $books[0]['book_dateStart']?> - <?php echo $books[0]['book_dateStop']?></span>
+                  </div>
+                </div><hr>      
+              <?php } ?>
               <div class="row"> 
                 <div class="col-sm-12">                      
-                  <?php if($book_check == null){?>
+                  <?php if($books[0]['book_discount'] > 0 && $book_check == null){?>
                     <button data-toggle="modal" 
                       data-id="<?php echo $books[0]["book_id"]?>"
                       data-name="<?php echo $books[0]["book_name"]?>" 
                       data-price="<?php echo $books[0]["book_price"]?>" 
                       data-img="<?php echo $books[0]["book_img"]?>"
                       class="btn btn-info pull-right open-myModal">
-                      ซื้อ THB <?php echo $books[0]['book_price']?>
+                      ซื้อ ฿<span style="text-decoration: line-through;"><?php echo $books[0]['book_price']?></span> <span><?php echo $books[0]['book_total']?></span>
+                    </button>
+                  
+                    <button type="button" class="btn btn-warning pull-right" style = "margin-right: 20px"><i class="fa fa-fw fa-gift"></i> ส่งของขวัญ</button>
+                  <?php }?>
+                  <?php if($books[0]['book_discount'] <= 0 && $book_check == null){?>
+                    <button data-toggle="modal" 
+                      data-id="<?php echo $books[0]["book_id"]?>"
+                      data-name="<?php echo $books[0]["book_name"]?>" 
+                      data-price="<?php echo $books[0]["book_price"]?>" 
+                      data-img="<?php echo $books[0]["book_img"]?>"
+                      class="btn btn-info pull-right open-myModal">
+                      ซื้อ ฿<?php echo $books[0]['book_price']?>
                     </button>
                   
                     <button type="button" class="btn btn-warning pull-right" style = "margin-right: 20px"><i class="fa fa-fw fa-gift"></i> ส่งของขวัญ</button>

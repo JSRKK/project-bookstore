@@ -21,6 +21,13 @@ class BookDetailModel extends CI_Model {
 		return $books;
 	}
 
+	public function get_discount($book_id){
+		$query = $this->db->query("SELECT proDateStart, proDateStop, proDiscount 
+								FROM promotion
+								WHERE book_ID = '$book_id'");
+		return  $query->result_array();
+	}
+
 	public function get_book($book_id)
 	{
 		$query = $this->db->query("SELECT b.book_ID, b.bookName, b.bookPrice, b.bookDetail, b.bookImageCover, b.bookDateImp, p.publisherName
