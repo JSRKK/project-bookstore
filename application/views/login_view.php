@@ -64,10 +64,10 @@
     <!-- ======== @Region: #content ======== -->
    
     <div id="content">
-      <div class="header">
+      <div class="header" style="margin-left:-20px;margin-bottom:-10px">
         <div class="header-inner">
           <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-          <a class="navbar-brand center-block" href="index.html" title="Home">
+          <a class="navbar-brand center-block" href="<?php echo base_url('index.php/HomeController') ?>" title="Home">
             <h1 class="hidden">
                 <img src="img/logo.png" alt="Flexor Logo">
                 Flexor

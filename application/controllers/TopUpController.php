@@ -30,20 +30,22 @@ class TopUpController extends CI_Controller {
 		$serial = $this->input->post('serial');			
 		if($serial != null){
 			$money[] = array(50,90,150,300,500,1000);	
-			$code = $serial%6;
-			print_r($code);					
-			$cash = $this->TopUpModel->setTopUp($money[$code], $userid, $serial);
+			$code = $serial%6;					
+			$cash = $this->TopUpModel->setTopUp($money[0][$code], $userid, $serial);
 			if($cash == null){
-				$this->TopUpModel->update_session($money[$code]);
+				$this->TopUpModel->update_session($money[0][$code]);				
 				echo "<script>
 				alert('ท่านได้เติมเงินเรียบร้อยแล้ว');</script>";
 				redirect('HistoryTopUpController');
+			}
+			else{
+				echo "<script>
+				alert('หมายเลขของท่านไม่ถูกต้อง');</script>";
+				$this->load->view('header_view');
+				$this->load->view('topup_view');
+				$this->load->view('footer_view');
+				
 			}			
-		}
-		else{
-			echo "<script>
-			alert('หมายเลขของท่านไม่ถูกต้อง');</script>";
-			redirect('TopUpController');
 		}
 	}
 

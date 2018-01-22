@@ -73,7 +73,7 @@
                 <br>
                 <?php if($book_check == null){?>
                   <div class="text-center">
-                    <a href="" class="btn btn-success"><i class="fa fa-book"></i> ทดลองอ่านฟรี</a>
+                    <a href="<?php echo base_url('index.php/ReadbookController/index?book_id='.$books[0]['book_id'])?>" class="btn btn-success"><i class="fa fa-book"></i> ทดลองอ่านฟรี</a>
                   </div>
                 <?php } ?>
 

@@ -67,7 +67,7 @@
         <div class="row">
           <div class="col-sm-3"></div>
           <div class="col-sm-6 well">
-          <form id="topupform" class="form-horizontal" method="POST" onsubmit="return confirm('คุณต้องการเติมเงินเข้าสู่ระบบใช่หรือไม่?');">
+          <form id="topupform" action ="<?php echo base_url('index.php/TopUpController/setTopUp'); ?>" class="form-horizontal" method="POST" onsubmit="return confirm('คุณต้องการเติมเงินเข้าสู่ระบบใช่หรือไม่?');">
             <div class="form-group row">
               <div class="col-sm-1"></div>
               <div class="col-sm-4">

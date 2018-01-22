@@ -26,7 +26,9 @@ class LoginController extends CI_Controller {
 		
 		}
 		else {
-		redirect('LoginController');
+		echo "<script>
+		alert('username หรือ password ไม่ถูกต้อง');</script>";	
+		$this->load->view('login_view');
 		}
 	}
 }

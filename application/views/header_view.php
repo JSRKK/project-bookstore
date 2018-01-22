@@ -68,18 +68,18 @@
   <!--Header & navbar-branding region-->
   <div class="header">
     <div class="header-inner container">
-      <div class="row">
+      <div class="row" style="margin-top:-10px">
         <div class="col-sm-8">
           <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
-          <a class="navbar-brand" href="index.html" title="Home">
+          <a class="navbar-brand" href="<?php echo base_url('index.php/HomeController') ?>" title="Home">
             <h1 class="hidden">
                 <img src="img/logo.png" alt="Flexor Logo">
                 Flexor
               </h1>
-          </a>
+          </a><br>
           <div class="navbar-slogan">
-            Responsive HTML Theme
-            <br> By BootstrapMade.com
+            Just read 
+            <br> You control your future
           </div>
         </div>
         <!--header rightside-->
@@ -114,7 +114,7 @@
     </div>
   </div>
   <div class="container">
-  <div class ="row">
+  <div class ="row" style="margin-top:-20px">
   <form accept-charset="UTF-8" role="form" action = "<?php echo base_url('index.php/BookController'); ?>" method="POST" enctype="multipart/form-data">
     <div class ="col-sm-2 col-sm-offset-8" style="margin-left:77%">
       <div class = "form-group">
