@@ -57,7 +57,7 @@
 <body class="page-index has-hero">
   <?php if($promotion != null) {?>
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-    <div id="background-wrapper" class="buildings" data-stellar-background-ratio="0.1">
+    <div id="background-wrapper2" class="buildings" data-stellar-background-ratio="0.1">
         <div class="hero" id="highlighted">
           <div class="inner">
             <!--Slideshow-->
@@ -68,14 +68,14 @@
                 <?php foreach($promotion as $key => $row):?>
                     <div class="item">
                       <div class="row">
-                        <div class="col-sm-6 col-sm-push-6 item-caption">
-                          <h2 class=""><span class=""><?php echo $row['bookName'] ?></span></h2>
-                          <h4><?php echo $row['publisherName'] ?></h4>  
-                          <h3><span href="#" style="color:#f57224;">฿<?php echo sprintf('%0.2f',$row['bookPrice'] - (($row['bookPrice'] * $row['proDiscount']) / 100)) ?></span></h3>  
-                          <h4><span style="text-decoration: line-through; color:#ffffffde;">฿<?php echo $row["bookPrice"]; ?></span> <span>-<?php echo $row["proDiscount"]; ?>%</span></h4>  
-                          <h3><span class="stars-container stars-<?php echo $score[0]['sum_score']?>" style="color:#FE980F">★★★★★</span></h3>
-                          <h4><?php echo date("d/m/Y", strtotime($row['proDateStart'])); echo " - ".date("d/m/Y", strtotime($row['proDateStart']));?></h4>
-                          <a class="btn btn-success" href="<?php echo base_url('index.php/BookDetailController/index?book_id='.$row["book_ID"])?>">ดูรายละเอียดเพิ่มเติม</a>
+                        <div class="col-sm-6 col-sm-push-6 item-caption" style="color:#1d1d1d;">
+                          <h2><span style="font-weight: bold"><?php echo $row['bookName'] ?></span></h2><br>
+                          <h4><span style="font-weight: bold"><?php echo $row['publisherName'] ?></span></h4>  
+                          <h4><span class="stars-container stars-<?php echo $score[0]['sum_score']?>" style="color:#FE980F">★★★★★</span></h4>                          
+                          <h4><span class="text-style" style="font-weight: bold;"><span>฿<?php echo sprintf('%0.2f',$row['bookPrice'] - (($row['bookPrice'] * $row['proDiscount']) / 100)) ?></span></span></h4>  
+                          <h4 ><span class="text-style" style="font-weight: bold;"><span style="text-decoration: line-through; color:#ffffffde;">฿<?php echo $row["bookPrice"]; ?></span> <span>-<?php echo $row["proDiscount"]; ?>%</span></span></h4>  
+                          <h4 ><span class="text-style" style="color:#fff; font-weight: bold"><?php echo date("d/m/Y", strtotime($row['proDateStart'])); echo " - ".date("d/m/Y", strtotime($row['proDateStart']));?></span></h4><br>
+                          <a class="btn btn-success" href="<?php echo base_url('index.php/BookDetailController/index?book_id='.$row["book_ID"])?>">เพิ่มเติม</a>
                         </div>
                         <div class="col-sm-6 col-sm-pull-6 hidden-xs" style="margin-top:20px">
                           <img src="<?php echo base_url('book-img/'.$row['book_ID'].'/'.$row['bookImageCover'].'.jpg')?>" width="250" height="320" alt="Slide 1" class="center-block img-responsive">

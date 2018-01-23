@@ -8,8 +8,7 @@ class LoginModel extends CI_Model {
 
         public function get_data(){
             $id = $this->input->post('username');
-            $password = $this->input->post('password');
-
+            $password = $this->input->post('password1');
             $this->db->select('userType');
             $this->db->from('user');
             $where = "user_ID = '$id' AND userPassword = '$password'";

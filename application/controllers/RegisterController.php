@@ -5,6 +5,7 @@ class RegisterController extends CI_Controller {
 
 	public function index()
 	{
+		$this->session->set_flashdata('success','คุณได้สมัครสมาชิกเรียบร้อยแล้ว');		
 		$this->load->view('register_view');
 	}
 
@@ -19,14 +20,12 @@ class RegisterController extends CI_Controller {
 		if($check == null){
 			$data = $this->RegisterModel->register_reader($username);
 			if($data == true){
-				echo "<script>
-				alert('คุณได้สมัครสมาชิกเรียบร้อย');</script>";
-				redirect('LoginController');
+				$this->session->set_flashdata('success','คุณได้สมัครสมาชิกเรียบร้อยแล้ว');
+				$this->load->view('register_view');
 			}			
 		}
 		else{
-			echo "<script>
-				alert('username นี้มีผู้ใช้งานแล้ว');</script>";
+			$this->session->set_flashdata('error','username นี้ถูกใช้งานแล้ว');
 			$this->load->view('register_view');
 		}
 	}

@@ -12,8 +12,8 @@ class RegisterModel extends CI_Model {
 
         public function register_reader($username) {
             $password = $this->input->post('password');
-            $fname = $this->input->post('fname');
-            $lname = $this->input->post('lname');
+            $fname = $this->input->post('first_name');
+            $lname = $this->input->post('last_name');
             $gender = $this->input->post('gender');
             $birthday = $this->input->post('birthday');
             $tel = $this->input->post('tel');

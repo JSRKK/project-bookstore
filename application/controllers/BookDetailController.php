@@ -40,7 +40,7 @@ class BookDetailController extends CI_Controller {
 				'book_date' => date("d/m/Y", strtotime($row['bookDateImp'])),
 				'book_page' => $pageBook[0]['pagesBook'],
 				'book_discount' => $tempDis,
-				'book_total' => $tempTotal,
+				'book_total' => sprintf('%0.2f',$tempTotal),
 				'book_dateStart' => $tempStart,
 				'book_dateStop' => $tempStop,
 				'publisher_name'  => $row['publisherName']

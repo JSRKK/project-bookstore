@@ -26,8 +26,7 @@ class LoginController extends CI_Controller {
 		
 		}
 		else {
-		echo "<script>
-		alert('username หรือ password ไม่ถูกต้อง');</script>";	
+		$this->session->set_flashdata('error','invalid login attempt.');
 		$this->load->view('login_view');
 		}
 	}

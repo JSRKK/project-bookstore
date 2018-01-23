@@ -4,13 +4,13 @@
 
       <div class="row" id="contact">
         <div class="col-sm-4">
-            <h4>CREDITS:</h4>
+            <h4 class="footer-text">CREDITS:</h4>
             <p><span>Free Bootstrap Templates</span><a href="https://bootstrapmade.com/">by BootstrapMade.com</a></P>
             <p><span>Make a flip book with HTML5 by </span><a href="www.turnjs.com">www.turnjs.com</a></P>
             <p><span>User icons </span><a href="https://github.com/eladnava/material-letter-icons">material-letter-icons generate</a></p>
         </div>
         <div class="col-sm-5">
-            <h4>CREDITS PHOTO BOOKS:</h4>
+            <h4 class="footer-text">CREDITS PHOTO BOOKS:</h4>
             <p>สำนักพิมพ์ ROKZ</p>
             <p>สำนักพิมพ์ DayPoets</p>
             <p>สำนักพิมพ์ MONO</p>
@@ -19,7 +19,7 @@
             <p>สำนักพิมพ์ DayPoets</p>
         </div>
         <div class="col-sm-3">
-          <h4 class="text-uppercase">
+          <h4 class="text-uppercase footer-text">
               Follow Us On:
             </h4>
           <!--social media icons-->
