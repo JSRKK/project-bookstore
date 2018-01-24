@@ -1331,6 +1331,7 @@
 }
 
 .panel-pricing .panel-heading {
+    background-color: #e7e3d4;
     padding-bottom: 15px;
     padding-top: 15px;
     position: relative;
@@ -1794,7 +1795,7 @@ a:hover {
     background-repeat: no-repeat;
     background-attachment: fixed;
     padding-bottom: 0;
-    border-bottom: 2px solid  #999790;
+    border-bottom: 2px solid  #ff5821;
     color: #999790;
 }
 
@@ -1805,7 +1806,7 @@ a:hover {
     background-repeat: no-repeat;
     background-attachment: fixed;
     padding-bottom: 0;
-    border-bottom: 1px solid  #999790;
+    border-bottom: 1px solid  #ff5821;
 }
 
 .benches {
@@ -1939,7 +1940,7 @@ a.btn-hh-trigger.target-open:after {
     min-height: 400px;
     color: #999;
     background-color: #e7e3d4;
-    border: 2px solid #999790;
+    border-top: 1px solid #ff5821;
     color: #999790;
 }
 
@@ -2150,7 +2151,7 @@ a.btn-hh-trigger.target-open:after {
     border-left: 2px dotted #bcbfc4;
     font-size: 13px;
     line-height: 1.2;
-    color: #bcbfc4;
+    color: #999790;
     display: none;
 }
 
@@ -2176,7 +2177,7 @@ a.btn-hh-trigger.target-open:after {
 }
 
 .navbar-default .navbar-nav .caret {
-    color: #ff5821;
+    color: #7c8082;
     vertical-align: middle;
     margin: 0;
     border: none;
@@ -2899,3 +2900,12 @@ ul.nav-tabs.nav-tabs-right>li:last-child {
   .stars-80:after { width: 80%; }
   .stars-90:after { width: 90%; }
   .stars-100:after { width: 100; }
+
+  .background-login{
+    background-color: #e7e3d4;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-bottom: 0;
+    color: #999790;
+  }

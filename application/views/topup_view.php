@@ -118,7 +118,7 @@
 
   <!--Contactform script -->
   <script src="<?php echo base_url('assets/contactform/contactform.js')?>"></script>
-
+  <script src="<?php echo base_url('assets/bootstrab/js/validate.js')?>"></script>
 </body>
 
 </html>

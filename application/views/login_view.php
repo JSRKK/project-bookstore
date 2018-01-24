@@ -16,7 +16,7 @@
     <link href="<?php echo base_url('assets/bootstrab/css.css')?>" rel="stylesheet" >
 </head>
 
-<body class="">
+<body class="background-login">
     <div id="content">
         <div class="container">
             <div class="row">
@@ -30,7 +30,7 @@
                         </div>
                     <?php endif; ?>
                     <div class="panel panel-default">
-                        <div class="panel-heading">
+                        <div class="panel-heading" style="">
                         <h3 class="panel-title">Login</h3>
                         </div>
                         <div class="panel-body">
