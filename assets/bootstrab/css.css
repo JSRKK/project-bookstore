@@ -14,6 +14,8 @@ html {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%
 }
+
+
 body {
     margin: 0
 }
@@ -1562,3 +1564,24 @@ a {
     border-color: #bbb!important
 }
 
+.background-login{
+    /* background-image: url(../img/backgrounds/login.jpg); */
+    background-color: #009688;
+  }
+
+html, body{
+    /* background-image: url(../img/backgrounds/login.png); */
+    background-color: #eceff1;
+}
+
+.navbar-brand {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    display: block;
+    text-shadow: none;
+    line-height: 1;
+    background: url(../img/logo.png) left top no-repeat;
+    height: 50px;
+    width: 160px;
+}

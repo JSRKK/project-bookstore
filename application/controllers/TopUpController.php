@@ -14,7 +14,7 @@ class TopUpController extends CI_Controller {
 			$this->load->view('header_view',$datas);
 		
 			$usernameDatas['user'] = $id;
-			
+			$this->session->set_flashdata('error', 'empty');			
 			$this->load->view('topup_view',$usernameDatas);
 			$this->load->view('footer_view');
 		}
@@ -34,17 +34,15 @@ class TopUpController extends CI_Controller {
 			$cash = $this->TopUpModel->setTopUp($money[0][$code], $userid, $serial);
 			if($cash == null){
 				$this->TopUpModel->update_session($money[0][$code]);				
-				echo "<script>
-				alert('ท่านได้เติมเงินเรียบร้อยแล้ว');</script>";
+				$this->session->set_flashdata('success', $money[0][$code]);	
 				redirect('HistoryTopUpController');
 			}
-			else{
-				echo "<script>
-				alert('หมายเลขของท่านไม่ถูกต้อง');</script>";
-				$this->load->view('header_view');
+			else{	
+				$this->session->set_flashdata('error','error');								 
+				$this->load->view('header_view');					
 				$this->load->view('topup_view');
 				$this->load->view('footer_view');
-				
+						
 			}			
 		}
 	}

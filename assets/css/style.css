@@ -1801,13 +1801,14 @@ a:hover {
 
 #background-wrapper2 {
     background-color: #e7e3d4;
-    /* background-color: #f8f4e3; */
     background-position: left top;
     background-repeat: no-repeat;
     background-attachment: fixed;
     padding-bottom: 0;
     border-bottom: 1px solid  #ff5821;
 }
+
+
 
 .benches {
     background-image: url(../img/backgrounds/benches.png);
@@ -2128,8 +2129,8 @@ a.btn-hh-trigger.target-open:after {
     text-shadow: none;
     line-height: 1;
     background: url(../img/logo.png) left top no-repeat;
-    height: 80px;
-    width: 100px;
+    height: 50px;
+    width: 160px;
 }
 
 .navbar-brand:hover {
@@ -2901,11 +2902,4 @@ ul.nav-tabs.nav-tabs-right>li:last-child {
   .stars-90:after { width: 90%; }
   .stars-100:after { width: 100; }
 
-  .background-login{
-    background-color: #e7e3d4;
-    background-position: left top;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    padding-bottom: 0;
-    color: #999790;
-  }
+ 

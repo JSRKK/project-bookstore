@@ -75,7 +75,7 @@
                           <h4><span class="text-style" style="font-weight: bold;"><span>฿<?php echo sprintf('%0.2f',$row['bookPrice'] - (($row['bookPrice'] * $row['proDiscount']) / 100)) ?></span></span></h4>  
                           <h4 ><span class="text-style" style="font-weight: bold;"><span style="text-decoration: line-through; color:#ffffffde;">฿<?php echo $row["bookPrice"]; ?></span> <span>-<?php echo $row["proDiscount"]; ?>%</span></span></h4>  
                           <h4 ><span class="text-style" style="color:#fff; font-weight: bold"><?php echo date("d/m/Y", strtotime($row['proDateStart'])); echo " - ".date("d/m/Y", strtotime($row['proDateStart']));?></span></h4><br>
-                          <a class="btn btn-success" href="<?php echo base_url('index.php/BookDetailController/index?book_id='.$row["book_ID"])?>">เพิ่มเติม</a>
+                          <a class="btn btn-success" href="<?php echo base_url('index.php/BookDetailController/index?book_id='.$row["book_ID"])?>">เพิ่มเติม <i class="fa fa-angle-double-right"></i></a>
                         </div>
                         <div class="col-sm-6 col-sm-pull-6 hidden-xs" style="margin-top:20px">
                           <img src="<?php echo base_url('book-img/'.$row['book_ID'].'/'.$row['bookImageCover'].'.jpg')?>" width="250" height="320" alt="Slide 1" class="center-block img-responsive">

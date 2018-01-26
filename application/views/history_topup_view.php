@@ -42,9 +42,9 @@
 
   <!-- Main Stylesheet File -->
   <link href="<?php echo base_url('assets/css/style.css')?>" rel="stylesheet">
-
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <!-- =======================================================
     Theme Name: Flexor
@@ -91,8 +91,35 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="successmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+              <div class="modal-content">
+                <div class="modal-body text-center">
+                  <h3 style="color:#20B2AA">เติมเงินสำเร็จ!</h3>
+                  <p id="text-success"></p>
+                  <button type="button" class="btn btn-info" data-dismiss="modal">ปิด</button>                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
   </div>
 
+  <script>
+    $(document).ready(function() {    
+        var success = <?php echo $this->session->flashdata('success'); ?>;    
+        if (success > 0){
+          document.getElementById("text-success").innerHTML = "คุณได้เติมเงินจำนวน ("+success+") บาท เข้าสู่ระบบเรียบร้อยแล้ว";
+          $("#successmodal").modal("show");       
+        } 
+    });
+  </script>
   <!-- Required JavaScript Libraries -->
   <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js')?>"></script>
   <script src="<?php echo base_url('assets/lib/bootstrap/js/bootstrap.min.js')?>"></script>

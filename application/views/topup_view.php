@@ -46,79 +46,150 @@
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <!-- =======================================================
-    Theme Name: Flexor
-    Theme URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
-    Author: BootstrapMade.com
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
 </head>
 
 <body class="page-index has-hero">
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-
+  
 
   <!-- ======== @Region: #content ======== -->
+  
   <div id="content">
     <div class="showcase block block-border-bottom-grey">
       <div class="container">
-        <h2 class="block-title">Top-up</h2> 
+        <h2 class="block-title">Top-up</h2>
         <div class="row">
+          <!-- <span id='check-modal' hidden></span>      -->
           <div class="col-sm-3"></div>
           <div class="col-sm-6 well">
-          <form id="topupform" action ="<?php echo base_url('index.php/TopUpController/setTopUp'); ?>" class="form-horizontal" method="POST" onsubmit="return confirm('คุณต้องการเติมเงินเข้าสู่ระบบใช่หรือไม่?');">
-            <div class="form-group row">
-              <div class="col-sm-1"></div>
-              <div class="col-sm-4">
-                <label class="control-label pull-right" >Username:</label>
-              </div>
-              <div class="col-sm-6">
-                <?php if (isset($this->session->userdata['loged_in'])) {
+            <form id="myform" action="<?php echo base_url('index.php/TopUpController/setTopUp'); ?>" class="form-horizontal" method="POST">
+              <div class="form-group row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4">
+                  <label class="control-label pull-right">Username:</label>
+                </div>
+                <div class="col-sm-6">
+                  <?php if (isset($this->session->userdata['loged_in'])) {
                       $session_data = $this->session->userdata('loged_in'); ?>
-                      <label class="control-label"><?php echo $session_data['userid']; ?></label>
-                <?php }?>
+                  <label class="control-label">
+                    <?php echo $session_data['userid']; ?>
+                  </label>
+                  <?php }?>
+                </div>
               </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-1"></div>
-              <div class="col-sm-4">
-                <label class="control-label pull-right">SerialNo.(TrueMoney):</label>
+              <div class="form-group row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4">
+                  <label class="control-label pull-right">SerialNo.(TrueMoney):</label>
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" id="serial" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="serial"
+                    value="" minlength="14" maxlength="14" placeholder="Enter Serial Number (14)" onkeyup="Submit();">
+                    <span id="validate" style="color:red;"></span>
+                </div>
               </div>
-              <div class="col-sm-6">
-                <input type="text" class="form-control" id="serial" onkeypress='return event.charCode >= 48 && event.charCode <= 57' 
-                name="serial" value="" minlength="14" maxlength="14" placeholder="Enter Serial Number (14)" required>
+              <div class="row">
+                <div class="col-sm-12 text-center">
+                  <!-- <input type="submit" class="btn btn-success" value="เติมเงิน"> -->
+                  <input type="button" class="btn btn-success submit-serial" value="เติมเงิน" />
+                </div>
               </div>
-            </div>  
-            <div class="row">
-              <div class="col-sm-12 text-center">
-                <input type="submit" class="btn btn-success" value="เติมเงิน"> 
-              </div>
-            </div>                
-          </form>
+            </form>
           </div>
         </div>
-      </div>   
-    </div> 
+      </div>
+                  
+      <!-- Modal -->
+      <div class="modal fade" id="confirmmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">ยืนยันการติมเงิน
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </h5>
+                </div>
+                <div class="modal-body">
+                  <span>คุณต้องการเติมเงินเข้าสู่ระบบใช่ หรือ ไม่?</span>
+                </div>
+                <div class="modal-footer">
+                  <div class="loader"></div> 
+                  <a href="#" id="submit" class="btn btn-info btn-md" data-loading-text="<i class='fa fa-spinner fa-spin '></i> ตกลง">ตกลง</a>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <!-- Required JavaScript Libraries -->
-  <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js')?>"></script>
-  <script src="<?php echo base_url('assets/lib/bootstrap/js/bootstrap.min.js')?>"></script>
-  <script src="<?php echo base_url('assets/lib/owlcarousel/owl.carousel.min.js')?>"></script>
-  <script src="<?php echo base_url('assets/lib/stellar/stellar.min.js')?>"></script>
-  <script src="<?php echo base_url('assets/lib/waypoints/waypoints.min.js')?>"></script>
-  <script src="<?php echo base_url('assets/lib/counterup/counterup.min.js')?>"></script>
-  <script src="<?php echo base_url('assets/contactform/contactform.js')?>"></script>
+    </div>   
+    
+    <script>  
+      function Submit(){
+        var letter = document.getElementById('validate').innerHTML;
+        if(letter.length > 0){
+          document.getElementById('validate').innerHTML = "";
+        }
+      }
 
-  <!-- Template Specisifc Custom Javascript File -->
-  <script src="<?php echo base_url('assets/js/custom.js')?>"></script>
+      $(document).ready(function() {    
+        var error = <?php echo $this->session->flashdata('error');?>;
+        if (error !== 'empty'){
+          document.getElementById('validate').innerHTML = "*หมายเลขนี้ถูกใช้งานไปแล้ว";
+        } 
+      });
 
-  <!--Custom scripts demo background & colour switcher - OPTIONAL -->
-  <script src="<?php echo base_url('assets/js/color-switcher.js')?>"></script>
+      $('.submit-serial').click(function () {
+        if(serial.value == "" || serial.value.length < 14){
+            document.getElementById('validate').innerHTML = "*กรุณากรอกหมายเลขทรูมันนี่ให้ครบ 14 หลัก";
+        }
+        else{
+          $("#confirmmodal").modal("show");
+          document.getElementById('validate').innerHTML = "";
+          <?php echo $this->session->set_flashdata('check','empty');?>
+        }
+      });
 
-  <!--Contactform script -->
-  <script src="<?php echo base_url('assets/contactform/contactform.js')?>"></script>
-  <script src="<?php echo base_url('assets/bootstrab/js/validate.js')?>"></script>
+      $('#submit').click(function () {
+        var serial = document.getElementById("serial");
+        if(serial.value != "" && serial.value.length >= 14){
+          var $this = $(this);
+          $this.button('loading');
+          setTimeout(function() {
+              $this.button('reset');
+              $('#myform').submit();              
+          }, 2000);
+        }
+        else{
+          $("#confirmmodal").modal("hide");         
+        }
+      });  
+    </script>
+
+    <!-- Required JavaScript Libraries -->
+    <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/lib/bootstrap/js/bootstrap.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/lib/owlcarousel/owl.carousel.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/lib/stellar/stellar.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/lib/waypoints/waypoints.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/lib/counterup/counterup.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/contactform/contactform.js')?>"></script>
+
+    <!-- Template Specisifc Custom Javascript File -->
+    <script src="<?php echo base_url('assets/js/custom.js')?>"></script>
+
+    <!--Custom scripts demo background & colour switcher - OPTIONAL -->
+    <script src="<?php echo base_url('assets/js/color-switcher.js')?>"></script>
+
+    <!--Contactform script -->
+    <script src="<?php echo base_url('assets/contactform/contactform.js')?>"></script>
+    <script src="<?php echo base_url('assets/bootstrab/js/validate.js')?>"></script>
 </body>
 
 </html>

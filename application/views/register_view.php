@@ -20,7 +20,10 @@
   <div id="content">
     <div class="container">
       <div class="row">
-        <div class="col-sm-5 col-sm-offset-3">
+        <div class="col-sm-6 col-sm-offset-3">
+          <a style="margin-top:-10%;margin-left:35%" class="navbar-brand" href="<?php echo base_url('index.php/HomeController') ?>"
+            title="Home">
+          </a>
           <?php if($this->session->flashdata('error')): ?>
           <div class="alert alert-danger">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -33,92 +36,102 @@
           </div>
           <?php endif; ?>
           <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">สมัครสมาชิก</h4>
-            </div>
-            <div class="panel-body">
+            <div class="panel-body row">
               <div class="container2">
-              <?php if($this->session->flashdata('success')) :?>
+                <?php if($this->session->flashdata('success')) :?>
                 <div class="text-center">
-                  <h3><?php echo $this->session->flashdata('success') ?>
-                    <span style="color:green;font-size:25px"><i class="fa fa-check-circle-o"></i></span>
-                  </h3>   
-                  <a href="<?php echo base_url('index.php/HomeController'); ?>" class="btn btn-success">ตกลง</a>      
-                </div>         
+                  <h3>
+                    <?php echo $this->session->flashdata('success') ?>
+                    <span style="color:green;font-size:25px">
+                      <i class="fa fa-check-circle-o"></i>
+                    </span>
+                  </h3>
+                  <a href="<?php echo base_url('index.php/HomeController'); ?>" class="btn btn-success">ตกลง</a>
+                </div>
                 <?php else:?>
                 <form class="form-horizontal" action="<?php echo base_url('index.php/RegisterController/register'); ?>" method="post" id="reg_form">
                   <fieldset>
-                    <div class="form-group">
-                      <div class="input-group input-group">
-                        <span class="input-group-addon">
-                          <i class="glyphicon glyphicon-user"></i>
-                        </span>
-                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First name" required>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="input-group input-group">
-                        <span class="input-group-addon">
-                          <i class="glyphicon glyphicon-user"></i>
-                        </span>
-                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last name" required>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="input-group input-group">
-                        <span class="input-group-addon">
-                          <i class="glyphicon glyphicon-user"></i>
-                        </span>
-                        <input type="text" class="form-control" id="username" name="username" minlength="6" placeholder="Username" required>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="input-group input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-fw fa-lock"></i>
-                        </span>
-                        <input type="password" id="password" name="password" minlength="6" placeholder="Password" class="form-control" required>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="input-group input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-fw fa-lock"></i>
-                        </span>
-                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" class="form-control" required>
-                      </div>
-                    </div>                  
-                    <div class="form-group">
-                      <div class="input-group input-group">
-                        <span class="input-group-addon">
-                          <i class="fa fa-calendar"></i>
-                        </span>
-                        <input type="date" class="form-control" id="birthday" name="birthday" placeholder="Date of Birth" required>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group input-group">
-                          <span class="input-group-addon"><i class="fa fa-transgender"></i></span>
-                          <select id="gender" name="gender" class="form-control" required>
-                            <option value="" selected>Gender</option>
-                            <option value="Female">Female</option>
-                            <option value="Male">Male</option>
-                            <option value="Other">Other</option>
-                            <option value="Rather not say">Rather not say</option>
-                          </select>
+                    <div class="row">
+                      <div class="col-sm-8 col-sm-offset-2">
+                        <div class="form-group text-center">
+                          <h5 style="font-weight: bold">REGISTER</h5>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group input-group">
+                            <span class="input-group-addon">
+                              <i class="glyphicon glyphicon-user"></i>
+                            </span>
+                            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First name" required>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group input-group">
+                            <span class="input-group-addon">
+                              <i class="glyphicon glyphicon-user"></i>
+                            </span>
+                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last name" required>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group input-group">
+                            <span class="input-group-addon">
+                              <i class="glyphicon glyphicon-user"></i>
+                            </span>
+                            <input type="text" class="form-control" id="username" name="username" minlength="6" placeholder="Username" required>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group input-group">
+                            <span class="input-group-addon">
+                              <i class="fa fa-fw fa-lock"></i>
+                            </span>
+                            <input type="password" id="password" name="password" minlength="6" placeholder="Password" class="form-control" required>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group input-group">
+                            <span class="input-group-addon">
+                              <i class="fa fa-fw fa-lock"></i>
+                            </span>
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" class="form-control" required>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group input-group">
+                            <span class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </span>
+                            <input type="date" class="form-control" id="birthday" name="birthday" placeholder="Date of Birth" required>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group input-group">
+                            <span class="input-group-addon">
+                              <i class="fa fa-transgender"></i>
+                            </span>
+                            <select id="gender" name="gender" class="form-control" required>
+                              <option value="" selected>Gender</option>
+                              <option value="Female">Female</option>
+                              <option value="Male">Male</option>
+                              <option value="Other">Other</option>
+                              <option value="Rather not say">Rather not say</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group input-group">
+                            <span class="input-group-addon">
+                              <i class="glyphicon glyphicon-earphone"></i>
+                            </span>
+                            <input type="tel" class="form-control" name="tel" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="10"
+                              maxlength="10" placeholder="Tel" required>
+                          </div>
                         </div>
                       </div>
-                    <div class="form-group">
-                      <div class="input-group input-group">
-                        <span class="input-group-addon">
-                          <i class="glyphicon glyphicon-earphone"></i>
-                        </span>
-                        <input type="tel" class="form-control" name="phone" minlength="10" maxlength="10" placeholder="Tel" required>
-                      </div>
-                    </div>                    
-                    <input class="btn btn-lg btn-primary btn-block" id="submit" type="submit" value="Register">
+                    </div><br>
+                    <input class="btn btn-lg btn-primary btn-block" id="submit" type="submit" value="สมัครสามาชิก">
                   </fieldset>
-                </form>              
+                </form>
               </div>
               <?php endif; ?>
             </div>

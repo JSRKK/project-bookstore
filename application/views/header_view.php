@@ -13,7 +13,7 @@
   <!--Header & navbar-branding region-->
   <div class="header">
     <div class="header-inner container">
-      <div class="row" style="margin-top:-10px">
+      <div class="row" style="">
         <div class="col-sm-8">
           <!--navbar-branding/logo - hidden image tag & site name so things like Facebook to pick up, actual logo set via CSS for flexibility -->
           <a class="navbar-brand" href="<?php echo base_url('index.php/HomeController') ?>" title="Home">
@@ -21,7 +21,7 @@
                 <img src="img/logo.png" alt="Flexor Logo">
                 Flexor
               </h1>
-          </a><br>
+          </a>
           <div class="navbar-slogan">
             Just read 
             <br> You control your future
@@ -32,17 +32,17 @@
           <!--user menu-->
           <ul class="list-inline user-menu pull-right" style='color:#ff4800;'>           
             <?php 
-            if (isset($this->session->userdata['loged_in'])) { ?>
-                <li class="user-register"><i class="glyphicon glyphicon-user"></i> <a  href= "<?php echo base_url('index.php/ProfileController')?>" class="text-uppercase" style="color:#7c8082;">
+            if (isset($this->session->userdata['loged_in'])) { ?>            
+              <li>
+              <?php $session_data = $this->session->userdata('loged_in');
+                          echo "<i class='glyphicon glyphicon-bitcoin'></i> : <span style='color:#7c8082;'>".$session_data['cash']."</span>" ;
+              ?>
+            </li>
+            <li class="user-register"><i class="glyphicon glyphicon-user"></i> <a  href= "<?php echo base_url('index.php/ProfileController')?>" class="text-uppercase" style="color:#7c8082;">
                 <?php $session_data = $this->session->userdata('loged_in');
                           echo $session_data['fName']." ".$session_data['lName'] ;
                 ?>      
               </a></li>
-              <li>
-              <?php $session_data = $this->session->userdata('loged_in');
-                          echo " <span style='color:#7c8082;'>|</span> <i class='fa fa-money'></i> : <span style='color:#7c8082;'>".$session_data['cash']." | </span>" ;
-              ?>
-            </li>
               <li class="user-logout"><i class="fa fa-fw fa-lock"></i> <a href="<?php echo base_url('index.php/HomeController/logout')?>" class="text-uppercase" style="color:#7c8082;">Log out</a></li>
             <?php }  ?>
               
@@ -58,7 +58,7 @@
     </div>
   </div>
   <div class="container">
-  <div class ="row" style="margin-top:-50px">
+  <div class ="row" style="">
   <form accept-charset="UTF-8" role="form" action = "<?php echo base_url('index.php/BookController'); ?>" method="POST" enctype="multipart/form-data">
     <div class ="col-sm-2 col-sm-offset-8" style="margin-left:77%">
       <div class = "form-group">
