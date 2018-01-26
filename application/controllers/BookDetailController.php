@@ -10,6 +10,9 @@ class BookDetailController extends CI_Controller {
 		$session_data = $this->session->userdata('loged_in');
 		$id = $session_data['userid'];
 		$book_id = $this->input->get('book_id');
+		if(empty($book_id)){
+			$book_id = $this->session->flashdata('book_id');
+		}
 
 		$datas = $this->BookDetailModel->get_book($book_id);
 		$pageBook = $this->BookDetailModel->get_page($book_id);
@@ -72,14 +75,14 @@ class BookDetailController extends CI_Controller {
 		}
 		
 		if(!empty($id)){
-			$dataShow['book_check'] = $this->BookDetailModel->check_book($id,$data[0]['book_id']);
+			$dataShow['book_check'] = $this->BookDetailModel->check_book($id, $data[0]['book_id']);
 			$this->session->set_flashdata('cash', $session_data['cash']);
 		}
 		else{
 			$dataShow['book_check'] = null;
 			$this->session->set_flashdata('cash', 0);
 		}
-			
+		$this->session->set_flashdata('type', 'empty');	
 		$this->load->model('HeaderModel');
 		$datas['bookTypes'] = $this->HeaderModel->getBookType();
 		$this->load->view('header_view',$datas);
@@ -99,6 +102,7 @@ class BookDetailController extends CI_Controller {
 				$cash = $this->BookDetailModel->buy_book($id, $book_id, $book_price, $user_cash);
 				$this->BookDetailModel->update_session($cash);
 				$this->session->set_flashdata('type', 'success');
+				$this->session->set_flashdata('book_id', $book_id);
 				redirect('BookDetailController');
 			}			
 		}

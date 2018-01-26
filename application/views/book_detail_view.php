@@ -361,7 +361,7 @@
           <h3 style="color:red;">ซื้อหนังสือไม่สำเร็จ! <i class="fa fa-times-circle-o"></i></h3>
           <p>จำนวนเงินไม่เพียงพอต่อการซื้อหนังสือ กรุณาเติมเงินเข้าสู่ระบบก่อนซื้อหนังสือใหม่อีกครั้ง</p>
           <a href="<?php echo base_url('index.php/TopUpController') ?>" class="btn btn-success">ไปที่หน้าเติมเงิน</a>
-          <a href="" class="btn btn-primary">ยกเลิก</a>
+          <a href="#" class="btn btn-primary" data-dismiss="modal">ยกเลิก</a>
         </div>
       </div>
     </div>
@@ -372,15 +372,22 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body text-center">
-          <h3 style="color:red;">ซื้อหนังสือสำเร็จ! <i class="fa fa-check-circle-o"></i></h3>
-          <p>คุณได้ซื้อหนังสือเรียบร้อย สามารถดูหนังสือที่ซื้อได้จาก My Library ของคุณ</p>
-          <a href="" class="btn btn-info">ตกลง</a>
+          <h3 style="color:green;">คุณได้ซื้อหนังสือเรียบร้อย! <i class="fa fa-check-circle-o"></i></h3>
+          <p>คุณสามารถเข้าไปดูหนังสือที่ซื้อได้ใน My Library ของคุณ</p>
+          <a href="#" class="btn btn-info" data-dismiss="modal">ตกลง</a>
         </div>
       </div>
     </div>
   </div>
 
   <script type="text/javascript">
+    $(document).ready(function() {    
+        var type = <?php echo $this->session->flashdata('type'); ?>;
+        if (type != 'empty'){
+          $('#modal-success').modal('show');
+        } 
+    });
+
     $('#buy').click(function ()
     {
       var url = "<?php echo base_url(); ?>"+'book-img/'+$(this).data('id')+'/'+$(this).data('img')+'.jpg';      
