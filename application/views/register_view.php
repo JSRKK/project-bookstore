@@ -17,13 +17,13 @@
 </head>
 
 <body class="">
-  <div id="content">
+  <div id="content-register">
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-          <a style="margin-top:-10%;margin-left:35%" class="navbar-brand" href="<?php echo base_url('index.php/HomeController') ?>"
+          <a style="margin-top:-10%;margin-left:30%" class="navbar-brand" href="<?php echo base_url('index.php/HomeController') ?>"
             title="Home">
-          </a>
+          </a><br>
           <?php if($this->session->flashdata('error')):?>
           <div class="alert alert-danger">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">

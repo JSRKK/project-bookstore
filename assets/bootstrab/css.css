@@ -226,7 +226,7 @@ button:-moz-focusring,
     background: #212324;
     padding: 25px 0 20px 0;
 }
-#content {
+#content-login {
     background: transparent;
     position: fixed;
     top: 50%;
@@ -235,6 +235,9 @@ button:-moz-focusring,
     transform: translate(-50%, -50%);
     width: 80%;
 }
+#content-register {
+    margin-top:5%;
+ }
 
 legend {
     color: inherit;
@@ -1583,5 +1586,5 @@ html, body{
     line-height: 1;
     background: url(../img/logo.png) left top no-repeat;
     height: 50px;
-    width: 160px;
+    width: 200px;
 }

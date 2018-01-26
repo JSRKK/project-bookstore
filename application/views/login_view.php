@@ -20,7 +20,7 @@
 
 <body>
     <div class="background-login" data-stellar-background-ratio="0.1">
-    <div id="content">
+    <div id="content-login">
         <div class="container">           
             <div class="row">
                 <div class="col-sm-5 col-sm-offset-3">

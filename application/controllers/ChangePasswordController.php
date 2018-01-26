@@ -17,7 +17,7 @@ class ChangePasswordController extends CI_Controller {
 			$session_data = $this->session->userdata('loged_in');
 			$id = $session_data['userid'];
 
-			$new_password = $this->input->post('newPassword');
+			$new_password = $this->input->post('password');
 			$this->ChangePasswordModel->update_password($id, $new_password);
 			echo "<script>alert('เปลี่ยนเรียบร้อยแล้ว');</script>";
 			redirect('ProfileController');

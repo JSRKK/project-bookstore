@@ -24,7 +24,7 @@
           </a>
           <div class="navbar-slogan">
             Just read 
-            <br> You control your future
+            <br><br> You control your future
           </div>
         </div>
         <!--header rightside-->

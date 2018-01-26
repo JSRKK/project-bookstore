@@ -42,7 +42,6 @@
 
   <!-- Main Stylesheet File -->
   <link href="<?php echo base_url('assets/css/style.css')?>" rel="stylesheet">
-
   <!--Your custom colour override - predefined colours are: colour-blue.css, colour-green.css, colour-lavander.css, orange is default-->
   <link href="#" id="colour-scheme" rel="stylesheet">
 
@@ -135,8 +134,8 @@
           </div>
       </div>
     </div>
-</div>
 
+    
   <!-- Required JavaScript Libraries -->
   <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js')?>"></script>
   <script src="<?php echo base_url('assets/lib/bootstrap/js/bootstrap.min.js')?>"></script>
