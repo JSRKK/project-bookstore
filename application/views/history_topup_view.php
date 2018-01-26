@@ -115,7 +115,7 @@
     $(document).ready(function() {    
         var success = <?php echo $this->session->flashdata('success'); ?>;    
         if (success > 0){
-          document.getElementById("text-success").innerHTML = "คุณได้เติมเงินจำนวน ("+success+") บาท เข้าสู่ระบบเรียบร้อยแล้ว";
+          document.getElementById("text-success").innerHTML = "คุณได้เติมเงินจำนวน ("+success+") บาท เข้าสู่ระบบเรียบร้อย";
           $("#successmodal").modal("show");       
         } 
     });

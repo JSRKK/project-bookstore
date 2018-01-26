@@ -73,11 +73,13 @@ class BookDetailController extends CI_Controller {
 		
 		if(!empty($id)){
 			$dataShow['book_check'] = $this->BookDetailModel->check_book($id,$data[0]['book_id']);
+			$this->session->set_flashdata('cash', $session_data['cash']);
 		}
 		else{
 			$dataShow['book_check'] = null;
+			$this->session->set_flashdata('cash', 0);
 		}
-		
+			
 		$this->load->model('HeaderModel');
 		$datas['bookTypes'] = $this->HeaderModel->getBookType();
 		$this->load->view('header_view',$datas);
@@ -87,24 +89,18 @@ class BookDetailController extends CI_Controller {
 
 	public function buy(){
 		$session_data = $this->session->userdata('loged_in');
-		$id = $session_data['userid'];
-		$book_id = $this->input->get('book_id');
-
-		$this->load->model('BookDetailModel');
-		$datas = $this->BookDetailModel->get_book($book_id);
-		$book_price = $datas[0]['bookPrice'];
+		$id = $session_data['userid'];	
 		$user_cash = $session_data['cash'];
-
 		if(!empty($id)){
+			$book_id = $this->input->post('book_id');
+			$book_price = $this->input->post('book_price');
 			if($user_cash >= $book_price){
 				$this->load->model('BookDetailModel');
 				$cash = $this->BookDetailModel->buy_book($id, $book_id, $book_price, $user_cash);
 				$this->BookDetailModel->update_session($cash);
-				redirect('LibraryController');
-			}
-			else{
-
-			}
+				$this->session->set_flashdata('type', 'success');
+				redirect('BookDetailController');
+			}			
 		}
 		else{
 			redirect("LoginController");

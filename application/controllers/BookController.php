@@ -40,6 +40,11 @@ class BookController extends CI_Controller {
 					$data = null;
 					$index++;
 				}
+				
+				if((sizeof($datas) - 1) == $key && sizeof($datas)%4 != 0){
+					$data2[$index] = array( $data );
+					$data = null;
+				}
 			}
 			
 			$datashow['books'] = $data2;
@@ -47,7 +52,6 @@ class BookController extends CI_Controller {
 		else{
 			$datashow['books'] = null;
 		}
-
 		$this->load->model('HeaderModel');
 		$datas['bookTypes'] = $this->HeaderModel->getBookType();
 		$this->load->view('header_view',$datas);

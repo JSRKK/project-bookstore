@@ -59,10 +59,12 @@
 
 <body class="page-index has-hero">
   <!--Change the background class to alter background image, options are: benches, boots, buildings, city, metro -->
-
+  
   <!-- ======== @Region: #content ======== -->
   <div id="content">
     <div class="container">
+    <?php $session_data = $this->session->userdata('loged_in'); ?>
+      <p id="user_id" hidden><?php echo $session_data['userid']; ?></p>
       <div class="showcase block block-border-bottom-grey">
         <div class="container">
           <h2 class="block-title">Book Detail</h2>
@@ -157,30 +159,27 @@
               <?php } ?>
               <div class="row"> 
                 <div class="col-sm-12">                      
-                  <?php if($books[0]['book_discount'] > 0 && $book_check == null){?>
-                    <button data-toggle="modal" 
+                  <?php if($books[0]['book_discount'] > 0 && $book_check == null) :?>
+                    <button id="buy" data-toggle="modal" 
                       data-id="<?php echo $books[0]["book_id"]?>"
                       data-name="<?php echo $books[0]["book_name"]?>" 
-                      data-price="<?php echo $books[0]["book_price"]?>" 
+                      data-price="<?php echo $books[0]["book_total"]?>" 
                       data-img="<?php echo $books[0]["book_img"]?>"
-                      class="btn btn-info pull-right open-myModal">
+                      class="btn btn-info pull-right">
                       ซื้อ ฿<span style="text-decoration: line-through;"><?php echo $books[0]['book_price']?></span> <span><?php echo $books[0]['book_total']?></span>
-                    </button>
-                  
+                    </button>                 
                     <button type="button" class="btn btn-warning pull-right" style = "margin-right: 20px"><i class="fa fa-fw fa-gift"></i> ส่งของขวัญ</button>
-                  <?php }?>
-                  <?php if($books[0]['book_discount'] <= 0 && $book_check == null){?>
-                    <button data-toggle="modal" 
+                  <?php elseif ($books[0]['book_discount'] <= 0 && $book_check == null) :?>
+                    <button id="buy" data-toggle="modal" 
                       data-id="<?php echo $books[0]["book_id"]?>"
                       data-name="<?php echo $books[0]["book_name"]?>" 
                       data-price="<?php echo $books[0]["book_price"]?>" 
                       data-img="<?php echo $books[0]["book_img"]?>"
-                      class="btn btn-info pull-right open-myModal">
+                      class="btn btn-info pull-right">
                       ซื้อ ฿<?php echo $books[0]['book_price']?>
-                    </button>
-                  
+                    </button>                  
                     <button type="button" class="btn btn-warning pull-right" style = "margin-right: 20px"><i class="fa fa-fw fa-gift"></i> ส่งของขวัญ</button>
-                  <?php }?>
+                  <?php endif;?>
                 </div>
               </div>
             </div>
@@ -277,17 +276,40 @@
         </div>
         <div class="modal-body">
           <div class="row">
-                <div class="col-sm-4">
-                  <img id="img-url" src="<?php echo base_url('')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;">
-                </div>
-                <div class="col-sm-8">
-                    <span type="text" id="book-name"></span><hr>
-                    THB <span type="text" id="book-price"></span><hr>
-                </div>
+              <div class="col-sm-4">
+                <img id="img-url" src="<?php echo base_url('')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;">
+              </div>
+              <div class="col-sm-8">
+                  <span type="text" id="book-name"></span><hr>
+                  THB <span type="text" id="book-price"></span><hr>
+              </div>
           </div>
+            <form id="tempForm" class="form-horizontal" action="<?php echo base_url('index.php/BookDetailController/buy'); ?>" method="post" hidden>
+              <fieldset>
+                  <div class="form-group row">
+                      <div class="col-sm-8  col-sm-offset-2 inputGroupContainer">
+                          <div class="input-group">
+                              <input id="book_id" name="book_id" class="form-control" type="text" >
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <div class="col-sm-8  col-sm-offset-2 inputGroupContainer">
+                          <div class="input-group">
+                              <input id="book_price" name="book_price" class="form-control" type="text">
+                          </div>
+                      </div>
+                  </div><br>
+                  <div class="text-center row">
+                      <div class="col-sm-12">
+                          <input type="submit" class="btn btn-lg btn-primary btn-block" value="submit"/>
+                      </div>
+                  </div>
+              </fieldset>
+            </form>
         </div>
         <div class="modal-footer">
-          <a href="<?php echo base_url('index.php/BookDetailController/buy?book_id='.$books[0]['book_id'])?>" class="btn btn-info">ชำระเงิน</a>
+          <button id="before-submit" type="button" class="btn btn-primary">ชำระเงิน</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>          
         </div>
       </div>
@@ -331,8 +353,35 @@
     </div>
   </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="modal-error" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <h3 style="color:red;">ซื้อหนังสือไม่สำเร็จ! <i class="fa fa-times-circle-o"></i></h3>
+          <p>จำนวนเงินไม่เพียงพอต่อการซื้อหนังสือ กรุณาเติมเงินเข้าสู่ระบบก่อนซื้อหนังสือใหม่อีกครั้ง</p>
+          <a href="<?php echo base_url('index.php/TopUpController') ?>" class="btn btn-success">ไปที่หน้าเติมเงิน</a>
+          <a href="" class="btn btn-primary">ยกเลิก</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal-success" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <h3 style="color:red;">ซื้อหนังสือสำเร็จ! <i class="fa fa-check-circle-o"></i></h3>
+          <p>คุณได้ซื้อหนังสือเรียบร้อย สามารถดูหนังสือที่ซื้อได้จาก My Library ของคุณ</p>
+          <a href="" class="btn btn-info">ตกลง</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script type="text/javascript">
-    $(document).on("click", ".open-myModal", function () 
+    $('#buy').click(function ()
     {
       var url = "<?php echo base_url(); ?>"+'book-img/'+$(this).data('id')+'/'+$(this).data('img')+'.jpg';      
       $(".modal-body #book-name").html($(this).data('name'));
@@ -349,6 +398,39 @@
       $('#modal-comment').modal('show');
     });     
 
+    $('#before-submit').click(function () {
+      var cash = <?php echo $this->session->flashdata('cash') ?>;
+      var book_price = <?php echo $books[0]['book_price'] ?>;
+      var book_discount = <?php echo $books[0]['book_total'] ?>;
+      var id = document.getElementById('user_id').innerHTML;
+      if(id != ""){
+        if(book_discount > 0){
+          if(cash >= book_discount){
+            document.getElementById('book_id').value = <?php echo $books[0]['book_id'] ?>;
+            document.getElementById('book_price').value = <?php echo $books[0]['book_total'] ?>;
+            $('#tempForm').submit();          
+          }
+          else{
+            $('#modal-error').modal('show');
+            $('#exampleModal').modal('hide');
+          }
+        }
+        else{
+          if(cash >= book_price){
+            document.getElementById('book_id').value = <?php echo $books[0]['book_id'] ?>;
+            document.getElementById('book_price').value = <?php echo $books[0]['book_total'] ?>; 
+            $('#tempForm').submit();         
+          }
+          else{
+            $('#modal-error').modal('show');
+            $('#exampleModal').modal('hide');
+          }
+        } 
+      }
+      else{
+        $('#tempForm').submit();
+      }           
+    });
   </script>
 
   <!-- Required JavaScript Libraries -->

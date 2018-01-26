@@ -7,7 +7,6 @@ class BookModel extends CI_Model {
 	}
 	public function get(){
 		$bookname = $this->input->post('name');
-		
 		if(empty($bookname)){
 			return null;
 		}

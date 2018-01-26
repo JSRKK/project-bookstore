@@ -108,7 +108,7 @@
                       </span>
                   </a>                                      
                   <div class="item-details bg-noise">
-                    <h5 class="item-title" style="max-width: 160px"><?php echo '<a href="#">'.$row['book_name'].' </a>' ?></h5>
+                    <h5 class="item-title" style="max-width: 160px"><a href="<?php echo base_url('index.php/BookDetailController/index?book_id='.$row["book_id"])?>"><?php echo $row['book_name'] ?></a></h5>
                     <p style="color:#595959; font-size:12px;"><?php echo $row['publisher_name'] ?></p>
                     <?php 
                       if($row['book_discount'] > 0){

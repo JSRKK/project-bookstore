@@ -59,10 +59,10 @@
   </div>
   <div class="container">
   <div class ="row" style="">
-  <form accept-charset="UTF-8" role="form" action = "<?php echo base_url('index.php/BookController'); ?>" method="POST" enctype="multipart/form-data">
+  <form accept-charset="UTF-8" role="form" action = "<?php echo base_url('index.php/BookController/index'); ?>" method="POST" enctype="multipart/form-data">
     <div class ="col-sm-2 col-sm-offset-8" style="margin-left:77%">
       <div class = "form-group">
-        <input type="text" name="name" class ="form-control" id="name" placeholder ="search" />
+        <input type="text" id="name" name="name" class ="form-control" placeholder ="search" />
       </div>
     </div>
     <div class = "col-sm-1" style = "margin-left:-2%">
