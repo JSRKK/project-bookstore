@@ -19,8 +19,8 @@ class RegisterController extends CI_Controller {
 		if($check == null){
 			$data = $this->RegisterModel->register_reader($username);
 			if($data == true){
-				$this->session->set_flashdata('success','คุณได้สมัครสมาชิกเรียบร้อยแล้ว');
-				$this->load->view('register_view');
+				$this->session->set_flashdata('type','register');
+				redirect('ShowSuccessController');
 			}			
 		}
 		else{

@@ -27,20 +27,17 @@
                         <a style="margin-top:-15%;margin-left:30%" class="navbar-brand" href="<?php echo base_url('index.php/HomeController') ?>"
                             title="Home">
                         </a>
-                        <?php if($this->session->flashdata('error')): ?>
-                        <div class="alert alert-danger">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <p>
-                                <center>
-                                    <?php echo $this->session->flashdata('error') ?> </center>
-                                <p>
-                        </div>
+                        <?php if($this->session->flashdata('error')): ?>    
+                            <div class="alert alert-danger">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <p><center> <?php echo $this->session->flashdata('error') ?> </center><p>
+                            </div>
                         <?php endif; ?>
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <form class="form-horizontal" action="<?php echo base_url('index.php/LoginController/check_login'); ?> " method="post" id="reg_form">
+                                <form class="form-horizontal" action="<?php echo base_url('index.php/ChangePasswordController/change_password'); ?> " method="post" id="reg_form">
                                     <fieldset>
                                         <div class="form-group row text-center" style="margin-top:40px;margin-bottom:30px">
                                             <h5 style="font-weight: bold">CHANGE PASSWORD</h5>
@@ -95,11 +92,6 @@
             </div>
         </div>
     </div>
-    <script>
-        $('#alert').click(function () {
-            alert('จำรหัสไม่ได้ก็ไม่ต้องเข้าสิจ๊ะ!!!');
-        });
-    </script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>

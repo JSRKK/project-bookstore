@@ -38,17 +38,6 @@
           <div class="panel panel-default">
             <div class="panel-body row">
               <div class="container2">
-                <?php if($this->session->flashdata('success')) :?>
-                <div class="text-center">
-                  <h3>
-                    <?php echo $this->session->flashdata('success') ?>
-                    <span style="color:green;font-size:25px">
-                      <i class="fa fa-check-circle-o"></i>
-                    </span>
-                  </h3>
-                  <a href="<?php echo base_url('index.php/HomeController'); ?>" class="btn btn-success">กลับสู่หน้าหลัก</a>
-                </div>
-                <?php else:?>
                 <form class="form-horizontal" action="<?php echo base_url('index.php/RegisterController/register'); ?>" method="post" id="reg_form">
                   <fieldset>
                     <div class="row">
@@ -155,20 +144,12 @@
                   </fieldset>
                 </form>
               </div>
-              <?php endif; ?>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <script>
-       $('#register').click(function () {
-        <?php echo $this->session->flashdata('error', '');
-              echo $this->session->flashdata('success', '')  
-        ?>
-      });
-  </script>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
