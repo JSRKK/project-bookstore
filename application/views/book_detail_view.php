@@ -460,20 +460,6 @@
   </script>
 
   <script>
-    // $(function(){
-    //   // select the first 5 hidden div   
-    //     $( ".comment-box" ).each(function( index ) {
-    //       $(this).children(".user-comment-box").slice(-2).show();
-    //     });        
-    //     $(".see-more").click(function(e){ // click event for load more
-    //         e.preventDefault();
-    //         var done = $('<div class="see-more=done">done</div>');
-    //         $(this).siblings(".user-comment-box:hidden").slice(-1).show(); 
-    //         if($(this).siblings(".user-comment-box:hidden").length == 0){ 
-    //             $(this).replaceWith(done); 
-    //         }
-    //     });
-    //   });
     $(function () {
       $( ".comment-box" ).each(function( index ) {
         $(this).children(".user-comment-box").slice(-5).show();

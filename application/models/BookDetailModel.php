@@ -88,7 +88,7 @@ class BookDetailModel extends CI_Model {
 
 		$query = $this->db->query("INSERT INTO review(reviewDateTime, reviewComment, reviewScore, user_ID, book_ID)
 									value ('$date', '$comment', '$score', '$user_id', '$book_id')
-									WHERE NOT user_ID = '$user_id' AND NOT book_ID = '$book_id'");
+									");
 	}
 
 	public function update_session($cash){
