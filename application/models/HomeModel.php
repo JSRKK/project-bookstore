@@ -29,9 +29,10 @@ class HomeModel extends CI_Model {
         }
 
         public function get_discount($book_id){
+                $date =  date('Y-m-d');
                 $query = $this->db->query("SELECT proDiscount 
                                         FROM promotion
-                                        WHERE book_ID = '$book_id'");
+                                        WHERE book_ID = '$book_id' AND proDateStop >= '$date'");
 		return  $query->result_array();
         }
 

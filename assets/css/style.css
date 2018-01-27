@@ -2902,4 +2902,8 @@ ul.nav-tabs.nav-tabs-right>li:last-child {
   .stars-90:after { width: 90%; }
   .stars-100:after { width: 100; }
 
- 
+#hearts { color: #ee8b2d;}
+#hearts-existing { color: #ee8b2d;}
+
+.user-comment-box { display:none; }
+

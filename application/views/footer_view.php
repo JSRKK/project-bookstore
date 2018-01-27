@@ -5,9 +5,9 @@
       <div class="row" id="contact">
         <div class="col-sm-4">
             <h4 class="footer-text">CREDITS:</h4>
-            <p><span>Free Bootstrap Templates</span><a href="https://bootstrapmade.com/">by BootstrapMade.com</a></P>
-            <p><span>Make a flip book with HTML5 by </span><a href="www.turnjs.com">www.turnjs.com</a></P>
-            <p><span>User icons </span><a href="https://github.com/eladnava/material-letter-icons">material-letter-icons generate</a></p>
+            <p><span>Free Bootstrap Templates</span><a href="https://bootstrapmade.com/"> by BootstrapMade.com</a></P>
+            <p><span>Make a flip book with HTML5 by </span><a href="www.turnjs.com"> www.turnjs.com</a></P>
+            <p><span>User icons </span><a href="https://github.com/eladnava/material-letter-icons"> material-letter-icons generate</a></p>
         </div>
         <div class="col-sm-5">
             <h4 class="footer-text">CREDITS PHOTO BOOKS:</h4>

@@ -22,9 +22,10 @@ class BookDetailModel extends CI_Model {
 	}
 
 	public function get_discount($book_id){
+		$date =  date('Y-m-d');
 		$query = $this->db->query("SELECT proDateStart, proDateStop, proDiscount 
 								FROM promotion
-								WHERE book_ID = '$book_id'");
+								WHERE book_ID = '$book_id' AND proDateStop >= '$date' ");					
 		return  $query->result_array();
 	}
 
@@ -80,6 +81,16 @@ class BookDetailModel extends CI_Model {
 		return $tempCash;
 	}
 
+	public function insert_comment($user_id, $book_id){
+		$date = date("Y-m-d H:i:s");
+		$comment = $this->input->post('comment');
+		$score = $this->input->post('score_star');
+
+		$query = $this->db->query("INSERT INTO review(reviewDateTime, reviewComment, reviewScore, user_ID, book_ID)
+									value ('$date', '$comment', '$score', '$user_id', '$book_id')
+									WHERE NOT user_ID = '$user_id' AND NOT book_ID = '$book_id'");
+	}
+
 	public function update_session($cash){
 		$session_data = $this->session->userdata('loged_in');
 		$sess_array = array(
@@ -89,6 +100,6 @@ class BookDetailModel extends CI_Model {
 			'cash' => $cash
 		);
 		$this->session->set_userdata('loged_in',$sess_array);
-	}
+	}	
 }
 

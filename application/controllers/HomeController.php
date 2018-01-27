@@ -47,7 +47,7 @@ class HomeController extends CI_Controller {
 		}
 
 		$promotion = $this->HomeModel->get_promotion();
-		if($datas != null){
+		if($promotion != null){
 			$score = $this->HomeModel->get_score($promotion[0]['book_ID']);
 			$dataShow['promotion'] = $promotion;
 			$dataShow['score'] = $score;

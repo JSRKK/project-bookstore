@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>EBook Online</title>
+<title>Read BOOk</title>
 <meta name="viewport" content="width = 1050, user-scalable = no" />
 <link rel="icon" type="image/png" href="<?php echo base_url('turnjs4/pics/favicon.png')?>" />
 <script type="text/javascript" src="<?php echo base_url('turnjs4/extras/jquery.min.1.7.js')?>"></script>

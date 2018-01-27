@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>BookStore Online</title>
+  <title>Book detail</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -23,10 +23,8 @@
   <meta name="twitter:image" content="">
 
   <!-- Fav and touch icons -->
-  <link rel="shortcut icon" href="<?php echo base_url('assets/img/icons/favicon.png')?>">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url('assets/img/icons/114x114.png')?>">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url('assets/img/icons/72x72.png')?>">
-  <link rel="apple-touch-icon-precomposed" href="<?php echo base_url('assets/img/icons/default.png')?>">
+  <link rel="shortcut icon" href="<?php echo base_url('assets/img/icon-web.png')?>">
+
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet">
@@ -48,6 +46,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+  
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
   <!-- =======================================================
     Theme Name: Flexor
@@ -191,6 +190,7 @@
                 <div class="col-sm-3">
                   <h4>ความคิดเห็น</h4>
                 </div>
+                <?php if(!$user_comment && $book_check) :?>
                 <div class="col-sm-9">
                   <a href="#" data-toggle="modal" 
                   data-id="<?php echo $books[0]["book_id"]?>" 
@@ -199,6 +199,7 @@
                   class="btn btn-default pull-right open-myModal2">
                   <i class="fa fa-pencil"></i> เขียนความคิดเห็น</a>
                 </div>
+              <?php endif; ?>
               </div>
               <div class="row">
                 <div class="col-sm-3">
@@ -210,51 +211,56 @@
                     <h3 class="text-center" style="color:#FE980F">
                       <span class="stars-container stars-<?php echo ($books[0]['score']/5)*100 ?>">★★★★★</span>
                     </h3>
+                    <h5>review ( <?php echo sizeof($users) ?> )</h5>
                 </div>
               </div><br>
               <div class="row" >
                 <div class="col-sm-12" id="user-comment">
-                  <?php if($users != null)
-                  
-                    foreach($users as $key => $row):?>
-                      <?php if($key > $books[0]['limit']) break; ?>
-                      <div class="row">
-                        <div class="col-sm-1">
-                          <img src="<?php echo base_url('user-img/'.strtoupper($row['ReaderFname'][0]).'.png')?>" alt="User image" class="img-circle">
-                        </div>
-                        <div class="col-sm-10">
+                  <div class="comment-box-container">
+                    <div class="comment-box">
+                      <?php if($users != null) :?>                     
+                        <?php foreach($users as $key => $row):?>
+                        <div class="user-comment-box">
                           <div class="row">
-                            <div class="col-sm-12">
-                              <span><?php echo $row['ReaderFname']?></span>
-                              <span><?php echo $row['ReaderLname']?></span>                                                       
+                            <div class="col-sm-1">
+                              <img src="<?php echo base_url('user-img/'.strtoupper($row['ReaderFname'][0]).'.png')?>" alt="User image" class="img-circle">
                             </div>
-                          </div>                                                
-                          <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-10">
                               <div class="row">
-                                <div class="col-sm-10">
-                                  <p class="stars-container stars-<?php echo ($row['reviewScore']/5)*100 ?>">★★★★★</p>
-                                  <span style="color:#33333361;font-size:14px"><?php echo date("d/m/Y H:m", strtotime($row['reviewDateTime']))?></span>
-                                  <p style="font-size:13px"><?php echo $row['reviewComment']?></p>
+                                <div class="col-sm-12">
+                                  <span><?php echo $row['ReaderFname']?></span>
+                                  <span><?php echo $row['ReaderLname']?></span>                                                       
                                 </div>
-                                <div class="col-sm-1">
-                                      <a href="#" style="font-size:20px; color:#4a4747c7;"><i class="fa fa-thumbs-up"></i></a>                          
+                              </div>                                                
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="row">
+                                    <div class="col-sm-10">
+                                      <p class="stars-container stars-<?php echo ($row['reviewScore']/5)*100 ?>">★★★★★</p>
+                                      <span style="color:#33333361;font-size:14px"><?php echo date("d/m/Y H:m", strtotime($row['reviewDateTime']))?></span>
+                                      <p style="font-size:13px"><?php echo $row['reviewComment']?></p>
+                                    </div>
+                                    <div class="col-sm-1">
+                                          <a href="#" style="font-size:20px; color:#4a4747c7;"><i class="fa fa-thumbs-up"></i></a>                          
+                                    </div>
+                                    <div class="col-sm-1">
+                                          <a href="#" style="font-size:20px; color:#4a4747c7;"><i class="glyphicon glyphicon-option-vertical"></i></a>                          
+                                    </div>
+                                  </div>
                                 </div>
-                                <div class="col-sm-1">
-                                      <a href="#" style="font-size:20px; color:#4a4747c7;"><i class="glyphicon glyphicon-option-vertical"></i></a>                          
-                                </div>
-                              </div>
+                              </div>                                                  
                             </div>
-                          </div>                                                  
+                          </div>
+                        </div><hr>                          
+                        <?php endforeach; ?>
+                        <div class="row" id="comment">
+                          <div class="col-sm-12 text-center">
+                            <a id="loadMore" class="btn btn-default">View more <i class="fa fa-chevron-down"></i> </a>                                    
+                          </div>
                         </div>
-                      </div><hr>
-                    <?php endforeach ?>
-                    <div class="row" id="comment">
-                      <div class="col-sm-12 text-center">
-                        <a href="#comment" id="btn_more" class="btn btn-default">View more <i class="fa fa-chevron-down"></i> </a>
-                       <input type="hidden" id="hiddencomment" name="hiddencomment" value="0"/>                                         
-                      </div>
+                    <?php endif; ?>
                     </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -320,46 +326,50 @@
   <div class="modal fade" id="modal-comment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">
-            <?php if (isset($this->session->userdata['loged_in'])) {
-                $session_data = $this->session->userdata('loged_in'); ?>
-                <span style="font-size: 16px;"><?php echo $session_data['fName']; ?></span>
-                <span><?php echo $session_data['lName']; ?></span>
-            <?php }?>
-            <span class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </span>
-          </h4>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-                <div class="col-sm-4">
-                  <img id="img-url2" src="<?php echo base_url('')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;">
-                  <p class="text-center" type="text" id="book-name"></p>
-                </div>
-                <div class="col-sm-8 text-center">
-                  <textarea class="form-control" id="user-comment" rows="7" style="resize: none;"placeholder="พิมพ์ข้อความเพื่อแสดงความคิดเห็นเกี่ยวกับหนังสือเล่มนี้" require></textarea><hr>
-                  <p style="margin-bottom:-15px">ให้คะแนน</p>
-                  <h2 class="stars-container stars-50">★★★★★</h2>
-                </div>
+        <form id="comment" class="form-horizontal" action="<?php echo base_url('index.php/BookDetailController/comment'); ?>" method="post">        
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">
+              <?php if (isset($this->session->userdata['loged_in'])) {
+                  $session_data = $this->session->userdata('loged_in'); ?>
+                  <span style="font-size: 16px;"><?php echo $session_data['fName']; ?></span>
+                  <span><?php echo $session_data['lName']; ?></span>
+              <?php }?>
+              <span class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </span>
+            </h4>
           </div>
-        </div>
-        <div class="modal-footer">
-          <a href="" class="btn btn-info">ตกลง</a>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>          
-        </div>
+          <div class="modal-body">
+            <div class="row">
+                  <div class="col-sm-4">
+                    <img id="img-url2" src="<?php echo base_url('')?>" alt="Project 1 image" class="img-responsive underlay" style="margin: 0 auto;">
+                    <p class="text-center" type="text" id="book-name"></p>
+                  </div>
+                  <div class="col-sm-8 text-center">
+                    <textarea class="form-control" id="comment" name="comment" rows="7" style="resize: none;"placeholder="พิมพ์ข้อความเพื่อแสดงความคิดเห็นเกี่ยวกับหนังสือเล่มนี้" required></textarea><hr>
+                    <p style="margin-bottom:-15px">ให้คะแนน</p>
+                    <h2 class=""><div id="hearts" class="starrr"></div></h2>
+                    <h4 id="count">0</h4>
+                    <input id="score_star" name="score_star" type="text" hidden>
+                    <input id="book-id" name="book-id" type="text" hidden>                    
+                  </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input id="comment_submit" type="submit" class="btn btn-info" value="ตกลง">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>          
+          </div>
+        </form>                        
       </div>
     </div>
   </div>
-
   <!-- Modal -->
   <div class="modal fade" id="modal-error" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body text-center">
-          <h3 style="color:red;">ซื้อหนังสือไม่สำเร็จ! <i class="fa fa-times-circle-o"></i></h3>
-          <p>จำนวนเงินไม่เพียงพอต่อการซื้อหนังสือ กรุณาเติมเงินเข้าสู่ระบบก่อนซื้อหนังสือใหม่อีกครั้ง</p>
+          <h3 style="color:red;">คุณไม่สามารถซื้อหนังสือได้! <i class="fa fa-times-circle-o"></i></h3>
+          <p>เนื่องจำนวนเงินไม่เพียงพอต่อการซื้อหนังสือ กรุณาเติมเงินเข้าสู่ระบบก่อนซื้อหนังสือใหม่อีกครั้ง</p>
           <a href="<?php echo base_url('index.php/TopUpController') ?>" class="btn btn-success">ไปที่หน้าเติมเงิน</a>
           <a href="#" class="btn btn-primary" data-dismiss="modal">ยกเลิก</a>
         </div>
@@ -381,13 +391,19 @@
   </div>
 
   <script type="text/javascript">
-    $(document).ready(function() {    
-        var type = <?php echo $this->session->flashdata('type'); ?>;
-        if (type != 'empty'){
+  // check modal
+    $(document).ready(function() {  
+        var success = <?php echo $this->session->flashdata('buy');?>;
+        if (success == true){
           $('#modal-success').modal('show');
         } 
     });
 
+    $('#comment_submit').click(function () {  
+        document.getElementById('score_star').value = document.getElementById('count').innerHTML;
+    });
+
+    // buy book
     $('#buy').click(function ()
     {
       var url = "<?php echo base_url(); ?>"+'book-img/'+$(this).data('id')+'/'+$(this).data('img')+'.jpg';      
@@ -397,14 +413,17 @@
       $('#exampleModal').modal('show');
     });  
 
+    // commet
     $(document).on("click", ".open-myModal2", function () 
     {
-      var url = "<?php echo base_url(); ?>"+'book-img/'+$(this).data('id')+'/'+$(this).data('img')+'.jpg';      
+      var url = "<?php echo base_url(); ?>"+'book-img/'+$(this).data('id')+'/'+$(this).data('img')+'.jpg'; 
+      document.getElementById('book-id').value = $(this).data('id');  
       $(".modal-body #book-name").html($(this).data('name'));
       $('.modal-body #img-url2').attr('src', url);
       $('#modal-comment').modal('show');
-    });     
+    });   
 
+    //check buy book
     $('#before-submit').click(function () {
       var cash = <?php echo $this->session->flashdata('cash') ?>;
       var book_price = <?php echo $books[0]['book_price'] ?>;
@@ -425,7 +444,7 @@
         else{
           if(cash >= book_price){
             document.getElementById('book_id').value = <?php echo $books[0]['book_id'] ?>;
-            document.getElementById('book_price').value = <?php echo $books[0]['book_total'] ?>; 
+            document.getElementById('book_price').value = <?php echo $books[0]['book_price'] ?>; 
             $('#tempForm').submit();         
           }
           else{
@@ -439,6 +458,55 @@
       }           
     });
   </script>
+
+  <script>
+    // $(function(){
+    //   // select the first 5 hidden div   
+    //     $( ".comment-box" ).each(function( index ) {
+    //       $(this).children(".user-comment-box").slice(-2).show();
+    //     });        
+    //     $(".see-more").click(function(e){ // click event for load more
+    //         e.preventDefault();
+    //         var done = $('<div class="see-more=done">done</div>');
+    //         $(this).siblings(".user-comment-box:hidden").slice(-1).show(); 
+    //         if($(this).siblings(".user-comment-box:hidden").length == 0){ 
+    //             $(this).replaceWith(done); 
+    //         }
+    //     });
+    //   });
+    $(function () {
+      $( ".comment-box" ).each(function( index ) {
+        $(this).children(".user-comment-box").slice(-5).show();
+      }); 
+      $("div").slice(0, 5).show();
+          $("#loadMore").on('click', function (e) {
+              e.preventDefault();
+              $(".user-comment-box:hidden").slice(0, 5).slideDown();
+              if ($(".user-comment-box:hidden").length == 0) {
+                  $("#load").fadeOut('slow');
+              }
+              // $('html,body').animate({
+              //     scrollTop: $(this).offset().top
+              // }, 2000);
+          });
+      });
+
+      $('a[href=#top]').click(function () {
+          $('body,html').animate({
+              scrollTop: 0
+          }, 600);
+          return false;
+      });
+
+      $(window).scroll(function () {
+          if ($(this).scrollTop() > 50) {
+              $('.totop a').fadeIn();
+          } else {
+              $('.totop a').fadeOut();
+          }
+      });
+  </script>
+
 
   <!-- Required JavaScript Libraries -->
   <script src="<?php echo base_url('assets/lib/jquery/jquery.min.js')?>"></script>
@@ -457,6 +525,8 @@
 
   <!--Contactform script -->
   <script src="<?php echo base_url('assets/contactform/contactform.js')?>"></script>
+  <!-- Rate-star -->
+  <script src="<?php echo base_url('assets/js/rate-star.js')?>"></script>
 
 </body>
 
