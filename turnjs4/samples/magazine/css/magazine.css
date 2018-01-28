@@ -407,10 +407,12 @@ body{
 
 .zoom-icon-out{
 	background-image:url(../pics/zoom-out1.png);
+	color: #ffffff;
 }
 
 .zoom-icon-out.zoom-icon-out-hover{
 	background-image:url(../pics/zoom-out2.png);
+	color: #ffffff;
 	cursor: pointer;
 }
 

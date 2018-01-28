@@ -47,9 +47,9 @@ class BookDetailModel extends CI_Model {
 	}
 	
 	public function get_score($book_id){
-		$query = $this->db->query("SELECT r.reviewScore, r.reviewComment, r.reviewDateTime, r.user_ID, u.ReaderFname, u.ReaderLname
-									FROM review r INNER JOIN reader u ON r.user_ID = u.user_ID
-									WHERE r.book_ID = '$book_id' ORDER BY r.reviewDateTime DESC");
+		$query = $this->db->query("SELECT r.review_ID, r.reviewScore, r.reviewComment, r.reviewDateTime, r.user_ID, u.ReaderFname, u.ReaderLname
+									FROM review r NATURAL JOIN reader u 
+									WHERE r.book_ID = '$book_id'  ORDER BY r.reviewDateTime DESC");
 		return  $query->result_array();
 	}
 

@@ -14,6 +14,8 @@
   <link href="<?php echo base_url('assets/bootstrab/css/bootstrap-theme.min.css')?>" rel="stylesheet" type="text/css" />
   <link href="<?php echo base_url('assets/bootstrab/css/style.css')?>" rel="stylesheet" type="text/css" />
   <link href="<?php echo base_url('assets/bootstrab/css.css')?>" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body class="">
@@ -24,17 +26,6 @@
           <a style="margin-top:-10%;margin-left:30%" class="navbar-brand" href="<?php echo base_url('index.php/HomeController') ?>"
             title="Home">
           </a><br>
-          <?php if($this->session->flashdata('error')):?>
-          <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <p>
-              <center>
-                <?php echo $this->session->flashdata('error') ?> </center>
-              <p>
-          </div>
-          <?php endif; ?>
           <div class="panel panel-default">
             <div class="panel-body row">
               <div class="container2">
@@ -72,8 +63,9 @@
                               <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-user"></i>
                               </span>
-                              <input type="text" class="form-control" id="username" name="username" minlength="6" placeholder="Username" required>
+                              <input type="text" pattern="[A-Za-z]{1}" class="form-control" id="username" name="username" minlength="6" placeholder="Username" onblur="check_if_exists()" required>
                             </div>
+                            <span id="valid-username" class="pull-right" style="font-size:12px;"></span>
                           </div>
                         </div>
                         <div class="form-group">
@@ -105,31 +97,23 @@
                               <input type="date" class="form-control" id="birthday" name="birthday" placeholder="Date of Birth" required>
                             </div>
                           </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="inputGroupContainer">
-                            <div class="input-group">
-                              <span class="input-group-addon">
-                                <i class="fa fa-transgender"></i>
-                              </span>
-                              <select id="gender" name="gender" class="form-control" required>
-                                <option value="" selected>Gender</option>
-                                <option value="Female">Female</option>
-                                <option value="Male">Male</option>
-                                <option value="Other">Other</option>
-                                <option value="Rather not say">Rather not say</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
+                        </div>                       
                         <div class="form-group">
                           <div class="inputGroupContainer">
                             <div class="input-group">
                               <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-earphone"></i>
                               </span>
-                              <input type="tel" class="form-control" name="tel" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="10"
+                              <input type="tel" pattern="([0]{1})([0-9]{9})" class="form-control" name="tel" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="10"
                                 maxlength="10" placeholder="Tel" required>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="inputGroupContainer">
+                            <div class="input-group">
+                              <label class="radio-inline"><input type="radio" name="gender" required>Female</label>
+                              <label class="radio-inline"><input type="radio" name="gender" required>Male</label>
                             </div>
                           </div>
                         </div>
@@ -150,6 +134,32 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function check_if_exists() {
+
+    var username = $("#username").val();
+    if(username.length >= 6){
+      $.ajax(
+          {
+              type:"post",
+              url: "<?php echo base_url(); ?>index.php/RegisterController/filename_exists",
+              data:{ username:username},
+              success:function(response)
+              {
+                  if (response == "true") 
+                  {            
+                      $('#valid-username').html('<span style="color: green;"></span>');
+                  }
+                  else if(response == "false")
+                  {
+                      $('#valid-username').html('<span style="color:red;">username นี้มีผู้ใช้งานไปแล้ว</span>');
+                  }  
+              }
+          });
+      }
+    }
+  </script>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>

@@ -38,4 +38,10 @@ class RegisterModel extends CI_Model {
 
             return true;          
         }
+
+        function filename_exists($username)
+        {
+            $query = $this->db->query("SELECT user_ID FROM user WHERE user_ID ='$username'");
+            return $query->result_array();
+        }
 }?>

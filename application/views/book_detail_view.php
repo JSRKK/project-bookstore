@@ -251,7 +251,7 @@
                               </div>                                                  
                             </div>
                           </div>
-                        </div><hr>                          
+                          </div><hr>  
                         <?php endforeach; ?>
                         <div class="row" id="comment">
                           <div class="col-sm-12 text-center">
@@ -491,6 +491,7 @@
               $('.totop a').fadeOut();
           }
       });
+    
   </script>
 
 

@@ -24,8 +24,21 @@ class RegisterController extends CI_Controller {
 			}			
 		}
 		else{
-			$this->session->set_flashdata('error','username นี้ถูกใช้งานแล้ว');
 			$this->load->view('register_view');
+		}
+	}
+
+	function filename_exists()
+	{
+		$username = $this->input->post('username');
+		$this->load->model('RegisterModel');
+		$exists = $this->RegisterModel->filename_exists($username);
+				
+
+		if (empty($exists)) {
+			print_r("true"); //แทนการ return true;
+		} else {
+			print_r("false"); //แทนการ return false;
 		}
 	}
 }

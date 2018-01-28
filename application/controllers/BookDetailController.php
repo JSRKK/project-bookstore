@@ -114,13 +114,12 @@ class BookDetailController extends CI_Controller {
 			redirect("LoginController");
 		}
 	}
-
+	
 	public function comment(){
 		$session_data = $this->session->userdata('loged_in');
 		$id = $session_data['userid'];
 		$this->book_id =  $this->input->post('book-id');
 		$this->load->model('BookDetailModel');
-		print_r($id, $this->book_id);
 		$this->BookDetailModel->insert_comment($id, $this->book_id);
 		$this->index();
 	}
