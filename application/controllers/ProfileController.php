@@ -8,10 +8,8 @@ class ProfileController extends CI_Controller {
 		$session_data = $this->session->userdata('loged_in');
 		$id = $session_data['userid'];
 		if(!empty($id)){
-			
-		
 			$this->load->model('ProfileModel');
-			$datas = $this->ProfileModel->get();
+			$datas = $this->ProfileModel->get($id);
 			$dataShow['profile'] = $datas;
 			
 			$this->load->model('HeaderModel');
